@@ -1,0 +1,6 @@
+export * from "./JoinWrapper"
+export * from "./JoinHeader.styled"
+export * from "./JoinLogo.styled"
+export * from "./JoinBody.styled"
+export * from "./InputBox.styled"
+export * from "./Btn.styled"
