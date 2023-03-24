@@ -1,4 +1,5 @@
-export * from "./JoinWrapper"
+export * from "./JoinWrapper.styled"
+export * from "./JoinWrap.styled"
 export * from "./JoinHeader.styled"
 export * from "./JoinLogo.styled"
 export * from "./JoinBody.styled"

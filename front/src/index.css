@@ -52,3 +52,12 @@ a {
     height: 60px;
     padding-right: 20px;
 }
+
+.joinWallpaper {
+    position: absolute;
+    /* position: absolute; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin: 0 auto; */
+}
