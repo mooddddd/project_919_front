@@ -1,5 +1,11 @@
-const App = ()=>{
-  return <></>
+import { AppRouter } from "./routes/AppRouter"
+
+const App = () => {
+  return(
+    <>
+      <AppRouter/>
+    </>
+  )
 }
 
-export default App;
+export default App
