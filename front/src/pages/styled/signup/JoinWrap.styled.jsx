@@ -9,5 +9,5 @@ export const JoinWrap = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #efefef;
+    /* background-color: #efefef; */
 `
