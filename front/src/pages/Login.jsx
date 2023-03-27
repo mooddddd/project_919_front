@@ -1,5 +1,5 @@
 import { Header, Footer } from "../common"
-import { LoginContent } from "./content"
+import { LoginContent } from "./index"
 
 export const Login = () => {
     return(

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const Btn = styled.button`
+export const LoginBtn = styled.button`
     width: 470px;
     height: 50px;
     display: flex;
@@ -9,7 +9,8 @@ export const Btn = styled.button`
     margin: 20px auto;
     border: none;
     border-radius: 10px;
-    background-color: #172950;
+    background-color: #950d0ddb;
     opacity: 0.6;
     font-size: 1.2rem;
+    
 `

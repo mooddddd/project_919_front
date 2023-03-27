@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -60,4 +62,36 @@ a {
     /* justify-content: center; */
     /* align-items: center; */
     /* margin: 0 auto; */
+}
+
+.kakaologin {
+    width: 55px;
+    height: 55px;
+    /* box-sizing: border-box; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 420px;
+}
+
+.naverlogin {
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 400px;
+}
+
+.slideOne {
+    width: 100%;
+    float: left;
+}
+
+.slideTwo {
+    width: 100%;
+    float: left;
+}
+
+.slideThree {
+    width: 100%;
+    float: left;
 }
