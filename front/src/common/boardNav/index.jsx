@@ -1,1 +1,1 @@
-export * from "./boardNav"
+export * from "./BoardNav"

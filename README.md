@@ -71,3 +71,19 @@
 
 
   8. router
+
+
+```jsx
+export const RecruitWriteTop = ({color})=>{
+    const color = {
+        red : "#FF5858",
+        black:"#252525",
+        gray : "##535353"
+    }
+    return(
+    <>
+    <H2 color={color.red}>파티장</H2> <H2 color={color.black}>되기</H2>
+    <Span>파티장이 되시려면 몇 가지 정보가 필요해요.</Span>
+    </>)
+}
+```
