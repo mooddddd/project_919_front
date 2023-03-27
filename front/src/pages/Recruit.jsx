@@ -1,11 +1,10 @@
-import { Header, Footer } from "../common"
-import { CommunityContent } from "./index"
+import { Header, Footer, BoardNav } from "../common"
 
 export const Community = () => {
     return (
         <>
             <Header />
-            <CommunityContent />
+            <BoardNav/>
             <Footer />
         </>
     )
