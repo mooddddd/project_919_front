@@ -8,7 +8,7 @@ export const SignUpContent = () => {
                 <JoinWrap>
                     <JoinHeader>
                             <NavLink>
-                                <JoinLogo>회원가입</JoinLogo>
+                                <JoinLogo>SignUp</JoinLogo>
                             </NavLink>
                     </JoinHeader>
                     <JoinBody>
