@@ -1,14 +1,32 @@
-import {Wrap} from "./styled"
+import {Wrap, Nav} from "./styled"
+import { NavLink } from "react-router-dom"
 
 export const BoardNav = ()=>{
-    const category = [
-        {path : "/recruit"},
-        {},
-        {}
-    ]
+    // const category = [
+    //     {path : "/recruit", name:"Recruit"},
+    //     {path : "/infoboard", name:"infoBoard"},
+    //     {path : "/freeboard", name:"freeBoard"}
+    // ]
 
     return <>
-    <Wrap>hello~</Wrap>
+    <Wrap>
+        <Nav>
+        <ul>
+            <li>
+                <NavLink to="/recruit">파티구하기</NavLink>
+            </li>
+
+            <li>
+                <NavLink to="/infoboard">정보</NavLink>
+            </li>
+
+            <li>
+                <NavLink to="/freeboard">잡담</NavLink>
+            </li>
+        </ul>
+        
+        </Nav>
+    </Wrap>
     </>
 }
 
