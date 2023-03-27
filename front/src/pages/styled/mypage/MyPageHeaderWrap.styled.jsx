@@ -1,10 +1,13 @@
 import styled from "styled-components"
 
 export const MyPageHeaderWrap = styled.div`
-    width: 100%;
+    width: 60%;
     height: 80px;
-    /* background-color: aliceblue; */
     display: flex;
     margin: 0 auto;
-    justify-content: flex-end; 
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    background-color: #efefef;
+    /* justify-content: flex-end;  */
 `
