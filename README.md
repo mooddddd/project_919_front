@@ -28,8 +28,6 @@
     - Watcha
     - Wave
     - Tving
-    - CoupangPlay
-    - Apple TV
 
 - Recruit (5)
     - list
@@ -70,3 +68,6 @@
 7. Used package
   설치한 패키지가 있으면 언급해주세요~!!!
   새로운 패키지 설치 시 pull 받고 install 진행 필요!
+
+
+  8. router
