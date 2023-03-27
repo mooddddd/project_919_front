@@ -81,3 +81,17 @@ a {
     padding-right: 400px;
 }
 
+.slideOne {
+    width: 100%;
+    float: left;
+}
+
+.slideTwo {
+    width: 100%;
+    float: left;
+}
+
+.slideThree {
+    width: 100%;
+    float: left;
+}

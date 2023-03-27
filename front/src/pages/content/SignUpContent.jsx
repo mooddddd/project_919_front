@@ -4,7 +4,6 @@ import { JoinWrapper, JoinWrap, JoinHeader, JoinLogo, JoinBody, InputBox, Btn, B
 export const SignUpContent = () => {
     return(
         <> 
-            <video src="./cloudvideo.mp4" muted autoPlay></video>
             <JoinWrapper>
                 <JoinWrap>
                     <JoinHeader>
