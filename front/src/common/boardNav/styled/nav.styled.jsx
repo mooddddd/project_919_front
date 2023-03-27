@@ -3,15 +3,16 @@ import styled from "styled-components";
 export const Nav = styled.div`
 width: 80%;
 margin: 0 auto;
+display: flex;
+justify-content: space-between;
 
     ul {
         display: flex;
     }
 
     li {
-        padding: 0 1rem;
-        margin-left: 1rem;
-        margin-top: 1.5rem;
+        justify-content: space-between;
+        margin: 1.5rem;
         
     }
 
@@ -21,5 +22,13 @@ margin: 0 auto;
             color: #FF5858;
             font-weight: bold;
         }
+    }
+
+    input {
+        margin-top: 1.5rem;
+    }
+
+    button {
+        display: inline-block !important;
     }
 `

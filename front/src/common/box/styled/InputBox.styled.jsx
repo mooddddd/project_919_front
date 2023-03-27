@@ -1,10 +1,12 @@
 import styled from "styled-components"
 
-export const inputStyled = styled.input`
+export const InputStyled = styled.input`
     border: none;
-
+    border-radius: 0.3rem;
+    padding: 0.2rem;
     width: ${({width})=>width};
     height: ${({height})=>height};
-
-    color:white
+&::placeholder{
+    color: #6F6F6F;
+}
 `

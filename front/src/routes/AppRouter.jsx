@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
-import { Main, MyPage, Calculator, Community, SignUp, Login } from "../pages"
+import { Main, MyPage, Calculator, SignUp, Login } from "../pages"
+import { CommunityRouter } from "./CommunityRouter"
 
 export const AppRouter = () => {
     return(
@@ -8,9 +9,10 @@ export const AppRouter = () => {
                 <Route path="/" element={<Main />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/calculator" element={<Calculator />} />
-                <Route path="/community" element={<Community />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
+
+                <Route path="/community/*" element={<CommunityRouter />} />
             </Routes>
         </>
     )
