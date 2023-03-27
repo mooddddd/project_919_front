@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const LogInfo = styled.div`
+export const LogInformation = styled.div`
     display: flex;
     justify-content: space-between;
     padding-right: 280px;

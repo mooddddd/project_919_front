@@ -95,3 +95,8 @@ a {
     width: 100%;
     float: left;
 }
+
+.mypick {
+    width: 200px;
+    height: 80px;
+}
