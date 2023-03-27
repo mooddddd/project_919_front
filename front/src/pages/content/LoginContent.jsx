@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { LoginCover, LoginWrapper, LoginWrap, LoginHeader, LoginLogo, LoginBody, InputBox, LoginBtn, LoginBtnLogo, Infobox, LogInfo, KakaoLogin, NaverLogin, KakaoLogo, NaverLogo } from "../styled"
+import { LoginCover, LoginWrapper, LoginWrap, LoginHeader, LoginLogo, LoginBody, InputBox, LoginBtn, LoginBtnLogo, Infobox, LogInformation, KakaoLogin, NaverLogin, KakaoLogo, NaverLogo } from "../styled"
 
 export const LoginContent = () => {
     return(
@@ -21,8 +21,8 @@ export const LoginContent = () => {
                                         </LoginBtnLogo>
                                     </LoginBtn>
                                     <Infobox>
-                                        <LogInfo> 회원가입 </LogInfo>
-                                        <LogInfo> 아이디/비밀번호 찾기 </LogInfo>
+                                        <LogInformation> 회원가입 </LogInformation>
+                                        <LogInformation> 아이디/비밀번호 찾기 </LogInformation>
                                     </Infobox>
                                     <KakaoLogin type="submit"> 
                                         <img class="kakaologin" src="img/kakao.png" alt="kakaolog"/>
