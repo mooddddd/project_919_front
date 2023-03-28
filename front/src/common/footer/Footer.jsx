@@ -8,22 +8,22 @@ export const Footer = () => {
                 <FootWrap>
                     <NavLink>
                         <FootIcon>
-                            <img className="giticon" alt="github" src="img/github.png" />
+                            <img className="giticon" alt="github" src="../img/github.png" />
                         </FootIcon>
                     </NavLink>
                     <NavLink>
                         <FootIcon>
-                            <img className="gmailicon" alt="gmail" src="img/gmail.png" />
+                            <img className="gmailicon" alt="gmail" src="../img/gmail.png" />
                         </FootIcon>
                     </NavLink>
                     <NavLink>
                         <FootIcon>
-                            <img className="instaicon" alt="instagram" src="img/instagram.png" />
+                            <img className="instaicon" alt="instagram" src="../img/instagram.png" />
                         </FootIcon>
                     </NavLink>
                     <NavLink>
                         <FootIcon>
-                            <img className="facebookicon" alt="github" src="img/facebook.png" />
+                            <img className="facebookicon" alt="github" src="../img/facebook.png" />
                         </FootIcon>
                     </NavLink>
                 </FootWrap>

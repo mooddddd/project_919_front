@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const JoinLogo = styled.div`
+export const CertifyLogo = styled.div`
     color: #ffffff;
     font-size: 2.3rem;
     font-weight: 500;

@@ -1,5 +1,5 @@
 import {Header, Footer, BoardNav, BoardLayout} from "../../../common"
-import { RecruitContent } from "../../content"
+// import { RecruitContent } from "../../content"
 
 export const RecruitWrite = ()=>{
     return <>
@@ -7,7 +7,7 @@ export const RecruitWrite = ()=>{
     <BoardNav/>
 
     <BoardLayout>
-        <RecruitContent/>
+        {/* <RecruitContent/> */}
     </BoardLayout>
 
     <Footer/>

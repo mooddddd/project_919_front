@@ -1,6 +1,7 @@
 export * from "./MainContent"
 export * from "./MyPageContent"
 export * from "./CalculatorContent"
-export * from "./RecruitContent"
+// export * from "./RecruitContent"
 export * from "./SignUpContent"
 export * from "./LoginContent"
+export * from "./CertificationContent"

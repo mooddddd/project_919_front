@@ -1,0 +1,5 @@
+export * from "./CertifyWrapper.styled"
+export * from "./CertifyWrap.styled"
+export * from "./CertifyLogo.styled"
+export * from "./CertifyHeader.styled"
+export * from "./CertifyBody.styled"

@@ -33,5 +33,3 @@ export const BoardNav = ()=>{
     </Wrap>
     </>
 }
-
-export default BoardNav

@@ -1,12 +1,12 @@
-import {Header, Footer, BoardNav} from "../../../common"
+import { Header, Footer, BoardNav } from "../../../common"
 
 export const Free = ()=>{
     return <>
-    <Header/>
-    <BoardNav/>
+    <Header />
+    <BoardNav />
 
     <>free board</>
 
-    <Footer/>
+    <Footer />
     </>
 }

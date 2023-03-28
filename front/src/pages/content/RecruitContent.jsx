@@ -1,6 +1,6 @@
 import {RecruitWrap} from "../styled"
 import { RecruitTop, RecruitForm } from "./recruitComponents"
-import {Input} from "../../common"
+// import { Input } from "../../common"
 
 export const RecruitContent = () => {
 

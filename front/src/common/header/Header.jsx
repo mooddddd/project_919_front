@@ -13,7 +13,7 @@ export const Header = () => {
                     </NavLink>
                     <NavLink to="/"> 
                         <LogoIcon>
-                            <img className="logoimg" src="img/logo.png" alt="logoicon" />
+                            <img className="logoimg" src="../img/logo.png" alt="logoicon" />
                         </LogoIcon>
                     </NavLink>
                 </Logo>
