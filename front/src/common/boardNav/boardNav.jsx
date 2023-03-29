@@ -1,6 +1,6 @@
 import {Wrap, Nav} from "./styled"
 import {Input} from "../box"
-import {Button} from "../button"
+import {Button} from "../Button"
 import { NavLink } from "react-router-dom"
 
 export const BoardNav = ()=>{
@@ -15,15 +15,15 @@ export const BoardNav = ()=>{
         <Nav>
         <ul>
             <li>
-                <NavLink to="/community/recruit">파티구하기</NavLink>
+                <NavLink to="/community/recruit/list">파티구하기</NavLink>
             </li>
 
             <li>
-                <NavLink to="/community/info">정보</NavLink>
+                <NavLink to="/community/info/list">정보</NavLink>
             </li>
 
             <li>
-                <NavLink to="/community/free">잡담</NavLink>
+                <NavLink to="/community/free/list">잡담</NavLink>
             </li>
         </ul>
         <div>

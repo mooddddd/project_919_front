@@ -34,7 +34,7 @@ export const Header = () => {
                         </NavLink>
                     </Wrap>
                     <Wrap>
-                        <NavLink to="/community/recruit">
+                        <NavLink to="/community/recruit/list">
                             <TagFont>Community</TagFont>
                         </NavLink>
                     </Wrap>
