@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonStyled = styled.button`
+const ButtonStyled = styled.button`
  display: block;
  margin: 0 auto;
  border: none ;
@@ -15,3 +15,10 @@ export const ButtonStyled = styled.button`
     background: #ff8f8f;
  }
 `
+
+export const Button = ({children, width, height, type, onClick})=>{
+
+    return (
+        <ButtonStyled width={width} height={height} type={type} onClick={onClick}>{children}</ButtonStyled>
+    )
+}
