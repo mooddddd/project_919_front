@@ -1,7 +1,7 @@
 import { FormStyled } from "../../styled";
 import { Input, Button, Textarea } from "../../../common";
 
-export const RecruitForm = () => {
+export const RecruitForm = ({ platform }) => {
   const height = "1.5rem";
 
   const submitHandler = (e) => {
@@ -9,6 +9,8 @@ export const RecruitForm = () => {
     console.log(e.target);
     // 엑시오스로 백으로 post 한 다음 저장시키면 됨!
   };
+
+  const platfromCategory = platform.map((v) => <option>{v}</option>);
 
   return (
     <>
@@ -18,19 +20,15 @@ export const RecruitForm = () => {
             <div className="left" name="platformName">
               플랫폼
             </div>
-            <select>
-              <option>유튜브</option>
-              <option>넷플릭스</option>
-              <option>왓챠</option>
-              <option>어쩌구</option>
-            </select>
+            <select>{platfromCategory}</select>
           </li>
 
           <li>
             <div className="left" name="planName">
               플랜 종류
             </div>
-            <select /> <select />
+            <select />
+            <select />
           </li>
 
           <li>
@@ -38,7 +36,7 @@ export const RecruitForm = () => {
               글제목
             </div>
             <Input
-              width="30rem"
+              width="80%"
               height={height}
               placeholder="(게시글의 제목을 입력해주세요. 파티원을 모집하기 위한 적극적인 어필이 필요합니다!)"
             />
