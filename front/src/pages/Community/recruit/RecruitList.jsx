@@ -7,7 +7,7 @@ export const RecruitList = () => {
     {
       id: 1,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/youtube.png",
       limit: 5,
       price: 1100,
       subject:
@@ -17,7 +17,7 @@ export const RecruitList = () => {
     {
       id: 2,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/netflix.png",
       limit: 4,
       price: 2200,
       subject: "제목입니다ㅏㅏㅏㅏ2222 두줄ㄹㅇㅇ라어라어린얼ㄴㅇㄹ너ㅐㅑ",
@@ -26,7 +26,7 @@ export const RecruitList = () => {
     {
       id: 3,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/tving.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
@@ -35,7 +35,7 @@ export const RecruitList = () => {
     {
       id: 4,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/watcha.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
@@ -44,7 +44,7 @@ export const RecruitList = () => {
     {
       id: 5,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/wavve.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
@@ -53,7 +53,7 @@ export const RecruitList = () => {
     {
       id: 6,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/tving.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
@@ -62,7 +62,7 @@ export const RecruitList = () => {
     {
       id: 7,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/netflix.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
@@ -71,7 +71,7 @@ export const RecruitList = () => {
     {
       id: 8,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/wavve.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
@@ -80,7 +80,7 @@ export const RecruitList = () => {
     {
       id: 9,
       star: false,
-      platformImg: "img/youtube.png",
+      platformImg: "/img/platformLogo/youtube.png",
       limit: 3,
       price: 3300,
       subject: "제목입니다ㅏㅏㅏㅏ33333",
