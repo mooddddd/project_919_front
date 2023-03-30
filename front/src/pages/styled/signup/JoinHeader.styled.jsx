@@ -7,4 +7,5 @@ export const JoinHeader = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 40px;
 `

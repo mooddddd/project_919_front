@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Main, MyPage, Calculator, SignUp, Login, Header } from "../pages";
+import { Main, MyPage, Calculator, SignUp, Login, Certification } from "../pages";
 import { CommunityRouter } from "./CommunityRouter";
 
 export const AppRouter = () => {
@@ -11,6 +11,7 @@ export const AppRouter = () => {
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup/certification" element={<Certification />} />
 
         <Route path="/community/*" element={<CommunityRouter />} />
       </Routes>

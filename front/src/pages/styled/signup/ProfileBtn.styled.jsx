@@ -1,9 +1,8 @@
 import styled from "styled-components"
 
-export const BtnLogo = styled.button`
-    border: none;
-    background-color: transparent;
-    font-size: 1.2rem;
-    font-weight: 400;
+export const ProfileBtn = styled.button`
     color: #fff;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
 `
