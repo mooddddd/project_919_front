@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom"
 import { LoginCover, LoginWrapper, LoginWrap, LoginHeader, LoginLogo, LoginBody, InputBox, LoginBtn, LoginBtnLogo, Infobox, LogInformation, KakaoLogin, NaverLogin, KakaoLogo, NaverLogo } from "../styled"
+// import React, { useState } from "react"
 
 export const LoginContent = () => {
+    const path = "/signup"
     return(
-        <> 
+        <>  
                 <LoginWrapper>
                     <LoginCover>
                         <LoginWrap>
@@ -21,7 +23,11 @@ export const LoginContent = () => {
                                         </LoginBtnLogo>
                                     </LoginBtn>
                                     <Infobox>
-                                        <LogInformation> 회원가입 </LogInformation>
+                                        <LogInformation> 
+                                            <NavLink to={path}>
+                                                회원가입    
+                                            </NavLink>
+                                        </LogInformation>
                                         <LogInformation> 아이디/비밀번호 찾기 </LogInformation>
                                     </Infobox>
                                     <KakaoLogin type="submit"> 
