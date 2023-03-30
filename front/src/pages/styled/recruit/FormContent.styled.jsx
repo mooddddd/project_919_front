@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-export const FormContent = styled.form`
-/* display: flex;
+export const FormStyled = styled.form`
+  /* display: flex;
 justify-content: space-between; */
 
-margin: 3rem 1.5rem;
+  margin: 3rem 1.5rem;
 
-& li {
-padding-bottom: 2rem;
-}
+  & li {
+    padding-bottom: 2rem;
+  }
 
-div.left {
+  div.left {
     float: left;
     width: 15%;
     padding-top: 0.3rem;
-}
-`
+  }
+`;

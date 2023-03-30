@@ -9,13 +9,11 @@ justify-content: space-between;
     ul {
         display: flex;
     }
-
     li {
         justify-content: space-between;
         margin: 1.5rem;
         
     }
-
     a {
         color: #fff;
         &:hover {
@@ -23,11 +21,9 @@ justify-content: space-between;
             font-weight: bold;
         }
     }
-
     input {
         margin-top: 1.5rem;
     }
-
     button {
         display: inline-block !important;
     }
