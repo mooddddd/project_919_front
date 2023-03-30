@@ -1,72 +1,70 @@
 import styled from "styled-components";
 
 export const PostOneStyled = styled.div`
-    width: 17rem;
-    height: 13rem;
-    /* border: 1px solid #000; */
-    border-radius: 0.5rem;
-    margin: 2rem 1.5rem;
-    /* display: flex;
+  width: 17rem;
+  height: 13rem;
+  /* border: 1px solid #000; */
+  border-radius: 0.5rem;
+  margin: 2rem 1.5rem;
+  /* display: flex;
     flex-direction: column; */
-    
-    &:hover{
-        background: white;
-        opacity: 0.3;
-    }
 
-    & a {
-        color:black
-    }
+  &:hover {
+    background: white;
+    opacity: 0.7;
+  }
 
-    div{
-        margin-bottom: 0.2rem;
-    }
+  & a {
+    color: black;
+  }
 
-    .star{
-        float: right;
-        padding-right: 0.5rem;
-    }
+  div {
+    margin-bottom: 0.2rem;
+  }
 
-    .logoImg {
-        text-align: center;
-        margin: 1.3rem 1rem;
-        height: 4rem;
-        border: 1px solid #000;
-    }
+  .star {
+    float: right;
+    padding-right: 0.5rem;
+  }
 
-    .content {
-        width: 88%;
-        margin: 0 auto;
-    }
+  .logoImg {
+    text-align: center;
+    margin: 1.3rem 1rem;
+    height: 4rem;
+  }
 
-    .limitNprice{
-        display: flex;
-        justify-content: space-between;
-    }
+  .content {
+    width: 88%;
+    margin: 0 auto;
+  }
 
-    .limit{
-        font-weight: bold;
-        color: #FF5C00;
-        font-size: 1.3rem;
+  .limitNprice {
+    display: flex;
+    justify-content: space-between;
+  }
 
-    }
-    .ing{
-        font-weight: bold;
-        color: #FF5C00;
-        font-size: 1.3rem;
+  .limit {
+    font-weight: bold;
+    color: #ff5c00;
+    font-size: 1.3rem;
+  }
+  .ing {
+    font-weight: bold;
+    color: #ff5c00;
+    font-size: 1.3rem;
+  }
 
-    }
+  .price {
+    font-weight: bold;
+    color: #ff5c00;
+    font-size: 1.3rem;
+  }
 
-    .price{
-        font-weight: bold;
-        color: #FF5C00;
-        font-size: 1.3rem;
-    }
+  .subject {
+  }
 
-    .subject{}
-
-    .nickname {
-        font-size: 0.8rem;
-        color: #646464;
-    }
-`
+  .nickname {
+    font-size: 0.8rem;
+    color: #646464;
+  }
+`;

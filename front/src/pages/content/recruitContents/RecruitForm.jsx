@@ -1,10 +1,10 @@
-import { FormContent } from "../../styled";
+import { FormStyled } from "../../styled";
 import { Input, Button, Textarea } from "../../../common";
 
 export const RecruitForm = () => {
   const height = "1.5rem";
 
-  const clickHandler = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     console.log(e.target);
     // 엑시오스로 백으로 post 한 다음 저장시키면 됨!
@@ -12,7 +12,7 @@ export const RecruitForm = () => {
 
   return (
     <>
-      <FormContent method="post">
+      <FormStyled onSubmit={submitHandler}>
         <ul>
           <li>
             <div className="left" name="platformName">
@@ -90,15 +90,10 @@ export const RecruitForm = () => {
             500 만 원
           </li>
         </ul>
-        <Button
-          type="submit"
-          width="15rem"
-          height="3rem"
-          onClick={clickHandler}
-        >
+        <Button type="submit" width="15rem" height="3rem" color="red">
           파티 생성!
         </Button>
-      </FormContent>
+      </FormStyled>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { PostOneStyled } from "../../styled";
+import { PostOneStyled, PlatformImgStyled } from "../../styled";
 import { useEffect, useState } from "react";
 // import { useEffect } from "react";
 // import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +13,7 @@ export const PostOne = ({ data }) => {
             <div className="star">💛</div>
 
             <div className="logoImg">
-              <img src={`${v.platformImg}`} alt="platform Logo" />
+              <PlatformImgStyled src={`${v.platformImg}`} width="13rem" />
             </div>
 
             <div className="content">
@@ -33,8 +33,8 @@ export const PostOne = ({ data }) => {
               </div>
 
               <div className="nickname">
-                <img src="/Users/eunzi/reactProject/front/public/img/checkIcon.png" />
-                <span>{v.userNick}</span>
+                <PlatformImgStyled src="/img/checkIcon.png" width="0.7rem" />
+                <span> {v.userNick}</span>
               </div>
             </div>
           </NavLink>

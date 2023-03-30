@@ -21,7 +21,7 @@ export const Category = () => {
           </li>
         </ul>
 
-        <Button width="10rem" height="2rem">
+        <Button width="10rem" height="2rem" color="red">
           <NavLink to="/community/recruit/write">파티장 되기</NavLink>
         </Button>
       </CategoryStyled>
