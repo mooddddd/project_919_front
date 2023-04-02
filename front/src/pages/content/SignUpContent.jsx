@@ -22,8 +22,8 @@ import { CertificationContent } from "./CertificationContent";
 
 export const SignUpContent = () => {
   const [img, setImg] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailDoubleCheck, setemailDoubleCheck] = useState(false);
+  const [userId, setuserId] = useState("");
+  const [userIdDoubleCheck, setuserIdDoubleCheck] = useState(false);
   const [nickname, setNickname] = useState("");
   const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState(null);
@@ -31,8 +31,8 @@ export const SignUpContent = () => {
   const [auth, setAuth] = useState(true);
   const [phone, setPhone] = useState("");
 
-  const onEmailHandler = (e) => {
-    setEmail(e.target.value);
+  const onUserIdHandler = (e) => {
+    setuserId(e.target.value);
   };
   const onNicknameHandler = (e) => {
     setNickname(e.target.value);
@@ -55,24 +55,24 @@ export const SignUpContent = () => {
 
   const clickEvent = (e) => {
     e.preventDefault();
-    console.log(img, email, nickname, pw, phone);
+    console.log(img, userId, nickname, pw, phone);
     if (pw != confirmPw) {
       alert("비밀번호를 확인해주세요");
-    } else if (!emailDoubleCheck) {
+    } else if (!userIdDoubleCheck) {
       alert("이메일 중복체크를 진행해주세요");
     }
   };
 
   const test = true; // 여기에 엑시오스로 있냐 없냐 확인한 다음 false면 중복, ture면 사용 가능
-  const emailCheck = (e) => {
+  const userIdCheck = (e) => {
     e.preventDefault();
-    if (email === "") {
+    if (userId === "") {
       alert("이메일을 입력해주세요");
     } else if (!test) {
       alert("중복된 이메일입니다ㅠ");
     } else {
       alert("사용 가능한 이메일입니다~");
-      setemailDoubleCheck(true);
+      setuserIdDoubleCheck(true);
     }
   };
 
@@ -114,17 +114,17 @@ export const SignUpContent = () => {
                   />
                 </JoinProfile>
                 <InputBox
-                  type="email"
+                  type="userId"
                   name="email"
-                  id="email"
+                  id="userId"
                   placeholder="👤 이메일을 입력해주세요"
                   required
-                  onChange={onEmailHandler}
+                  onChange={onUserIdHandler}
                 />
                 <Button
                   width="30%"
                   height="2rem"
-                  onClick={emailCheck}
+                  onClick={userIdCheck}
                   color="darkBlue"
                 >
                   이메일 중복확인
