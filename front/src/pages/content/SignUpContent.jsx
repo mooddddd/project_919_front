@@ -19,6 +19,7 @@ import {
 import { useState } from "react";
 import { Button } from "../../common/Button";
 import { CertificationContent } from "./CertificationContent";
+import { request, requestMulter } from "../../utils/request";
 
 export const SignUpContent = () => {
   const [img, setImg] = useState("");
@@ -61,14 +62,25 @@ export const SignUpContent = () => {
     } else if (!userIdDoubleCheck) {
       alert("이메일 중복체크를 진행해주세요");
     }
+
+    const result = request.post("user/useradd", {
+      userId,
+      nickname,
+      pw,
+      phone,
+      img, //이미지 파일명 수정해야 함,,,
+    });
   };
 
-  const test = true; // 여기에 엑시오스로 있냐 없냐 확인한 다음 false면 중복, ture면 사용 가능
-  const userIdCheck = (e) => {
+  const userIdCheck = async (e) => {
     e.preventDefault();
+
+    const result = await request.post("user/checkuserId", { userId });
+    const check = result.data.isAvailable;
+
     if (userId === "") {
       alert("이메일을 입력해주세요");
-    } else if (!test) {
+    } else if (!check) {
       alert("중복된 이메일입니다ㅠ");
     } else {
       alert("사용 가능한 이메일입니다~");
