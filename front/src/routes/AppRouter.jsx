@@ -18,7 +18,6 @@ export const AppRouter = () => {
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/signup/certification" element={<Certification />} />
 
         <Route path="/community/*" element={<CommunityRouter />} />
       </Routes>
