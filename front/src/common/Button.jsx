@@ -12,6 +12,7 @@ const ButtonStyled = styled.button`
 
   &:hover {
     background: #ff8f8f;
+    cursor: pointer;
   }
 `;
 
@@ -20,6 +21,7 @@ const backgroundColor = {
   gray: "#6D6D6D",
   moreGray: "#A1A1A1",
   transparency: "#ffffff0",
+  darkBlue: "#172950af",
 };
 
 export const Button = ({ children, width, height, type, onClick, color }) => {

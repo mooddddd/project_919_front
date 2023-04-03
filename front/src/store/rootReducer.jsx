@@ -1,6 +1,6 @@
-// import { combineReducers } from "redux";
-// import {test} from "./test/reducer"
+import { combineReducers } from "redux";
+import { signup } from "./signup";
 
-// const rootReducer = combineReducers({test})
+export const rootReducer = combineReducers({ signup });
 
-// export default rootReducer
+export default rootReducer;
