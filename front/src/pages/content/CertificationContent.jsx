@@ -15,12 +15,11 @@ import {
   NaverLogo,
 } from "../styled";
 import { Button } from "../../common/Button";
+import { useInput } from "../../hooks/useInput";
 
-import { useSelector } from "react-redux";
-
-export const CertificationContent = ({ setAuth, auth, setPhone, phone }) => {
+export const CertificationContent = ({ setAuth, auth, phone }) => {
   const nextHanlder = (e) => {
-    if (phone === "") {
+    if (phone.value === "") {
       alert("휴대폰 인증을 완료해주세요");
       // 이 부분 인증번호 확인하는 코드로 변경해야 함!!
     } else {
@@ -36,10 +35,6 @@ export const CertificationContent = ({ setAuth, auth, setPhone, phone }) => {
     console.log(`인증번호 확인 버튼 클릭!!!`);
   };
 
-  const onPhoneHandler = (e) => {
-    setPhone(e.target.value);
-  };
-
   const path = "/login";
   return (
     <>
@@ -53,8 +48,8 @@ export const CertificationContent = ({ setAuth, auth, setPhone, phone }) => {
               id="phone"
               type="tel"
               placeholder=" 📞 전화번호를 입력해주세요"
-              onChange={onPhoneHandler}
               required
+              {...phone}
             />
             <Button
               width="30%"

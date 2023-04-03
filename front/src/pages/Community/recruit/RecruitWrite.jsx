@@ -12,6 +12,7 @@ export const RecruitWrite = () => {
     "티빙",
     "왓챠",
   ];
+
   return (
     <>
       <BoardLayout>

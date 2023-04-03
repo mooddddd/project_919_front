@@ -1,12 +1,15 @@
 import { FormStyled } from "../../styled";
 import { Input, Button, Textarea } from "../../../common";
+import { request } from "../../../utils";
 
 export const RecruitForm = ({ platform }) => {
   const height = "1.5rem";
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(e.target);
+    let body = new FormData();
+    const result = await request.get("recruit/write", body);
+    console.log(result);
     // 엑시오스로 백으로 post 한 다음 저장시키면 됨!
   };
 
