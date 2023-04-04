@@ -20,27 +20,20 @@ import { useState } from "react";
 import { Button } from "../../common/Button";
 import { CertificationContent } from "./CertificationContent";
 import { request, requestMulter } from "../../utils/request";
+import { useInput } from "../../hooks/useInput";
 
 export const SignUpContent = () => {
   const [img, setImg] = useState("");
-  const [userId, setuserId] = useState("");
+
+  const userId = useInput("");
+  const nickName = useInput("");
+  const pw = useInput("");
+  const phone = useInput("");
+
   const [userIdDoubleCheck, setuserIdDoubleCheck] = useState(false);
-  const [nickname, setNickname] = useState("");
-  const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState(null);
-
   const [auth, setAuth] = useState(true);
-  const [phone, setPhone] = useState("");
 
-  const onUserIdHandler = (e) => {
-    setuserId(e.target.value);
-  };
-  const onNicknameHandler = (e) => {
-    setNickname(e.target.value);
-  };
-  const onPwHandler = (e) => {
-    setPw(e.target.value);
-  };
   const onConfirmPwHandler = (e) => {
     setConfirmPw(e.target.value);
   };
@@ -56,29 +49,27 @@ export const SignUpContent = () => {
 
   const clickEvent = (e) => {
     e.preventDefault();
-    console.log(img, userId, nickname, pw, phone);
-    if (pw != confirmPw) {
+    if (pw.value != confirmPw) {
       alert("비밀번호를 확인해주세요");
     } else if (!userIdDoubleCheck) {
       alert("이메일 중복체크를 진행해주세요");
     }
 
     const result = request.post("user/useradd", {
-      userId,
-      nickname,
-      pw,
-      phone,
-      img, //이미지 파일명 수정해야 함,,,
+      userId: userId.value,
+      userNick: nickName.value,
+      userPw: pw.value,
+      phone: phone.value,
+      picture: img, //이미지 파일명 수정해야 함,,,
     });
   };
 
   const userIdCheck = async (e) => {
     e.preventDefault();
-
     const result = await request.post("user/checkuserId", { userId });
     const check = result.data.isAvailable;
 
-    if (userId === "") {
+    if (userId.value === "") {
       alert("이메일을 입력해주세요");
     } else if (!check) {
       alert("중복된 이메일입니다ㅠ");
@@ -93,12 +84,7 @@ export const SignUpContent = () => {
   return (
     <>
       {auth ? (
-        <CertificationContent
-          auth={auth}
-          setAuth={setAuth}
-          phone={phone}
-          setPhone={setPhone}
-        />
+        <CertificationContent auth={auth} setAuth={setAuth} phone={phone} />
       ) : (
         <JoinWrapper>
           <JoinWrap>
@@ -110,7 +96,7 @@ export const SignUpContent = () => {
             <JoinBody>
               <form>
                 {/* 폼태그 묶여 있는 정보들 로컬스토리지에 저장시키기! 인증까지 받고, 그 정보 합쳐서 백으로 */}
-                <input type="hidden" name="phone" value={phone} />
+                <input type="hidden" name="phone" value={phone.value} />
                 <JoinProfile>
                   <img
                     src={img ? img : "/img/profile.png"}
@@ -131,7 +117,7 @@ export const SignUpContent = () => {
                   id="userId"
                   placeholder="👤 이메일을 입력해주세요"
                   required
-                  onChange={onUserIdHandler}
+                  {...userId}
                 />
                 <Button
                   width="30%"
@@ -147,7 +133,7 @@ export const SignUpContent = () => {
                   id="userNick"
                   placeholder="👾 닉네임을 입력해주세요"
                   required
-                  onChange={onNicknameHandler}
+                  {...nickName}
                 />
                 <InputBox
                   name="userPw"
@@ -155,7 +141,7 @@ export const SignUpContent = () => {
                   type="password"
                   placeholder="🔒 비밀번호를 입력해주세요"
                   required
-                  onChange={onPwHandler}
+                  {...pw}
                 />
                 <InputBox
                   type="password"
