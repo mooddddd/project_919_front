@@ -5,11 +5,8 @@ import {
   JoinHeader,
   JoinLogo,
   JoinProfile,
-  ProfileBtn,
   JoinBody,
   InputBox,
-  Btn,
-  BtnLogo,
   Line,
   KakaoLogin,
   NaverLogin,
@@ -21,8 +18,10 @@ import { Button } from "../../common/Button";
 import { CertificationContent } from "./CertificationContent";
 import { request, requestMulter } from "../../utils/request";
 import { useInput } from "../../hooks/useInput";
+import { useNavigate } from "react-router-dom";
 
 export const SignUpContent = () => {
+  const navigate = useNavigate();
   const [img, setImg] = useState("");
 
   const userId = useInput("");
@@ -47,21 +46,20 @@ export const SignUpContent = () => {
     };
   };
 
-  const clickEvent = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    if (pw.value != confirmPw) {
+    if (pw.value !== confirmPw) {
       alert("비밀번호를 확인해주세요");
+      return;
     } else if (!userIdDoubleCheck) {
       alert("이메일 중복체크를 진행해주세요");
+      return;
+    } else {
+      let body = new FormData(e.target);
+      await requestMulter.post("user/useradd", body);
+      alert("가입 오나료! 메인으로 이동합니다. 로그인을 해주세요.");
+      navigate("/");
     }
-
-    const result = request.post("user/useradd", {
-      userId: userId.value,
-      userNick: nickName.value,
-      userPw: pw.value,
-      phone: phone.value,
-      picture: img, //이미지 파일명 수정해야 함,,,
-    });
   };
 
   const userIdCheck = async (e) => {
@@ -71,21 +69,22 @@ export const SignUpContent = () => {
 
     if (userId.value === "") {
       alert("이메일을 입력해주세요");
+      return;
     } else if (!check) {
       alert("중복된 이메일입니다ㅠ");
+      return;
     } else {
       alert("사용 가능한 이메일입니다~");
       setuserIdDoubleCheck(true);
     }
   };
 
-  const path = "/signup/certification";
-
   return (
     <>
-      {auth ? (
-        <CertificationContent auth={auth} setAuth={setAuth} phone={phone} />
-      ) : (
+      {
+        // auth ? (
+        //   <CertificationContent auth={auth} setAuth={setAuth} phone={phone} />
+        // ) :
         <JoinWrapper>
           <JoinWrap>
             <JoinHeader>
@@ -94,8 +93,7 @@ export const SignUpContent = () => {
               </NavLink>
             </JoinHeader>
             <JoinBody>
-              <form>
-                {/* 폼태그 묶여 있는 정보들 로컬스토리지에 저장시키기! 인증까지 받고, 그 정보 합쳐서 백으로 */}
+              <form onSubmit={submitHandler} encType="multipart/form-data">
                 <input type="hidden" name="phone" value={phone.value} />
                 <JoinProfile>
                   <img
@@ -106,14 +104,15 @@ export const SignUpContent = () => {
                   프로필 사진 변경
                   <input
                     type="file"
-                    name="userPic"
+                    name="picture"
                     accept="image/jpg, image/png, image/jpeg"
                     onChange={changeImgHandler}
+                    multiple
                   />
                 </JoinProfile>
                 <InputBox
                   type="userId"
-                  name="email"
+                  name="userId"
                   id="userId"
                   placeholder="👤 이메일을 입력해주세요"
                   required
@@ -150,7 +149,7 @@ export const SignUpContent = () => {
                   onChange={onConfirmPwHandler}
                 />
 
-                {pw === confirmPw ? (
+                {pw.value === confirmPw ? (
                   <span className="confirm">비밀번호가 일치합니다</span>
                 ) : (
                   <span className="alert">비밀번호 확인이 필요합니다</span>
@@ -160,9 +159,9 @@ export const SignUpContent = () => {
                   width="100%"
                   height="3rem"
                   color="darkBlue"
-                  onClick={clickEvent}
+                  type="submit"
                 >
-                  가입 완료 하기 {/* <NavLink to={path}>가입하기</NavLink> */}
+                  가입 완료 하기
                 </Button>
               </form>
 
@@ -188,7 +187,7 @@ export const SignUpContent = () => {
             </JoinBody>
           </JoinWrap>
         </JoinWrapper>
-      )}
+      }
     </>
   );
 };

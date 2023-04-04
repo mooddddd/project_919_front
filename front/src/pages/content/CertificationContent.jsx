@@ -27,6 +27,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
   const nextHanlder = (e) => {
     if (phone.value === "") {
       alert("휴대폰 인증을 완료해주세요");
+      return;
     } else {
       setAuth(!auth);
     }
@@ -61,6 +62,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
       setNextBtn(true);
     } else if (!data.response) {
       alert("인증번호가 일치하지 않습니다");
+      return;
     }
     // 리퀘스트 아이디+사용자한테서 받은 인증번호를 합쳐서 다시 날림, 그러면 true, 메세지가 응답으로 오게 됨 -> api/verified?
   };
