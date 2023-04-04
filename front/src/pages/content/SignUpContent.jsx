@@ -81,10 +81,9 @@ export const SignUpContent = () => {
 
   return (
     <>
-      {
-        // auth ? (
-        //   <CertificationContent auth={auth} setAuth={setAuth} phone={phone} />
-        // ) :
+      {auth ? (
+        <CertificationContent auth={auth} setAuth={setAuth} phone={phone} />
+      ) : (
         <JoinWrapper>
           <JoinWrap>
             <JoinHeader>
@@ -187,7 +186,7 @@ export const SignUpContent = () => {
             </JoinBody>
           </JoinWrap>
         </JoinWrapper>
-      }
+      )}
     </>
   );
 };

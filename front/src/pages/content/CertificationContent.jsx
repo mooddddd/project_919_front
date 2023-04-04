@@ -1,8 +1,6 @@
-import { NavLink } from "react-router-dom";
 import {
   CertifyWrapper,
   CertifyWrap,
-  CertifyHeader,
   CertifyLogo,
   CertifyBody,
   InputBox,
@@ -45,7 +43,6 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
       });
       setRequestId(data.requestId);
     }
-    // api로 받은 핸드폰 번호 보내면 인증번호 감, 그리고 리퀘스트 아이디라는 변수로 온 값을 인풋-히든으로 갖고 있어야 함 -> api/sendsms
   };
 
   const numberCheckHandler = async (e) => {
@@ -64,15 +61,12 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
       alert("인증번호가 일치하지 않습니다");
       return;
     }
-    // 리퀘스트 아이디+사용자한테서 받은 인증번호를 합쳐서 다시 날림, 그러면 true, 메세지가 응답으로 오게 됨 -> api/verified?
   };
 
-  const path = "/login";
   return (
     <>
       <CertifyWrapper>
         <CertifyWrap>
-          {/* <CertifyHeader></CertifyHeader> */}
           <CertifyLogo>Certification</CertifyLogo>
           <CertifyBody>
             <form>
@@ -113,7 +107,6 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
                 인증번호 확인
               </Button>
             </form>
-            {/* 얘가 트루값으로 오면 진행, 아니면 alert창 뜨게 */}
             {nextBtn ? (
               <Btn onClick={nextHanlder}>
                 <BtnLogo>가입 진행하기</BtnLogo>
