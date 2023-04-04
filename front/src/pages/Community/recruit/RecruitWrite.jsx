@@ -1,14 +1,8 @@
 import { BoardLayout } from "../../../common";
 import { RecruitWrap } from "../../styled";
 import { RecruitTop, RecruitForm } from "../../content/recruitContents";
-import { request } from "../../../utils";
 
 export const RecruitWrite = () => {
-  const platform = async () => {
-    const { data } = await request.get("recruit/write");
-    const arr = data.map((v) => v.platformName);
-    return arr;
-  };
   // [
   //   "-플랫폼 선택-",
   //   "유튜브",
@@ -24,7 +18,7 @@ export const RecruitWrite = () => {
       <BoardLayout>
         <RecruitWrap>
           <RecruitTop />
-          <RecruitForm platform={platform} />
+          <RecruitForm />
         </RecruitWrap>
       </BoardLayout>
     </>
