@@ -3,22 +3,52 @@ import { Input, Button, Textarea } from "../../../common";
 import { request } from "../../../utils";
 import { useInput } from "../../../hooks";
 import { InputStyled, TextStyled } from "../../../common/box/styled"; // state 때문에 넣어줌ㅠ..
+import { useEffect, useState } from "react";
 
 export const RecruitForm = () => {
   const height = "1.5rem";
 
-  const platform = async () => {
-    const { data } = await request.get("recruit/write");
-    // console.log(data.map((v) => v));
-    return <option>{data.map((v) => v)}</option>;
-    // const arr = data.map((v) => v.platformName);
-    // console.log(arr);
+  const plan = useInput("");
+  const title = useInput("");
+  const member = useInput("");
+  const startDate = useInput("");
+  const endDate = useInput("");
+  const openChatLink = useInput("");
+  const content = useInput("");
+  const [platformList, setPlatformList] = useState(["플랫폼을 선택하세요"]);
+  const [selectedOtt, setSelectedOtt] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await request.get("recruit/write");
+        const list = response.data;
+        setPlatformList(list);
+      } catch (e) {
+        console.log(`error`);
+      }
+    })();
+  }, []);
+
+  const ottList = platformList.map((item, index) => (
+    <option key={index} value={item}>
+      {item}
+    </option>
+  ));
+
+  const test = async (e) => {
+    setSelectedOtt(e.target.value);
+    const string = e.target.value;
+    const { data } = await request.post("recruit/write/plan", { string });
+    console.log(data);
+    // e.target.value로 선택된 값 다시 엑시오스로 백으로 넘겨? 백에서 플랜 찾아와서 넘겨!!!!
+    // 넘어온 플랜들은 상태로 저장해서 뽑아쓰기,,?
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
     let body = {
-      platformName: platformName.value,
+      platformName: selectedOtt,
       plan: plan.value,
       title: title.value,
       member: member.value,
@@ -30,15 +60,6 @@ export const RecruitForm = () => {
     //   endDate.value // 2023-04-05
   };
 
-  const platformName = useInput("플랫폼을 선택하세요");
-  const plan = useInput("");
-  const title = useInput("");
-  const member = useInput("");
-  const startDate = useInput("");
-  const endDate = useInput("");
-  const openChatLink = useInput("");
-  const content = useInput("");
-
   return (
     <>
       <FormStyled onSubmit={submitHandler}>
@@ -47,15 +68,17 @@ export const RecruitForm = () => {
             <div className="left" name="platformName">
               플랫폼
             </div>
-            <select onClick={console.log(platform())}></select>
+            <select value={selectedOtt} onChange={test}>
+              {ottList}
+            </select>
           </li>
 
           <li>
             <div className="left" name="planName" {...plan}>
               플랜 종류
             </div>
-            <select />
-            <select />
+            <select></select>
+            <select></select>
           </li>
 
           <li>
