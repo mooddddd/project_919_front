@@ -94,7 +94,7 @@ export const RecruitList = () => {
         <Allwrap>
           <Category />
           <PostWrapper>
-            <PostOne data={data} />
+            <PostOne />
           </PostWrapper>
         </Allwrap>
       </BoardLayout>
