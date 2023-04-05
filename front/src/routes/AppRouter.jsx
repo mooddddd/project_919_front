@@ -1,15 +1,17 @@
-import { Routes, Route } from "react-router-dom";
-import {
-  Main,
-  MyPage,
-  Calculator,
-  SignUp,
-  Login,
-  Certification,
-} from "../pages";
-import { CommunityRouter } from "./CommunityRouter";
+import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { Main, MyPage, Calculator, SignUp, Login } from '../pages'
+import { CommunityRouter } from './CommunityRouter'
 
 export const AppRouter = () => {
+  const [token, setToken] = useState(null)
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token')
+    if (storedToken) {
+      setToken(storedToken)
+    }
+  })
   return (
     <>
       <Routes>
@@ -22,5 +24,5 @@ export const AppRouter = () => {
         <Route path="/community/*" element={<CommunityRouter />} />
       </Routes>
     </>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   LoginCover,
   LoginWrapper,
@@ -21,7 +21,7 @@ import { setCookie } from '../../utils/cookie'
 
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
 
-const loginHandler = async (e, setAlertMessage, setAlertStatus) => {
+const LoginHandler = async (e, setAlertMessage, setAlertStatus, navigate) => {
   e.preventDefault()
   const userId = e.target.userId.value
   const userPw = e.target.userPw.value
@@ -49,14 +49,15 @@ const loginHandler = async (e, setAlertMessage, setAlertStatus) => {
       userPw,
     })
     console.log(response.data)
-    setAlertMessage('로그인 성공')
-    setAlertStatus('sucess')
 
     if (response.data.message) {
-      setAlertMessage(response.data.message)
-    } else {
       const { token } = response.data
-      setCookie('jwt_token', token, 0.5 / 24)
+      setCookie('token', token, 0.5 / 24)
+      setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
+      setAlertStatus('success')
+      setTimeout(() => {
+        navigate('/')
+      }, 1000)
     }
   } catch (error) {
     console.error('Login Error:', error)
@@ -65,17 +66,21 @@ const loginHandler = async (e, setAlertMessage, setAlertStatus) => {
   }
 }
 
+const kakaoAuth = `${domain}/auth/kakao`
+const naverAuth = `${domain}/auth/naver/callback`
+
 export const LoginForm = () => {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertStatus, setAlertStatus] = useState('')
   const path = '/signup'
+  const navigate = useNavigate()
   return (
     <>
       {alertMessage && (
         <Alert
           onAnimationEnd={() => {
             setAlertMessage('')
-            setAlertStatus('error')
+            setAlertStatus('')
           }}
           style={{
             backgroundColor: alertStatus === 'success' ? '#4CAF50' : '#f44336',
@@ -85,7 +90,9 @@ export const LoginForm = () => {
         </Alert>
       )}
       <form
-        onSubmit={(e) => loginHandler(e, setAlertMessage, setAlertStatus)}
+        onSubmit={(e) =>
+          LoginHandler(e, setAlertMessage, setAlertStatus, navigate)
+        }
         method="post"
       >
         <InputBox
@@ -112,39 +119,41 @@ export const LoginForm = () => {
 
 export const LoginContent = () => {
   return (
-    <LoginWrapper>
-      <LoginCover>
-        <LoginWrap>
-          <LoginHeader>
-            <NavLink>
-              <LoginLogo>SignIn</LoginLogo>
-            </NavLink>
-          </LoginHeader>
-          <LoginBody>
-            <LoginForm />
-            <NavLink>
-              <KakaoLogin type="submit">
-                <img
-                  className="kakaologin"
-                  src="img/kakao.png"
-                  alt="kakaolog"
-                />
-                <KakaoLogo>카카오 로그인</KakaoLogo>
-              </KakaoLogin>
-            </NavLink>
-            <NavLink>
-              <NaverLogin type="submit">
-                <img
-                  className="naverlogin"
-                  src="img/naverlogo.png"
-                  alt="naverlog"
-                />
-                <NaverLogo>네이버 로그인</NaverLogo>
-              </NaverLogin>
-            </NavLink>
-          </LoginBody>
-        </LoginWrap>
-      </LoginCover>
-    </LoginWrapper>
+    <>
+      <LoginWrapper>
+        <LoginCover>
+          <LoginWrap>
+            <LoginHeader>
+              <NavLink>
+                <LoginLogo>SignIn</LoginLogo>
+              </NavLink>
+            </LoginHeader>
+            <LoginBody>
+              <LoginForm />
+              <NavLink to={kakaoAuth}>
+                <KakaoLogin type="button">
+                  <img
+                    className="kakaologin"
+                    src="img/kakao.png"
+                    alt="kakaolog"
+                  />
+                  <KakaoLogo>카카오 로그인</KakaoLogo>
+                </KakaoLogin>
+              </NavLink>
+              <NavLink to={naverAuth}>
+                <NaverLogin type="button">
+                  <img
+                    className="naverlogin"
+                    src="img/naverlogo.png"
+                    alt="naverlog"
+                  />
+                  <NaverLogo>네이버 로그인</NaverLogo>
+                </NaverLogin>
+              </NavLink>
+            </LoginBody>
+          </LoginWrap>
+        </LoginCover>
+      </LoginWrapper>
+    </>
   )
 }
