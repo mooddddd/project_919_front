@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 import {
   JoinWrapper,
   JoinWrap,
@@ -12,72 +12,72 @@ import {
   NaverLogin,
   KakaoLogo,
   NaverLogo,
-} from "../styled";
-import { useState } from "react";
-import { Button } from "../../common/Button";
-import { CertificationContent } from "./CertificationContent";
-import { request, requestMulter } from "../../utils/request";
-import { useInput } from "../../hooks/useInput";
-import { useNavigate } from "react-router-dom";
+} from '../styled'
+import { useState } from 'react'
+import { Button } from '../../common/Button'
+import { CertificationContent } from './CertificationContent'
+import { request, requestMulter } from '../../utils/axios'
+import { useInput } from '../../hooks/useInput'
+import { useNavigate } from 'react-router-dom'
 
 export const SignUpContent = () => {
-  const navigate = useNavigate();
-  const [img, setImg] = useState("");
+  const navigate = useNavigate()
+  const [img, setImg] = useState('')
 
-  const userId = useInput("");
-  const nickName = useInput("");
-  const pw = useInput("");
-  const phone = useInput("");
+  const userId = useInput('')
+  const nickName = useInput('')
+  const pw = useInput('')
+  const phone = useInput('')
 
-  const [userIdDoubleCheck, setuserIdDoubleCheck] = useState(false);
-  const [confirmPw, setConfirmPw] = useState(null);
-  const [auth, setAuth] = useState(true);
+  const [userIdDoubleCheck, setuserIdDoubleCheck] = useState(false)
+  const [confirmPw, setConfirmPw] = useState(null)
+  const [auth, setAuth] = useState(true)
 
   const onConfirmPwHandler = (e) => {
-    setConfirmPw(e.target.value);
-  };
+    setConfirmPw(e.target.value)
+  }
 
   const changeImgHandler = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    const file = e.target.files[0]
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
     reader.onloadend = () => {
-      setImg(reader.result);
-    };
-  };
+      setImg(reader.result)
+    }
+  }
 
   const submitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (pw.value !== confirmPw) {
-      alert("비밀번호를 확인해주세요");
-      return;
+      alert('비밀번호를 확인해주세요')
+      return
     } else if (!userIdDoubleCheck) {
-      alert("이메일 중복체크를 진행해주세요");
-      return;
+      alert('이메일 중복체크를 진행해주세요')
+      return
     } else {
-      let body = new FormData(e.target);
-      await requestMulter.post("user/useradd", body);
-      alert("가입 오나료! 메인으로 이동합니다. 로그인을 해주세요.");
-      navigate("/");
+      let body = new FormData(e.target)
+      await requestMulter.post('user/useradd', body)
+      alert('가입 오나료! 메인으로 이동합니다. 로그인을 해주세요.')
+      navigate('/')
     }
-  };
+  }
 
   const userIdCheck = async (e) => {
-    e.preventDefault();
-    const result = await request.post("user/checkuserId", { userId });
-    const check = result.data.isAvailable;
+    e.preventDefault()
+    const result = await request.post('user/checkuserId', { userId })
+    const check = result.data.isAvailable
 
-    if (userId.value === "") {
-      alert("이메일을 입력해주세요");
-      return;
+    if (userId.value === '') {
+      alert('이메일을 입력해주세요')
+      return
     } else if (!check) {
-      alert("중복된 이메일입니다ㅠ");
-      return;
+      alert('중복된 이메일입니다ㅠ')
+      return
     } else {
-      alert("사용 가능한 이메일입니다~");
-      setuserIdDoubleCheck(true);
+      alert('사용 가능한 이메일입니다~')
+      setuserIdDoubleCheck(true)
     }
-  };
+  }
 
   return (
     <>
@@ -96,7 +96,7 @@ export const SignUpContent = () => {
                 <input type="hidden" name="phone" value={phone.value} />
                 <JoinProfile>
                   <img
-                    src={img ? img : "/img/profile.png"}
+                    src={img ? img : '/img/profile.png'}
                     className="profileIcon"
                     alt="profileIcon"
                   />
@@ -188,5 +188,5 @@ export const SignUpContent = () => {
         </JoinWrapper>
       )}
     </>
-  );
-};
+  )
+}

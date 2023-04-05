@@ -11,57 +11,59 @@ import {
   NaverLogin,
   KakaoLogo,
   NaverLogo,
-} from "../styled";
-import { Button } from "../../common/Button";
-import { useInput } from "../../hooks";
-import { request } from "../../utils/request";
-import { useState } from "react";
+} from '../styled'
+import { Button } from '../../common/Button'
+import { useInput } from '../../hooks'
+import { request } from '../../utils/axios'
+import { useState } from 'react'
+
+const domain = process.env.REACT_APP_AXIOS_DOMAIN
 
 export const CertificationContent = ({ setAuth, auth, phone }) => {
-  const certificationNum = useInput(""); // certificationNum.value -> 인증번호 자체
-  const [requestId, setRequestId] = useState(""); // 리퀘스트아이디
-  const [nextBtn, setNextBtn] = useState(false);
+  const certificationNum = useInput('') // certificationNum.value -> 인증번호 자체
+  const [requestId, setRequestId] = useState('') // 리퀘스트아이디
+  const [nextBtn, setNextBtn] = useState(false)
 
   const nextHanlder = (e) => {
-    if (phone.value === "") {
-      alert("휴대폰 인증을 완료해주세요");
-      return;
+    if (phone.value === '') {
+      alert('휴대폰 인증을 완료해주세요')
+      return
     } else {
-      setAuth(!auth);
+      setAuth(!auth)
     }
-  };
+  }
 
   const certificationHandler = async (e) => {
-    e.preventDefault();
-    if (phone.value === "") {
-      alert("전화번호를 입력해주세요");
-      return;
+    e.preventDefault()
+    if (phone.value === '') {
+      alert('전화번호를 입력해주세요')
+      return
     } else {
-      alert("문자 전송 완료!");
-      const { data } = await request.post("api/sendsms", {
+      alert('문자 전송 완료!')
+      const { data } = await request.post(`${domain}/api/sendsms`, {
         phone: phone.value,
-      });
-      setRequestId(data.requestId);
+      })
+      setRequestId(data.requestId)
     }
-  };
+  }
 
   const numberCheckHandler = async (e) => {
-    e.preventDefault();
-    if (phone.value === "") {
-      alert("전화번호를 입력해주세요");
-      return;
+    e.preventDefault()
+    if (phone.value === '') {
+      alert('전화번호를 입력해주세요')
+      return
     }
-    const { data } = await request.post("api/verifycode", {
+    const { data } = await request.post('api/verifycode', {
       requestId,
       userInputCode: certificationNum.value,
-    });
+    })
     if (data.response) {
-      setNextBtn(true);
+      setNextBtn(true)
     } else if (!data.response) {
-      alert("인증번호가 일치하지 않습니다");
-      return;
+      alert('인증번호가 일치하지 않습니다')
+      return
     }
-  };
+  }
 
   return (
     <>
@@ -93,7 +95,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
               <InputBox
                 name="userInputCode"
                 id="userInputCode"
-                type="number"
+                type="text"
                 placeholder="인증번호를 입력해주세요"
                 required
                 {...certificationNum}
@@ -137,5 +139,5 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
         </CertifyWrap>
       </CertifyWrapper>
     </>
-  );
-};
+  )
+}
