@@ -4,53 +4,52 @@ import {
   TextBig,
   TextNormal,
   TextSmall,
-} from "../../styled";
-import { Button } from "../../../common";
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { request } from "../../../utils";
-import { useParams } from "react-router-dom";
+} from '../../styled'
+import { Button } from '../../../common'
+import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { request } from '../../../utils'
+import { useParams } from 'react-router-dom'
 
 export const ViewOne = () => {
-  const [member, setMember] = useState(true);
-  const [data, setData] = useState("");
-  const params = useParams();
+  const [member, setMember] = useState(true)
+  const [data, setData] = useState('')
+  const params = useParams()
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
-        const response = await request.get(`recruit/view/${params.id}`);
-        console.log(response);
-        setData(response.data);
+        const response = await request.get(`recruit/view/${params.id}`)
+        setData(response.data)
       } catch (e) {
-        console.log(`error`);
+        console.log(`error`)
       }
-    })();
-  }, []);
+    })()
+  }, [])
 
   const clickHandler = () => {
     // 유저아이디 백에 보내고 있는지 없는지 확인, 없으면 디비에 추가, 있으면 디비에서 삭제
-    setMember(!member); // 그리고 상태 바꿔주기!
-  };
+    setMember(!member) // 그리고 상태 바꿔주기!
+  }
 
   return (
     <>
       <ViewOneStyled>
         <div className="firstDiv">
           <PlatformImgStyled
-            src={data["ottPlan.ottPlatform.Image"]}
+            src={data['ottPlan.ottPlatform.Image']}
             width="12rem"
           />
           <div className="planNmemver">
             <div className="plan">
               <TextBig>
-                {data["ottPlan.planName"]} / {data["ottPlan.price"]}{" "}
-                {data["ottPlan.Country.countryCode"]}
+                {data['ottPlan.planName']} / {data['ottPlan.price']}
+                {data['ottPlan.Country.countryCode']}
               </TextBig>
             </div>
             <div className="member">
-              <TextNormal>현재</TextNormal>{" "}
-              <TextBig color="red">{data["ottPlan.limit"]}</TextBig>
+              <TextNormal>현재 </TextNormal>
+              <TextBig color="red">{data['ottPlan.limit']}</TextBig>
               <TextNormal> 명 중 </TextNormal>
               <TextBig color="red">{data.memberCount}</TextBig>
               <TextNormal> 명이 모였어요!</TextNormal>
@@ -60,7 +59,7 @@ export const ViewOne = () => {
         <div>
           <TextBig>{data.title}</TextBig>
           <br />
-          <TextSmall color="gray">파티장 : {data["User.userNick"]}</TextSmall>
+          <TextSmall color="gray">파티장 : {data['User.userNick']}</TextSmall>
         </div>
         <div className="lastDiv">
           <div className="left">
@@ -84,7 +83,7 @@ export const ViewOne = () => {
             <br />
             <TextBig>월 약 </TextBig>
             <TextBig color="red" bold="bold">
-              {data["ottPlan.price"] / data["ottPlan.limit"]}
+              {data['ottPlan.price'] / data['ottPlan.limit']}
             </TextBig>
             <TextBig> 원</TextBig> <br />
             <TextSmall color="lightGray">
@@ -118,5 +117,5 @@ export const ViewOne = () => {
         </Button>
       </ViewOneStyled>
     </>
-  );
-};
+  )
+}
