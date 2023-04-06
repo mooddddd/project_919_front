@@ -46,7 +46,7 @@ const LoginHandler = async (e, setAlertMessage, setAlertStatus, navigate) => {
     return
   }
   try {
-    const response = await request.post(`${domain}/user/login`, {
+    const response = await request.post(`${domain}user/login`, {
       userId,
       userPw,
     })

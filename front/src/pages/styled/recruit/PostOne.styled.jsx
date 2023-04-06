@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PostOneStyled = styled.div`
   width: 17rem;
@@ -54,10 +54,17 @@ export const PostOneStyled = styled.div`
     font-size: 1.3rem;
   }
 
+  .end {
+    font-weight: bold;
+    color: #5b5b5b;
+    font-size: 1.3rem;
+  }
+
   .price {
     font-weight: bold;
     color: #ff5c00;
     font-size: 1.3rem;
+    padding: 0 0.3rem;
   }
 
   .subject {
@@ -67,4 +74,4 @@ export const PostOneStyled = styled.div`
     font-size: 0.8rem;
     color: #646464;
   }
-`;
+`
