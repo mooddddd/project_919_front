@@ -1,5 +1,5 @@
-import { Header, Footer } from "../common";
-import { SignUpContent } from "./index";
+import { Header, Footer } from '../common'
+import { SignUpContent } from './index'
 
 export const SignUp = () => {
   return (
@@ -8,5 +8,5 @@ export const SignUp = () => {
       <SignUpContent />
       <Footer />
     </>
-  );
-};
+  )
+}

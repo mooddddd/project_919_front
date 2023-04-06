@@ -1,6 +1,6 @@
-import { BoardLayout } from "../../../common";
-import { Allwrap, ViewWrap } from "../../styled";
-import { Category, ViewOne } from "../../content/recruitContents";
+import { BoardLayout } from '../../../common'
+import { Allwrap, ViewWrap } from '../../styled'
+import { Category, ViewOne } from '../../content/recruitContents'
 
 export const RecruitView = () => {
   return (
@@ -14,5 +14,5 @@ export const RecruitView = () => {
         </Allwrap>
       </BoardLayout>
     </>
-  );
-};
+  )
+}
