@@ -1,12 +1,14 @@
 import { FormStyled } from "../../styled";
-import { Input, Button, Textarea } from "../../../common";
+import { Button } from "../../../common";
 import { request } from "../../../utils";
 import { useInput } from "../../../hooks";
 import { InputStyled, TextStyled } from "../../../common/box/styled"; // state 때문에 넣어줌ㅠ..
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const RecruitForm = () => {
   const height = "1.5rem";
+  const navigate = useNavigate();
 
   const plan = useInput("");
   const title = useInput("");
@@ -17,7 +19,12 @@ export const RecruitForm = () => {
   const content = useInput("");
   const [platformList, setPlatformList] = useState(["플랫폼을 선택하세요"]);
   const [selectedOtt, setSelectedOtt] = useState("");
+  const [planList, setPlanList] = useState([
+    { planName: "플랜 종류를 선택하세요" },
+  ]);
+  const [selectedPlan, setSelectedPlan] = useState("");
 
+  // 랜더될 때 플랫폼 종류 불러오기
   useEffect(() => {
     (async () => {
       try {
@@ -30,33 +37,49 @@ export const RecruitForm = () => {
     })();
   }, []);
 
+  // 플랫폼 카테고리(맵 사용)
   const ottList = platformList.map((item, index) => (
     <option key={index} value={item}>
       {item}
     </option>
   ));
 
+  // 플랫폼에 맞는 플랜 불러오기(서브카테고리 불러오기)
   const test = async (e) => {
     setSelectedOtt(e.target.value);
     const string = e.target.value;
     const { data } = await request.post("recruit/write/plan", { string });
-    console.log(data);
-    // e.target.value로 선택된 값 다시 엑시오스로 백으로 넘겨? 백에서 플랜 찾아와서 넘겨!!!!
+    setPlanList(data);
     // 넘어온 플랜들은 상태로 저장해서 뽑아쓰기,,?
   };
 
+  // 플랜 카테고리
+  const planListView = planList.map((item, index) => (
+    <option key={index} value={item.planName}>
+      {item.planName}
+    </option>
+  ));
+
+  // 선택된 플랜 값을 상태로 저장
+  const planInfo = (e) => {
+    const value = planList.find((v) => v.planName === e.target.value);
+    value ? setSelectedPlan(value) : console.log(`tq`);
+  };
+
+  // 게시글 insert 함수
   const submitHandler = async (e) => {
     e.preventDefault();
     let body = {
-      platformName: selectedOtt,
-      plan: plan.value,
+      userIndex: 1,
+      ottPlanIndex: selectedPlan.ottPlanIndex,
       title: title.value,
-      member: member.value,
       openChatLink: openChatLink.value,
       content: content.value,
+      startDate: startDate.value,
+      endDate: endDate.value,
     };
-    console.log(body);
     const result = await request.post("recruit/write", body);
+    navigate(`/community/recruit/view/${result.data}`);
     //   endDate.value // 2023-04-05
   };
 
@@ -77,8 +100,8 @@ export const RecruitForm = () => {
             <div className="left" name="planName" {...plan}>
               플랜 종류
             </div>
-            <select></select>
-            <select></select>
+            {/* <input type="hidden" value={selectedPlan.ottPlanIndex} /> */}
+            <select onChange={planInfo}>{planListView}</select>
           </li>
 
           <li>
@@ -101,6 +124,8 @@ export const RecruitForm = () => {
               width="4rem"
               height={height}
               {...member}
+              min="1"
+              max={`${selectedPlan.limit}`}
             />
             명
           </li>
@@ -155,7 +180,7 @@ export const RecruitForm = () => {
 
           <li>
             <div className="left">예상금액</div>
-            500 만 원
+            {selectedPlan.price / member.value}원
           </li>
         </ul>
         <Button type="submit" width="15rem" height="3rem" color="red">

@@ -8,9 +8,25 @@ import {
 import { Button } from "../../../common";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { request } from "../../../utils";
+import { useParams } from "react-router-dom";
 
-export const ViewOne = ({ data }) => {
+export const ViewOne = () => {
   const [member, setMember] = useState(true);
+  const [data, setData] = useState("");
+  const params = useParams();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await request.get(`recruit/view/${params.id}`);
+        console.log(response);
+        setData(response.data);
+      } catch (e) {
+        console.log(`error`);
+      }
+    })();
+  }, []);
 
   const clickHandler = () => {
     // 유저아이디 백에 보내고 있는지 없는지 확인, 없으면 디비에 추가, 있으면 디비에서 삭제
@@ -22,38 +38,37 @@ export const ViewOne = ({ data }) => {
       <ViewOneStyled>
         <div className="firstDiv">
           <PlatformImgStyled
-            src="/img/platformLogo/youtube.png"
+            src={data["ottPlan.ottPlatform.Image"]}
             width="12rem"
           />
           <div className="planNmemver">
             <div className="plan">
               <TextBig>
-                {data.planName} / {data.price} {data.countryCode}
+                {data["ottPlan.planName"]} / {data["ottPlan.price"]}{" "}
+                {data["ottPlan.Country.countryCode"]}
               </TextBig>
             </div>
             <div className="member">
               <TextNormal>현재</TextNormal>{" "}
-              <TextBig color="red">{data.limit}</TextBig>
+              <TextBig color="red">{data["ottPlan.limit"]}</TextBig>
               <TextNormal> 명 중 </TextNormal>
               <TextBig color="red">{data.memberCount}</TextBig>
               <TextNormal> 명이 모였어요!</TextNormal>
             </div>
           </div>
         </div>
-
         <div>
-          <TextBig>{data.subject}</TextBig>
+          <TextBig>{data.title}</TextBig>
           <br />
-          <TextSmall color="gray">파티장 : {data.userNick}</TextSmall>
+          <TextSmall color="gray">파티장 : {data["User.userNick"]}</TextSmall>
         </div>
-
         <div className="lastDiv">
           <div className="left">
             <div className="date">
               <TextNormal>
-                {data.startDate} ~ {data.endDate}{" "}
+                {data.startDate} ~ {data.endDate}
               </TextNormal>
-              <TextNormal color="gray">까지 함께하고 싶어요.</TextNormal>
+              <TextNormal color="gray"> 까지 함께하고 싶어요.</TextNormal>
             </div>
 
             <div className="openChatLink">
@@ -69,7 +84,7 @@ export const ViewOne = ({ data }) => {
             <br />
             <TextBig>월 약 </TextBig>
             <TextBig color="red" bold="bold">
-              4,634
+              {data["ottPlan.price"] / data["ottPlan.limit"]}
             </TextBig>
             <TextBig> 원</TextBig> <br />
             <TextSmall color="lightGray">
@@ -98,7 +113,6 @@ export const ViewOne = ({ data }) => {
             )}
           </div>
         </div>
-
         <Button width="10rem" height="2rem" color="red">
           <NavLink to="/community/recruit/list">목록으로</NavLink>
         </Button>
