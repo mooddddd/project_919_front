@@ -1,28 +1,32 @@
-import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Main, MyPage, Calculator, SignUp, Login } from '../pages'
+import {
+  Main,
+  MyPage,
+  Calculator,
+  SignUp,
+  Login,
+  Logout,
+  Loading,
+} from '../pages'
 import { CommunityRouter } from './CommunityRouter'
+import { AuthProvider } from '../hooks/AuthProvider' // 올바른 경로로 수정
 
 export const AppRouter = () => {
-  const [token, setToken] = useState(null)
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem('token')
-    if (storedToken) {
-      setToken(storedToken)
-    }
-  })
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/calculator" element={<Calculator />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+      <AuthProvider>
+        <Loading />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/logout" element={<Logout />} />
 
-        <Route path="/community/*" element={<CommunityRouter />} />
-      </Routes>
+          <Route path="/community/*" element={<CommunityRouter />} />
+        </Routes>
+      </AuthProvider>
     </>
   )
 }

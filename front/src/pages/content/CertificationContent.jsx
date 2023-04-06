@@ -55,7 +55,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
       setAlertMessage('수신된 인증번호로 인증해주세요!')
       setAlertStatus('success')
       setStep(2)
-      const { data } = await request.post(`${domain}/api/sendsms`, {
+      const { data } = await request.post(`${domain}api/sendsms`, {
         phone: phone.value,
       })
       setRequestId(data.requestId)
@@ -69,7 +69,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
       setAlertStatus('error')
       return
     }
-    const { data } = await request.post('api/verifycode', {
+    const { data } = await request.post(`${domain}api/verifycode`, {
       requestId,
       userInputCode: certificationNum.value,
     })
