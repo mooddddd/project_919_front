@@ -10,3 +10,5 @@ export * from "./WatchaWrapper.styled"
 export * from "./WatchaLogoWrap.styled"
 export * from "./WatchaWrap.styled"
 export * from "./MainCover.styled"
+export * from './Loading.styled'
+export * from './logout.styled'
