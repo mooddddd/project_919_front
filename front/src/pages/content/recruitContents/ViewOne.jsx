@@ -10,7 +10,6 @@ import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { request } from '../../../utils'
 import { useParams } from 'react-router-dom'
-
 export const ViewOne = () => {
   const [member, setMember] = useState(true)
   const [data, setData] = useState('')
@@ -27,9 +26,20 @@ export const ViewOne = () => {
     })()
   }, [])
 
-  const clickHandler = () => {
+  const clickHandler = async (e) => {
     // 유저아이디 백에 보내고 있는지 없는지 확인, 없으면 디비에 추가, 있으면 디비에서 삭제
-    setMember(!member) // 그리고 상태 바꿔주기!
+    e.preventDefault()
+    try {
+      const token = document.cookie.split('=')[1]
+      const response = await request.post(`recruit/view/${params.id}`, {
+        token,
+      })
+      console.log(response)
+      // setMember(!member) // 그리고 상태 바꿔주기!
+    } catch (e) {
+      console.log(`error`)
+      throw new Error(e)
+    }
   }
 
   return (
@@ -43,7 +53,7 @@ export const ViewOne = () => {
           <div className="planNmemver">
             <div className="plan">
               <TextBig>
-                {data['ottPlan.planName']} / {data['ottPlan.price']}
+                {data['ottPlan.planName']} / {data['ottPlan.price']}{' '}
                 {data['ottPlan.Country.countryCode']}
               </TextBig>
             </div>
@@ -83,7 +93,13 @@ export const ViewOne = () => {
             <br />
             <TextBig>월 약 </TextBig>
             <TextBig color="red" bold="bold">
-              {data['ottPlan.price'] / data['ottPlan.limit']}
+              {data['ottPlan.Country.Currencies.currencyValue'] != null
+                ? Math.ceil(
+                    (data['ottPlan.price'] *
+                      data['ottPlan.Country.Currencies.currencyValue']) /
+                      data['ottPlan.limit']
+                  )
+                : Math.ceil(data['ottPlan.price'] / data['ottPlan.limit'])}
             </TextBig>
             <TextBig> 원</TextBig> <br />
             <TextSmall color="lightGray">
