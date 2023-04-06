@@ -26,3 +26,6 @@ yarn-error.log*
 .env
 
 myreadme.md
+
+cert.pem
+key.pem
