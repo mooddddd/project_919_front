@@ -22,6 +22,7 @@ export const PostOne = () => {
       }
     })()
   }, [])
+  const memberNum = 1
 
   const list = contentsList.map((v) => {
     return (
@@ -39,10 +40,16 @@ export const PostOne = () => {
 
           <div className="content">
             <div className="limitNprice">
-              <div>
-                <span className="limit">{v['ottPlan.limit'] - 1}</span>명{' '}
-                <span className="ing"> 모집중! </span>
-              </div>
+              {v['ottPlan.limit'] - 1 === memberNum ? (
+                <div>
+                  <span className="limit">{v['ottPlan.limit'] - 1}</span>명{' '}
+                  <span className="ing"> 모집중! </span>
+                </div>
+              ) : (
+                <div>
+                  <span className="ing"> 모집완료! </span>
+                </div>
+              )}
 
               <div>
                 월
