@@ -1,5 +1,6 @@
 import axios from 'axios'
-const domain = process.env.REACT_APP_AXIOS_DOMAIN
+
+export const domain = process.env.REACT_APP_AXIOS_DOMAIN
 
 export const request = axios.create({
   baseURL: domain,

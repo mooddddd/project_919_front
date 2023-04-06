@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
@@ -7,7 +7,7 @@ import {
   TagFont,
   MenuWrap,
   Wrap,
-} from "./styled";
+} from './styled'
 
 export const Header = () => {
   return (
@@ -54,8 +54,13 @@ export const Header = () => {
               <TagFont>Login</TagFont>
             </NavLink>
           </Wrap>
+          <Wrap>
+            <NavLink to="/logout">
+              <TagFont>Logout</TagFont>
+            </NavLink>
+          </Wrap>
         </MenuWrap>
       </HeaderWrapper>
     </>
-  );
-};
+  )
+}
