@@ -17,8 +17,11 @@ import { Button } from '../../common/Button'
 import { useInput } from '../../hooks'
 import { request } from '../../utils/axios'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
+const kakaoAuth = `${domain}auth/kakao`
+const naverAuth = `${domain}auth/naver/callback`
 
 export const CertificationContent = ({ setAuth, auth, phone }) => {
   const certificationNum = useInput('') // certificationNum.value -> 인증번호 자체
@@ -156,19 +159,26 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
                 <Line> OR </Line>
               </>
             )}
-            <KakaoLogin type="submit">
-              <img className="kakaologin" src="img/kakao.png" alt="kakaolog" />
-              <KakaoLogo>카카오 로그인</KakaoLogo>
-            </KakaoLogin>
-
-            <NaverLogin type="submit">
-              <img
-                className="naverlogin"
-                src="img/naverlogo.png"
-                alt="naverlog"
-              />
-              <NaverLogo>네이버 로그인</NaverLogo>
-            </NaverLogin>
+            <NavLink to={kakaoAuth}>
+              <KakaoLogin type="submit">
+                <img
+                  className="kakaologin"
+                  src="img/kakao.png"
+                  alt="kakaolog"
+                />
+                <KakaoLogo>카카오 시작하기</KakaoLogo>
+              </KakaoLogin>
+            </NavLink>
+            <NavLink to={naverAuth}>
+              <NaverLogin type="submit">
+                <img
+                  className="naverlogin"
+                  src="img/naverlogo.png"
+                  alt="naverlog"
+                />
+                <NaverLogo>네이버 시작하기</NaverLogo>
+              </NaverLogin>
+            </NavLink>
           </CertifyBody>
         </CertifyWrap>
       </CertifyWrapper>
