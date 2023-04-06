@@ -12,3 +12,9 @@ export * from "./WatchaWrap.styled"
 export * from "./MainCover.styled"
 export * from './Loading.styled'
 export * from './logout.styled'
+export * from "./WatchaSlide.styled"
+export * from "./NetflixSlide.styled"
+export * from "./YoutubeSlide.styled"
+export * from "./MainSlide.styled"
+export * from "./MainConWrap.styled"
+export * from "./Parallax.styled"
