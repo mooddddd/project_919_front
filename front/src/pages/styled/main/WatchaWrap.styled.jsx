@@ -7,4 +7,5 @@ export const WatchaWrap = styled.div`
     background-size: cover;
     margin: 25px auto;
     background-repeat: no-repeat;
+    /* background-color: black; */
 `
