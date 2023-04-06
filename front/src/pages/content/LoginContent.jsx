@@ -20,6 +20,8 @@ import { request } from '../../utils/axios'
 import { setCookie } from '../../utils/cookie'
 
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
+const kakaoAuth = `${domain}auth/kakao`
+const naverAuth = `${domain}auth/naver/callback`
 
 const LoginHandler = async (e, setAlertMessage, setAlertStatus, navigate) => {
   e.preventDefault()
@@ -65,9 +67,6 @@ const LoginHandler = async (e, setAlertMessage, setAlertStatus, navigate) => {
     setAlertStatus('error')
   }
 }
-
-const kakaoAuth = `${domain}/auth/kakao`
-const naverAuth = `${domain}/auth/naver/callback`
 
 export const LoginForm = () => {
   const [alertMessage, setAlertMessage] = useState('')

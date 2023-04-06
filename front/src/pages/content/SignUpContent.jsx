@@ -23,8 +23,8 @@ import { useInput } from '../../hooks/useInput'
 import { useNavigate } from 'react-router-dom'
 
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
-const kakaoAuth = `${domain}/auth/kakao`
-const naverAuth = `${domain}/auth/naver/callback`
+const kakaoAuth = `${domain}auth/kakao`
+const naverAuth = `${domain}auth/naver/callback`
 
 export const SignUpContent = () => {
   const navigate = useNavigate()
