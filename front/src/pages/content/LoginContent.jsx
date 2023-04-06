@@ -18,61 +18,69 @@ import {
 import { useState } from 'react'
 import { request } from '../../utils/axios'
 import { setCookie } from '../../utils/cookie'
+import { useDispatch } from 'react-redux'
+import { USER_LOGIN } from '../../store/user'
 
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
 const kakaoAuth = `${domain}auth/kakao`
 const naverAuth = `${domain}auth/naver/callback`
 
-const LoginHandler = async (e, setAlertMessage, setAlertStatus, navigate) => {
-  e.preventDefault()
-  const userId = e.target.userId.value
-  const userPw = e.target.userPw.value
-
-  if (!userId) {
-    setAlertMessage('아이디를 입력해주세요')
-    setAlertStatus('error')
-    return
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userId)) {
-    setAlertMessage(
-      '아이디는 이메일로 이용됩니다. 올바른 이메일 형식이 아닙니다'
-    )
-    setAlertStatus('error')
-    return
-  }
-  if (!userPw) {
-    setAlertMessage('비밀번호를 입력해주세요')
-    setAlertStatus('error')
-    return
-  }
-  try {
-    const response = await request.post(`${domain}user/login`, {
-      userId,
-      userPw,
-    })
-    console.log(response.data)
-
-    if (response.data.message) {
-      const { token } = response.data
-      setCookie('token', token, 0.5 / 24)
-      setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
-      setAlertStatus('success')
-      setTimeout(() => {
-        navigate('/')
-      }, 1000)
-    }
-  } catch (error) {
-    console.error('Login Error:', error)
-    setAlertMessage('로그인 중 오류가 발생했습니다.')
-    setAlertStatus('error')
-  }
-}
-
 export const LoginForm = () => {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertStatus, setAlertStatus] = useState('')
-  const path = '/signup'
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  // const { loading, error, data, isLogin } = useSelector((state) => state.user)
+
+  const LoginHandler = async (e) => {
+    e.preventDefault()
+    const userId = e.target.userId.value
+    const userPw = e.target.userPw.value
+
+    if (!userId) {
+      setAlertMessage('아이디를 입력해주세요')
+      setAlertStatus('error')
+      return
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userId)) {
+      setAlertMessage(
+        '아이디는 이메일로 이용됩니다. 올바른 이메일 형식이 아닙니다'
+      )
+      setAlertStatus('error')
+      return
+    }
+    if (!userPw) {
+      setAlertMessage('비밀번호를 입력해주세요')
+      setAlertStatus('error')
+      return
+    }
+    try {
+      const response = await request.post(`${domain}user/login`, {
+        userId,
+        userPw,
+      })
+
+      if (response.data.message) {
+        const { token, user } = response.data
+        setCookie('token', token, 0.5 / 24)
+        setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
+        setAlertStatus('success')
+        dispatch({
+          type: USER_LOGIN,
+          payload: { userId: user.userId, userNick: user.userNick },
+        })
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+      }
+    } catch (error) {
+      console.error('Login Error:', error)
+      setAlertMessage('로그인 중 오류가 발생했습니다.')
+      setAlertStatus('error')
+    }
+  }
+
+  const path = '/signup'
   return (
     <>
       {alertMessage && (

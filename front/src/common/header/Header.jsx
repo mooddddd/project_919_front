@@ -8,8 +8,17 @@ import {
   MenuWrap,
   Wrap,
 } from './styled'
+import { useSelector, useDispatch } from 'react-redux'
+import { USER_LOGOUT } from '../../store/user'
+import { LogoutRequest } from '../../utils'
 
 export const Header = () => {
+  const dispatch = useDispatch()
+  const { isLogin, data } = useSelector((state) => state.user)
+  const logoutAction = () => {
+    LogoutRequest()
+    dispatch({ type: USER_LOGOUT })
+  }
   return (
     <>
       <HeaderWrapper>
@@ -25,13 +34,15 @@ export const Header = () => {
         </Logo>
         <MenuWrap>
           <Wrap>
-            <NavLink to="/">
-              <TagFont>Main</TagFont>
-            </NavLink>
+            {isLogin ? (
+              <TagFont> 환영합니다 {data.userNick} 님</TagFont>
+            ) : (
+              <></>
+            )}
           </Wrap>
           <Wrap>
-            <NavLink to="/mypage">
-              <TagFont>MyPage</TagFont>
+            <NavLink to="/">
+              <TagFont>Main</TagFont>
             </NavLink>
           </Wrap>
           <Wrap>
@@ -44,21 +55,33 @@ export const Header = () => {
               <TagFont>Community</TagFont>
             </NavLink>
           </Wrap>
-          <Wrap>
-            <NavLink to="/signup">
-              <TagFont>SignUp</TagFont>
-            </NavLink>
-          </Wrap>
-          <Wrap>
-            <NavLink to="/login">
-              <TagFont>Login</TagFont>
-            </NavLink>
-          </Wrap>
-          <Wrap>
-            <NavLink to="/logout">
-              <TagFont>Logout</TagFont>
-            </NavLink>
-          </Wrap>
+          {isLogin ? (
+            <>
+              <Wrap>
+                <NavLink to="/mypage">
+                  <TagFont>MyPage</TagFont>
+                </NavLink>
+              </Wrap>
+              <Wrap>
+                <NavLink to="/logout" onClick={logoutAction}>
+                  <TagFont>Logout</TagFont>
+                </NavLink>
+              </Wrap>
+            </>
+          ) : (
+            <>
+              <Wrap>
+                <NavLink to="/login">
+                  <TagFont>Login</TagFont>
+                </NavLink>
+              </Wrap>
+              <Wrap>
+                <NavLink to="/signup">
+                  <TagFont>SignUp</TagFont>
+                </NavLink>
+              </Wrap>
+            </>
+          )}
         </MenuWrap>
       </HeaderWrapper>
     </>
