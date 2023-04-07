@@ -99,46 +99,47 @@ a {
 .mypicks {
   width: 220px;
   height: 60px;
-  padding-top: 30px;
-  position: absolute;
-  display: flex;
+  padding-top: 1rem;
+  /* position: absolute;
+  display: flex; */
 }
 
+/* 
 .cat {
   display: flex;
   /* position: absolute; */
-  width: 120px;
+/* width: 120px;
   height: 120px;
-  border-radius: 50%;
-  /* padding-top: 80px;
+  border-radius: 50%; */
+/* padding-top: 80px;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
     border-radius: 50%;
-    overflow: hidden; */
+    overflow: hidden;
 }
 
 .totoro {
-  width: 120px;
+  /* width: 120px;
   height: 120px;
   border-radius: 50%;
-  /* display: flex;
+  isplay: flex;
     padding-right: 50px;
     padding-top: 80px;
     padding-bottom: 50px;
     justify-content: center;
     border-radius: 50%;
-    overflow: hidden; */
-  /* align-items: center; */
+    overflow: hidden;
+  /* align-items: center;
 }
 
 .kiki {
-  width: 120px;
+  /* width: 120px;
   height: 120px;
-  border-radius: 50%;
-  /* padding-top: 20px;
-    border-radius: 50%; */
-}
+  border-radius: 50%; */
+/* padding-top: 20px;
+    border-radius: 50%;
+} */
 
 .profileIcon {
   width: 150px;
@@ -174,13 +175,14 @@ button {
   padding-left: 20px;
 }
 
-.parallax{
+.parallax {
   min-height: 600px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 
 .image {
   position: absolute;
@@ -201,8 +203,8 @@ span {
 }
 
 .image:nth-child(1) {
-  background-image: url("../public/img/watchaslide.png");
-  transform: rotateY( 0deg) translateZ(430px);
+  background-image: url('/public/img/watchaslide.png');
+  transform: rotateY(0deg) translateZ(430px);
   background-size: cover;
 }
 
@@ -211,26 +213,21 @@ span {
 }
 
 .image:nth-child(2) {
-  background-image: url("../public/img/yotubeslide.png");
-  transform: rotateY( 40deg) translateZ(430px);
+  background-image: url('/public/img/yotubeslide.png');
+  transform: rotateY(40deg) translateZ(430px);
   background-size: auto;
 }
-.image:nth-child(2):hover{
-  /* position: relative; */
-  transform: scale(2) rotateY(-180deg) translateZ(0px);
-}
-
 .image:nth-child(3) {
-  background-image: url("../public/img/netflixslide.png");
+  background-image: url('/public/img/netflixslide.jpeg');
   transform: rotateY( 80deg) translateZ(430px);
   background-size: cover;
 }
 .image:nth-child(3):hover{
-  transform: scale(2) rotateY(0deg) translateZ(430px);
+  transform: scale(1) rotateY(80deg) translateZ(430px);
 }
 
 .image:nth-child(4) {
-  background-image: url("../public/img/disneyslide.jpeg");
+  background-image: url('/public/img/disneyslide.jpeg');
   transform: rotateY(120deg) translateZ(430px);
   background-size: cover;
 }
@@ -239,8 +236,8 @@ span {
 }
 
 .image:nth-child(5) {
-  background-image: url("../public/img/wavveslide.jpeg");
-  transform: rotateY(160deg) translateZ(400px);
+  background-image: url('/public/img/wavveslide.jpeg');
+  transform: rotateY(160deg) translateZ(430px);
   background-size: cover;
 }
 .image:nth-child(5):hover{
@@ -248,7 +245,7 @@ span {
 }
 
 .image:nth-child(6) {
-  background-image: url("../public/img/tvingslide.jpeg");
+  background-image: url('/public/img/tvingslide.jpeg');
   transform: rotateY(200deg) translateZ(430px);
   background-size: cover;
 }
@@ -257,16 +254,17 @@ span {
 }
 
 .image:nth-child(7) {
-  background-image: url("../public/img/slideseven.png");
+  background-image: url('/public/img/slideseven.png');
   transform: rotateY(240deg) translateZ(430px);
   background-size: cover;
-} 
+}
+
 .image:nth-child(7):hover{
   transform: scale(2) rotateY(-240deg) translateZ(-430px);
 }
 
 .image:nth-child(8) {
-  background-image: url("../public/img/slidenine.jpeg");
+  background-image: url('/public/img/slidenine.jpeg');
   transform: rotateY(280deg) translateZ(430px);
   background-size: cover;
 }
@@ -276,20 +274,27 @@ span {
 
 
 .image:nth-child(9) {
-  background-image: url("../public/img/slideeight.jpeg");
+  background-image: url('/public/img/slideeight.jpeg');
   transform: rotateY(320deg) translateZ(430px);
   background-size: cover;
-} 
+}
+
 .image:nth-child(9):hover{
   transform: scale(2) rotateY(-320deg) translateZ(-430px);
 }
 
-
 @keyframes rotate360 {
   from {
-      transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
   to {
-      transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
   }
+}
+
+.youtubebtn {
+  width: 150px;
+  height: 50px;
+  position: absolute;
+
 }
