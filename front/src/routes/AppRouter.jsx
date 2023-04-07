@@ -9,7 +9,7 @@ import {
   Loading,
 } from '../pages'
 import { CommunityRouter } from './CommunityRouter'
-import { AuthProvider } from '../hooks/AuthProvider' // 올바른 경로로 수정
+import { AuthProvider } from '../hooks/AuthProvider'
 
 export const AppRouter = () => {
   return (

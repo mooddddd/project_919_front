@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
@@ -9,15 +9,17 @@ import {
   Wrap,
 } from './styled'
 import { useSelector, useDispatch } from 'react-redux'
-import { USER_LOGOUT } from '../../store/user'
-import { LogoutRequest } from '../../utils'
+import { logoutUser } from '../../store/user/user.action.controller'
 
 export const Header = () => {
+  const isLogin = useSelector((state) => state.user.isLogin)
   const dispatch = useDispatch()
-  const { isLogin, data } = useSelector((state) => state.user)
-  const logoutAction = () => {
-    LogoutRequest()
-    dispatch({ type: USER_LOGOUT })
+  const navigate = useNavigate()
+
+  const handleLogout = async (e) => {
+    e.preventDefault()
+    await dispatch(logoutUser())
+    navigate('/')
   }
   return (
     <>
@@ -34,36 +36,28 @@ export const Header = () => {
         </Logo>
         <MenuWrap>
           <Wrap>
-            {isLogin ? (
-              <TagFont> 환영합니다 {data.userNick} 님</TagFont>
-            ) : (
-              <></>
-            )}
-          </Wrap>
-          <Wrap>
-            <NavLink to="/">
-              <TagFont>Main</TagFont>
-            </NavLink>
-          </Wrap>
-          <Wrap>
-            <NavLink to="/calculator">
-              <TagFont>Calculator</TagFont>
-            </NavLink>
-          </Wrap>
-          <Wrap>
-            <NavLink to="/community/recruit/list">
-              <TagFont>Community</TagFont>
-            </NavLink>
+            <TagFont></TagFont>
           </Wrap>
           {isLogin ? (
             <>
+              <Wrap>
+                <NavLink to="/calculator">
+                  <TagFont>Calculator</TagFont>
+                </NavLink>
+              </Wrap>
+              <Wrap>
+                <NavLink to="/community/recruit/list">
+                  <TagFont>Community</TagFont>
+                </NavLink>
+              </Wrap>
+
               <Wrap>
                 <NavLink to="/mypage">
                   <TagFont>MyPage</TagFont>
                 </NavLink>
               </Wrap>
               <Wrap>
-                <NavLink to="/logout" onClick={logoutAction}>
+                <NavLink to="#" onClick={handleLogout}>
                   <TagFont>Logout</TagFont>
                 </NavLink>
               </Wrap>
