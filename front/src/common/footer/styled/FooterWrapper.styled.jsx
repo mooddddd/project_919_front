@@ -5,8 +5,8 @@ export const FooterWrapper = styled.div`
     height: 100px;
     background: #161616;
     /* position: absolute; */
-    position: fixed;
-    bottom: 0;
+    /* position: fixed; */
+    /* bottom: 0; */
     display: flex;
     justify-content: center;
     align-items: center;

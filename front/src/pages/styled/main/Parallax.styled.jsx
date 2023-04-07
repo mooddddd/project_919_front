@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Parallax = styled.div`
-    width: 100%;
-    height: 600px;
-    font-size: 10rem;
-    text-align: center;
-    line-height: 600px;
-    background-color: black;
-    display: flex;
-    position: fixed;
+    background-image: url("../../img/dark.jpg");
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    /* background-color: transparent; */
 `
