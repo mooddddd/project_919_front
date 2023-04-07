@@ -174,7 +174,7 @@ button {
   padding-left: 20px;
 }
 
-.parallax{
+.parallax {
   min-height: 600px;
   background-attachment: fixed;
   background-position: center;
@@ -186,7 +186,6 @@ button {
   /* background-image: url("../public/img/dark.jpg");
   background-size: cover; */
 }
-
 
 .image {
   position: absolute;
@@ -206,64 +205,64 @@ span {
 }
 
 .image:nth-child(1) {
-  background-image: url("../public/img/watchaslide.png");
-  transform: rotateY( 0deg) translateZ(430px);
+  background-image: url('/img/watchaslide.png');
+  transform: rotateY(0deg) translateZ(430px);
   background-size: cover;
 }
 
 .image:nth-child(2) {
-  background-image: url("../public/img/yotubeslide.png");
-  transform: rotateY( 40deg) translateZ(430px);
+  background-image: url('/img/yotubeslide.png');
+  transform: rotateY(40deg) translateZ(430px);
   background-size: auto;
 }
 
 .image:nth-child(3) {
-  background-image: url("../public/img/netflixslide.jpeg");
-  transform: rotateY( 80deg) translateZ(430px);
+  background-image: url('/img/netflixslide.jpeg');
+  transform: rotateY(80deg) translateZ(430px);
   background-size: cover;
 }
 
 .image:nth-child(4) {
-  background-image: url("../public/img/disneyslide.jpeg");
+  background-image: url('/img/disneyslide.jpeg');
   transform: rotateY(120deg) translateZ(430px);
   background-size: cover;
 }
 
 .image:nth-child(5) {
-  background-image: url("../public/img/wavveslide.jpeg");
+  background-image: url('/img/wavveslide.jpeg');
   transform: rotateY(160deg) translateZ(430px);
   background-size: cover;
 }
 
 .image:nth-child(6) {
-  background-image: url("../public/img/tvingslide.jpeg");
+  background-image: url('/img/tvingslide.jpeg');
   transform: rotateY(200deg) translateZ(430px);
   background-size: cover;
 }
 
 .image:nth-child(7) {
-  background-image: url("../public/img/slideseven.png");
+  background-image: url('/img/slideseven.png');
   transform: rotateY(240deg) translateZ(430px);
   background-size: cover;
-} 
+}
 
 .image:nth-child(8) {
-  background-image: url("../public/img/slidenine.jpeg");
+  background-image: url('/img/slidenine.jpeg');
   transform: rotateY(280deg) translateZ(430px);
   background-size: cover;
 }
 
 .image:nth-child(9) {
-  background-image: url("../public/img/slideeight.jpeg");
+  background-image: url('/img/slideeight.jpeg');
   transform: rotateY(320deg) translateZ(430px);
   background-size: cover;
-} 
+}
 
 @keyframes rotate360 {
   from {
-      transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
   to {
-      transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
   }
 }

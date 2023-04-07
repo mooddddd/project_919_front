@@ -10,6 +10,7 @@ import {
 } from './styled'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../../store/user/user.action.controller'
+const publicPath = process.env.PUBLIC_URL
 
 export const Header = () => {
   const isLogin = useSelector((state) => state.user.isLogin)
@@ -30,7 +31,11 @@ export const Header = () => {
           </NavLink>
           <NavLink to="/">
             <LogoIcon>
-              <img className="logoimg" src="/img/logo.png" alt="logoicon" />
+              <img
+                className="logoimg"
+                src={`${publicPath}/img/logo.png`}
+                alt="logoicon"
+              />
             </LogoIcon>
           </NavLink>
         </Logo>

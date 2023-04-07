@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import styled from 'styled-components'
+const publicPath = process.env.PUBLIC_URL
 
 export const MainButton = styled.div`
-    background-image: url("../../img/mainbtn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: end;
-    align-items: flex-end;
-
+  background-image: url(${publicPath}/img/mainbtn.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
 `
