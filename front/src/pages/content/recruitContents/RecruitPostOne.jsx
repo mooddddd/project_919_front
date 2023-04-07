@@ -50,8 +50,8 @@ export const PostOne = () => {
               ) : (
                 <>
                   <div>
-                    <span className="limit">{v['ottPlan.limit'] - 1}</span>명{' '}
-                    <span className="ing"> 모집중! </span>
+                    현재 <span className="limit">{v['ottPlan.limit'] - 1}</span>
+                    명 <span className="ing"> 모집중! </span>
                   </div>
                   <div>
                     월
