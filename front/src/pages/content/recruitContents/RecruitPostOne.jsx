@@ -7,7 +7,7 @@ import { request } from '../../../utils'
 export const PostOne = () => {
   const [heart, setHeart] = useState(false)
   const [contentsList, setContentsList] = useState([])
-  const [memberNum, setMemberNum] = useState(1)
+  const [memberNum] = useState(1)
 
   const clickHeart = (e) => {
     setHeart(!heart)

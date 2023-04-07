@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { useAuth } from '../../../hooks/AuthProvider'
+const publicPath = process.env.PUBLIC_URL
 
 export const LoadingAnimation = keyframes`
   from {
@@ -11,7 +12,7 @@ export const LoadingAnimation = keyframes`
 `
 
 export const StyledLoading = styled.div`
-  background-image: url('../../../public/img/Loading.gif');
+  background-image: url(${publicPath}/img/Loading.gif);
   background-position: center;
   background-repeat: no-repeat;
   padding: 16px;

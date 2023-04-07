@@ -183,6 +183,7 @@ button {
   background-size: cover;
 }
 
+
 .image {
   position: absolute;
   width: 300px;
@@ -202,7 +203,7 @@ span {
 }
 
 .image:nth-child(1) {
-  background-image: url('../public/img/watchaslide.png');
+  background-image: url('/img/watchaslide.png');
   transform: rotateY(0deg) translateZ(430px);
   background-size: cover;
 }
@@ -212,7 +213,7 @@ span {
 }
 
 .image:nth-child(2) {
-  background-image: url('../public/img/yotubeslide.png');
+  background-image: url('/img/yotubeslide.png');
   transform: rotateY(40deg) translateZ(430px);
   background-size: auto;
 }
@@ -222,8 +223,7 @@ span {
 }
 
 .image:nth-child(3) {
-
-  background-image: url("../public/img/netflixslide.png");
+  background-image: url('/img/netflixslide.jpeg');
   transform: rotateY( 80deg) translateZ(430px);
   background-size: cover;
 }
@@ -232,7 +232,7 @@ span {
 }
 
 .image:nth-child(4) {
-  background-image: url('../public/img/disneyslide.jpeg');
+  background-image: url('/img/disneyslide.jpeg');
   transform: rotateY(120deg) translateZ(430px);
   background-size: cover;
 }
@@ -241,8 +241,8 @@ span {
 }
 
 .image:nth-child(5) {
-  background-image: url("../public/img/wavveslide.jpeg");
-  transform: rotateY(160deg) translateZ(400px);
+  background-image: url('/img/wavveslide.jpeg');
+  transform: rotateY(160deg) translateZ(430px);
   background-size: cover;
 }
 .image:nth-child(5):hover{
@@ -250,7 +250,7 @@ span {
 }
 
 .image:nth-child(6) {
-  background-image: url('../public/img/tvingslide.jpeg');
+  background-image: url('/img/tvingslide.jpeg');
   transform: rotateY(200deg) translateZ(430px);
   background-size: cover;
 }
@@ -259,16 +259,17 @@ span {
 }
 
 .image:nth-child(7) {
-  background-image: url('../public/img/slideseven.png');
+  background-image: url('/img/slideseven.png');
   transform: rotateY(240deg) translateZ(430px);
   background-size: cover;
-} 
+}
+
 .image:nth-child(7):hover{
   transform: scale(2) rotateY(-240deg) translateZ(-430px);
 }
 
 .image:nth-child(8) {
-  background-image: url('../public/img/slidenine.jpeg');
+  background-image: url('/img/slidenine.jpeg');
   transform: rotateY(280deg) translateZ(430px);
   background-size: cover;
 }
@@ -278,7 +279,7 @@ span {
 
 
 .image:nth-child(9) {
-  background-image: url('../public/img/slideeight.jpeg');
+  background-image: url('/img/slideeight.jpeg');
   transform: rotateY(320deg) translateZ(430px);
   background-size: cover;
 }

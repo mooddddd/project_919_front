@@ -20,6 +20,8 @@ import { useDispatch } from 'react-redux'
 import { loginUser } from '../../store/user/user.action.controller'
 import { domain } from '../../utils/axios'
 
+const publicPath = process.env.PUBLIC_URL
+
 export const LoginForm = () => {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertStatus, setAlertStatus] = useState('')
@@ -133,7 +135,7 @@ export const LoginContent = () => {
               <KakaoLogin type="button" onClick={KakaoLoginHandler}>
                 <img
                   className="kakaologin"
-                  src="img/kakao.png"
+                  src={`${publicPath}/img/kakao.png`}
                   alt="kakaolog"
                 />
                 <KakaoLogo>카카오 로그인</KakaoLogo>
@@ -141,7 +143,7 @@ export const LoginContent = () => {
               <NaverLogin type="button" onClick={NaverLoginHandler}>
                 <img
                   className="naverlogin"
-                  src="img/naverlogo.png"
+                  src={`${publicPath}/img/naverlogo.png`}
                   alt="naverlog"
                 />
                 <NaverLogo>네이버 로그인</NaverLogo>
