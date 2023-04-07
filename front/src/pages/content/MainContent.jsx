@@ -66,8 +66,6 @@ export const MainContent = () => {
     checkSNSLogin()
   }, [dispatch, navigate, location])
 
-  return (
-   export const MainContent = () => {
     return( 
         <>
             <Wrapper>

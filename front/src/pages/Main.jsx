@@ -4,10 +4,12 @@ import { MainContentTop, MainContent } from "./index"
 export const Main = () => {
     return(
         <>
-            <Header />
-            <MainContentTop />
-            <MainContent />
-            <Footer />
+            <div className="mainimg">
+                <Header />
+                <MainContentTop />
+                <MainContent />
+                <Footer />
+            </div>
         </>
     )
 }

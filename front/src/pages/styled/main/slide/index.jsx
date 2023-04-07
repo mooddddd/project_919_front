@@ -1,0 +1,6 @@
+export * from "./MainSlide.styled"
+export * from "./MainConTopWrap.styled"
+export * from "./SlideWrap.styled"
+export * from "./MainConTopWrapper.styled"
+export * from "./MainInfo.styled"
+export * from "./MainButton.styled"
