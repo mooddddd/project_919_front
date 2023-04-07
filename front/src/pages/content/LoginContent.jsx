@@ -16,21 +16,15 @@ import {
   Alert,
 } from '../styled'
 import { useState } from 'react'
-import { request } from '../../utils/axios'
-import { setCookie } from '../../utils/cookie'
 import { useDispatch } from 'react-redux'
-import { USER_LOGIN } from '../../store/user'
-
-const domain = process.env.REACT_APP_AXIOS_DOMAIN
-const kakaoAuth = `${domain}auth/kakao`
-const naverAuth = `${domain}auth/naver/callback`
+import { loginUser } from '../../store/user/user.action.controller'
+import { domain } from '../../utils/axios'
 
 export const LoginForm = () => {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertStatus, setAlertStatus] = useState('')
-  const navigate = useNavigate()
   const dispatch = useDispatch()
-  // const { loading, error, data, isLogin } = useSelector((state) => state.user)
+  const navigate = useNavigate()
 
   const LoginHandler = async (e) => {
     e.preventDefault()
@@ -55,28 +49,23 @@ export const LoginForm = () => {
       return
     }
     try {
-      const response = await request.post(`${domain}user/login`, {
-        userId,
-        userPw,
-      })
-
-      if (response.data.message) {
-        const { token, user } = response.data
-        setCookie('token', token, 0.5 / 24)
-        setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
-        setAlertStatus('success')
-        dispatch({
-          type: USER_LOGIN,
-          payload: { userId: user.userId, userNick: user.userNick },
-        })
-        setTimeout(() => {
-          navigate('/')
-        }, 1000)
-      }
+      await dispatch(loginUser({ userId, userPw }, 'user/login'))
+      setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
+      setAlertStatus('success')
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
     } catch (error) {
       console.error('Login Error:', error)
-      setAlertMessage('로그인 중 오류가 발생했습니다.')
-      setAlertStatus('error')
+      if (error.response.status === 401 || error.response.status === 500) {
+        setAlertMessage('로그인 중 오류가 발생했습니다.')
+        setAlertStatus('error')
+      } else {
+        setAlertMessage(
+          '서버와의 연결이 불안정합니다. 잠시 후 다시 시도해주세요'
+        )
+        setAlertStatus('error')
+      }
     }
   }
 
@@ -96,12 +85,7 @@ export const LoginForm = () => {
           {alertMessage}
         </Alert>
       )}
-      <form
-        onSubmit={(e) =>
-          LoginHandler(e, setAlertMessage, setAlertStatus, navigate)
-        }
-        method="post"
-      >
+      <form onSubmit={LoginHandler} method="POST">
         <InputBox
           name="userId"
           id="userId"
@@ -125,6 +109,15 @@ export const LoginForm = () => {
 }
 
 export const LoginContent = () => {
+  const KakaoLoginHandler = async (e) => {
+    e.preventDefault()
+    window.location.href = `${domain}auth/kakao`
+  }
+
+  const NaverLoginHandler = async (e) => {
+    e.preventDefault()
+    window.location.href = `${domain}auth/naver`
+  }
   return (
     <>
       <LoginWrapper>
@@ -137,26 +130,22 @@ export const LoginContent = () => {
             </LoginHeader>
             <LoginBody>
               <LoginForm />
-              <NavLink to={kakaoAuth}>
-                <KakaoLogin type="button">
-                  <img
-                    className="kakaologin"
-                    src="img/kakao.png"
-                    alt="kakaolog"
-                  />
-                  <KakaoLogo>카카오 로그인</KakaoLogo>
-                </KakaoLogin>
-              </NavLink>
-              <NavLink to={naverAuth}>
-                <NaverLogin type="button">
-                  <img
-                    className="naverlogin"
-                    src="img/naverlogo.png"
-                    alt="naverlog"
-                  />
-                  <NaverLogo>네이버 로그인</NaverLogo>
-                </NaverLogin>
-              </NavLink>
+              <KakaoLogin type="button" onClick={KakaoLoginHandler}>
+                <img
+                  className="kakaologin"
+                  src="img/kakao.png"
+                  alt="kakaolog"
+                />
+                <KakaoLogo>카카오 로그인</KakaoLogo>
+              </KakaoLogin>
+              <NaverLogin type="button" onClick={NaverLoginHandler}>
+                <img
+                  className="naverlogin"
+                  src="img/naverlogo.png"
+                  alt="naverlog"
+                />
+                <NaverLogo>네이버 로그인</NaverLogo>
+              </NaverLogin>
             </LoginBody>
           </LoginWrap>
         </LoginCover>

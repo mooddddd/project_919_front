@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../hooks/AuthProvider'
 import { LogoutRequest } from '../../../utils/cookie'
+import { domain, request } from '../../../utils/axios'
 
 export const Logout = () => {
   const navigate = useNavigate()
@@ -9,6 +10,7 @@ export const Logout = () => {
 
   useEffect(() => {
     const performLogout = async () => {
+      request.post(`${domain}user/logout`)
       setIsLoading(true)
       await LogoutRequest()
       setIsLoggedIn(false)
