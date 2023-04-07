@@ -182,12 +182,6 @@ button {
   background-size: cover;
 }
 
-.mainimg {
-  /* background-image: url("../public/img/dark.jpg");
-  background-size: cover; */
-}
-
-
 .image {
   position: absolute;
   width: 300px;
@@ -198,6 +192,7 @@ button {
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
   display: flex;
+  transition: all 0.4s ease-in-out;
 }
 
 span {
@@ -211,16 +206,27 @@ span {
   background-size: cover;
 }
 
+.image:nth-child(1):hover{
+  transform: scale(2) rotateY( 0deg) translateZ(430px);
+}
+
 .image:nth-child(2) {
   background-image: url("../public/img/yotubeslide.png");
   transform: rotateY( 40deg) translateZ(430px);
   background-size: auto;
 }
+.image:nth-child(2):hover{
+  /* position: relative; */
+  transform: scale(2) rotateY(-180deg) translateZ(0px);
+}
 
 .image:nth-child(3) {
-  background-image: url("../public/img/netflixslide.jpeg");
+  background-image: url("../public/img/netflixslide.png");
   transform: rotateY( 80deg) translateZ(430px);
   background-size: cover;
+}
+.image:nth-child(3):hover{
+  transform: scale(2) rotateY(0deg) translateZ(430px);
 }
 
 .image:nth-child(4) {
@@ -228,11 +234,17 @@ span {
   transform: rotateY(120deg) translateZ(430px);
   background-size: cover;
 }
+.image:nth-child(4):hover{
+  transform: scale(2) rotateY(0deg) translateZ(430px);
+}
 
 .image:nth-child(5) {
   background-image: url("../public/img/wavveslide.jpeg");
-  transform: rotateY(160deg) translateZ(430px);
+  transform: rotateY(160deg) translateZ(400px);
   background-size: cover;
+}
+.image:nth-child(5):hover{
+  transform: scale(2) rotateY(0deg) translateZ(430px);
 }
 
 .image:nth-child(6) {
@@ -240,24 +252,38 @@ span {
   transform: rotateY(200deg) translateZ(430px);
   background-size: cover;
 }
+.image:nth-child(6):hover{
+  transform: scale(2) rotateY(-200deg) translateZ(430px);
+}
 
 .image:nth-child(7) {
   background-image: url("../public/img/slideseven.png");
   transform: rotateY(240deg) translateZ(430px);
   background-size: cover;
 } 
+.image:nth-child(7):hover{
+  transform: scale(2) rotateY(-240deg) translateZ(-430px);
+}
 
 .image:nth-child(8) {
   background-image: url("../public/img/slidenine.jpeg");
   transform: rotateY(280deg) translateZ(430px);
   background-size: cover;
 }
+.image:nth-child(8):hover{
+  transform: scale(2) rotateY(-280deg) translateZ(430px);
+}
+
 
 .image:nth-child(9) {
   background-image: url("../public/img/slideeight.jpeg");
   transform: rotateY(320deg) translateZ(430px);
   background-size: cover;
 } 
+.image:nth-child(9):hover{
+  transform: scale(2) rotateY(-320deg) translateZ(-430px);
+}
+
 
 @keyframes rotate360 {
   from {
