@@ -1,74 +1,53 @@
+import { MyPageClickContent } from './mypage/MyPageClickContent'
+import { useState } from 'react'
 import {
   MyWrapper,
   MyBackground,
-  MyHeaderWrapper,
-  MyHeaderWrap,
   MyHeaderLogo,
+  MyHeaderWrap,
   MyBodyWrapper,
-  MyBodyWrap,
-  MyWrap,
-  IconWrapper,
-  ImgWrap,
-  InfoWrap,
 } from '../styled'
-const publicPath = process.env.PUBLIC_URL
+
+import { MyInfo, myList } from './mypage/MyInfo'
+import { MyList } from './mypage/MyList'
 
 export const MyPageContent = () => {
+  const [test, setTest] = useState(true)
+  const [myInfo, setMyInfo] = useState('내정보 테스트') // 엑시오스로 정보 가져온 거 여기에 정리해서 정보수정에 넘기기
+  const [myList, setMyList] = useState('리스트 테스트') // 파티는 어차피 많아봤자 몇 개 없을거니까 한꺼번에 가져와도 ㄱㅊ을 것 같음
+
+  const infoData = myInfo // 엑시오스로 가져와서 상태변경
+  const listData = myList // 엑시오스로 가져와서 상태변경
   return (
     <>
       <MyWrapper>
-        <MyBackground>
-          <MyHeaderWrapper>
-            <MyHeaderWrap>
-              <MyHeaderLogo>My Participation Status</MyHeaderLogo>
-            </MyHeaderWrap>
-          </MyHeaderWrapper>
+        <MyBackground width="90%">
+          <MyHeaderWrap>
+            <MyHeaderLogo>My Page</MyHeaderLogo>
+          </MyHeaderWrap>
+
           <MyBodyWrapper>
-            <MyBodyWrap>
-              Mypick
-              <img
-                class="mypicks"
-                src={`${publicPath}/img/wave.jpg`}
-                alt="mypicks"
-              />
-            </MyBodyWrap>
-            <MyBodyWrap>
-              분배예상액
-              <MyWrap>3,600원</MyWrap>
-            </MyBodyWrap>
-            <MyBodyWrap>
-              참여일
-              <MyWrap>23.03.27 ~</MyWrap>
-            </MyBodyWrap>
-            <MyBodyWrap>
-              참가인원
-              <IconWrapper>
-                <ImgWrap>
-                  <img
-                    class="cat"
-                    src={`${publicPath}/img/cat.jpeg`}
-                    alt="cat"
-                  />
-                  <InfoWrap>niyaong3e</InfoWrap>
-                </ImgWrap>
-                <ImgWrap>
-                  <img
-                    class="totoro"
-                    src={`${publicPath}/img/totoro.jpeg`}
-                    alt="totoro"
-                  />
-                  <InfoWrap>totorojk30</InfoWrap>
-                </ImgWrap>
-                <ImgWrap>
-                  <img
-                    class="kiki"
-                    src={`${publicPath}/img/kiki.jpeg`}
-                    alt="kiki"
-                  />
-                  <InfoWrap>kiki4860e</InfoWrap>
-                </ImgWrap>
-              </IconWrapper>
-            </MyBodyWrap>
+            <ul>
+              <li
+                onClick={(e) => {
+                  setTest(true)
+                }}
+              >
+                정보 수정
+              </li>
+              <li
+                onClick={(e) => {
+                  setTest(false)
+                }}
+              >
+                파티 관리
+              </li>
+            </ul>
+            {test ? (
+              <MyInfo infoData={infoData} />
+            ) : (
+              <MyList listData={listData} />
+            )}
           </MyBodyWrapper>
         </MyBackground>
       </MyWrapper>

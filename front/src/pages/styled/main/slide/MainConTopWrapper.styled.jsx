@@ -6,4 +6,5 @@ export const MainConTopWrapper = styled.div`
     height: 500px;
     margin: 100px auto 0 auto;
     perspective: 1000px;
+    padding-bottom: 45px;
 `

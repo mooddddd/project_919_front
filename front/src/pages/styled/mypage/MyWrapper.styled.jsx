@@ -3,7 +3,7 @@ const publicPath = process.env.PUBLIC_URL
 
 export const MyWrapper = styled.div`
   width: 100%;
-  /* height: 100vh; */
+  height: 100%;
   background-image: url(${publicPath}/img/mainWP.png);
   background-size: cover;
   background-repeat: no-repeat;
