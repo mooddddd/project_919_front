@@ -9,6 +9,7 @@ import {
   WatchaWrapper,
   WatchaWrap,
   WatchaLogoWrap,
+  Parallax
 } from '../styled'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
@@ -66,39 +67,39 @@ export const MainContent = () => {
   }, [dispatch, navigate, location])
 
   return (
-    <>
-      <Wrapper>
-        <WatchaWrapper>
-          <WatchaLogoWrap>
-            <img
-              className="mainWatcha mainWatchaLogo"
-              src="img/platformLogo/Watcha.png"
-              alt="mainWatchaLogo"
-            />
-          </WatchaLogoWrap>
-          <WatchaWrap />
-        </WatchaWrapper>
-        <NetflixWrapper>
-          <NetflixLogoWrap>
-            <img
-              className="mainNetflix mainNetflixLogo"
-              src="img/platformLogo/netflix.png"
-              alt="mainNetflixLogo"
-            />
-          </NetflixLogoWrap>
-          <NetflixWrap />
-        </NetflixWrapper>
-        <YoutubeWrapper>
-          <YoutubeLogoWrap>
-            <img
-              className="mainYoutube mainYoutubeLogo"
-              src="img/platformLogo/youtube.png"
-              alt="mainYoutubeLogo"
-            />
-          </YoutubeLogoWrap>
-          <YoutubeWrap />
-        </YoutubeWrapper>
-      </Wrapper>
-    </>
-  )
+   export const MainContent = () => {
+    return( 
+        <>
+            <Wrapper>
+                    <Parallax />
+                    <Parallax>
+                    <WatchaWrapper>
+                        <WatchaLogoWrap>
+                            <img className="mainWatcha mainWatchaLogo" src="img/platformLogo/Watcha.png" alt="mainWatchaLogo" />
+                        </WatchaLogoWrap>
+                        <WatchaWrap />
+                    </WatchaWrapper>
+                    </Parallax>
+                    <Parallax />
+                    <Parallax>
+                    <NetflixWrapper>
+                        <NetflixLogoWrap>
+                            <img className="mainNetflix mainNetflixLogo" src="img/platformLogo/netflix.png" alt="mainNetflixLogo" />
+                        </NetflixLogoWrap>
+                        <NetflixWrap />
+                    </NetflixWrapper>
+                    </Parallax>
+                    <Parallax />
+                    <Parallax>
+                    <YoutubeWrapper>
+                            <YoutubeLogoWrap>
+                                <img className="mainYoutube mainYoutubeLogo" src="img/platformLogo/youtube.png" alt="mainYoutubeLogo" />
+                            </YoutubeLogoWrap>
+                            <YoutubeWrap />
+                    </YoutubeWrapper>
+                    </Parallax>
+                    <Parallax />
+            </Wrapper>
+        </>
+    )
 }
