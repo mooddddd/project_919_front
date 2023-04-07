@@ -62,9 +62,9 @@ export const Header = () => {
                 </NavLink>
               </Wrap>
               <Wrap>
-                <NavLink to="#" onClick={handleLogout}>
+                <div onClick={handleLogout}>
                   <TagFont>Logout</TagFont>
-                </NavLink>
+                </div>
               </Wrap>
             </>
           ) : (
