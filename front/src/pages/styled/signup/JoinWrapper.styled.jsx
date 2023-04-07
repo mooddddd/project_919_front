@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+const publicPath = process.env.PUBLIC_URL
 
 export const JoinWrapper = styled.div`
   width: 100%;
@@ -6,10 +7,10 @@ export const JoinWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  background-image: url("../img/train.jpeg");
+  background-image: url(${publicPath}/img/train.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
   align-items: center;
   /* opacity: 0.7; */
-`;
+`

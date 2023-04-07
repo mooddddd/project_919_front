@@ -20,6 +20,8 @@ import { useDispatch } from 'react-redux'
 import { loginUser } from '../../store/user/user.action.controller'
 import { domain } from '../../utils/axios'
 
+const publicPath = process.env.PUBLIC_URL
+
 export const LoginForm = () => {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertStatus, setAlertStatus] = useState('')
@@ -49,11 +51,17 @@ export const LoginForm = () => {
       return
     }
     try {
+      console.log('1234')
       await dispatch(loginUser({ userId, userPw }, 'user/login'))
+      console.log('12345')
       setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
+      console.log('12346')
       setAlertStatus('success')
+      console.log('12347')
       setTimeout(() => {
+        console.log('1238')
         navigate('/')
+        console.log('1239')
       }, 2000)
     } catch (error) {
       console.error('Login Error:', error)
@@ -133,7 +141,7 @@ export const LoginContent = () => {
               <KakaoLogin type="button" onClick={KakaoLoginHandler}>
                 <img
                   className="kakaologin"
-                  src="img/kakao.png"
+                  src={`${publicPath}/img/kakao.png`}
                   alt="kakaolog"
                 />
                 <KakaoLogo>카카오 로그인</KakaoLogo>
@@ -141,7 +149,7 @@ export const LoginContent = () => {
               <NaverLogin type="button" onClick={NaverLoginHandler}>
                 <img
                   className="naverlogin"
-                  src="img/naverlogo.png"
+                  src={`${publicPath}/img/naverlogo.png`}
                   alt="naverlog"
                 />
                 <NaverLogo>네이버 로그인</NaverLogo>

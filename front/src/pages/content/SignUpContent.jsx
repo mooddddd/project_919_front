@@ -21,6 +21,7 @@ import { CertificationContent } from './CertificationContent'
 import { request, requestMulter } from '../../utils/axios'
 import { useInput } from '../../hooks/useInput'
 import { useNavigate } from 'react-router-dom'
+const publicPath = process.env.PUBLIC_URL
 
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
 const kakaoAuth = `${domain}auth/kakao`
@@ -207,7 +208,7 @@ export const SignUpContent = () => {
                 <KakaoLogin type="button">
                   <img
                     className="kakaologin"
-                    src="img/kakao.png"
+                    src={`${publicPath}/img/kakao.png`}
                     alt="kakaolog"
                   />
                   <KakaoLogo>카카오 로그인</KakaoLogo>
@@ -217,7 +218,7 @@ export const SignUpContent = () => {
                 <NaverLogin type="button">
                   <img
                     className="naverlogin"
-                    src="img/naverlogo.png"
+                    src={`${publicPath}/img/naverlogo.png`}
                     alt="naverlog"
                   />
                   <NaverLogo>네이버 로그인</NaverLogo>

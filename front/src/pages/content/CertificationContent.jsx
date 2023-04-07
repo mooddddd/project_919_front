@@ -22,6 +22,7 @@ import { NavLink } from 'react-router-dom'
 const domain = process.env.REACT_APP_AXIOS_DOMAIN
 const kakaoAuth = `${domain}auth/kakao`
 const naverAuth = `${domain}auth/naver/callback`
+const publicPath = process.env.PUBLIC_URL
 
 export const CertificationContent = ({ setAuth, auth, phone }) => {
   const certificationNum = useInput('') // certificationNum.value -> 인증번호 자체
@@ -163,7 +164,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
               <KakaoLogin type="submit">
                 <img
                   className="kakaologin"
-                  src="img/kakao.png"
+                  src={`${publicPath}/img/kakao.png`}
                   alt="kakaolog"
                 />
                 <KakaoLogo>카카오 시작하기</KakaoLogo>
@@ -173,7 +174,7 @@ export const CertificationContent = ({ setAuth, auth, phone }) => {
               <NaverLogin type="submit">
                 <img
                   className="naverlogin"
-                  src="img/naverlogo.png"
+                  src={`${publicPath}/img/naverlogo.png`}
                   alt="naverlog"
                 />
                 <NaverLogo>네이버 시작하기</NaverLogo>

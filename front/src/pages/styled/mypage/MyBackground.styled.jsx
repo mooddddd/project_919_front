@@ -1,8 +1,9 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const MyBackground = styled.div`
-    width: 650px;
-    height: 100%;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.15);
+  width: ${({ width }) => width};
+  height: 100%;
+  margin: 0 auto;
+  padding: 5rem 0;
+  background-color: rgba(255, 255, 255, 0.5);
 `
