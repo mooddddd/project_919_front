@@ -6,7 +6,7 @@ export const WatchaWrapper = styled.div`
     margin: 0 auto;
     background-color: #131111; 
     font-size: 10rem;
-    color: #ececec;
+    /* color: #ececec; */
     text-align: center;
     line-height: 600px;
 `

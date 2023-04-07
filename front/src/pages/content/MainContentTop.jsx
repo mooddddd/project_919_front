@@ -1,4 +1,4 @@
-import { MainConTopWrapper, NetflixSlide, WatchaSlide, YoutubeSlide} from "../styled"
+import { MainConTopWrapper, NetflixSlide, WatchaSlide, YoutubeSlide, Parallax} from "../styled"
 
 export const MainContentTop = () => {
     return(
