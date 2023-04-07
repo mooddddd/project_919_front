@@ -5,14 +5,16 @@ import { useInput } from '../../../hooks'
 import { InputStyled, TextStyled } from '../../../common/box/styled' // state 때문에 넣어줌ㅠ..
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const RecruitForm = () => {
   const height = '1.5rem'
   const navigate = useNavigate()
+  const userIndex = useSelector((state) => state.user.user.userIndex)
 
   const plan = useInput('')
   const title = useInput('')
-  const member = useInput('')
+  const member = useInput('1')
   const startDate = useInput('')
   const endDate = useInput('')
   const openChatLink = useInput('')
@@ -70,7 +72,7 @@ export const RecruitForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault()
     let body = {
-      userIndex: 1,
+      userIndex,
       ottPlanIndex: selectedPlan.ottPlanIndex,
       title: title.value,
       openChatLink: openChatLink.value,
@@ -82,8 +84,6 @@ export const RecruitForm = () => {
     navigate(`/community/recruit/view/${result.data}`)
     //   endDate.value // 2023-04-05
   }
-
-  console.log(selectedPlan)
 
   return (
     <FormStyled onSubmit={submitHandler}>
@@ -101,7 +101,6 @@ export const RecruitForm = () => {
           <div className="left" name="planName" {...plan}>
             플랜 종류
           </div>
-          {/* <input type="hidden" value={selectedPlan.ottPlanIndex} /> */}
           <select onChange={planInfo}>{planListView}</select>
         </li>
 
@@ -183,7 +182,7 @@ export const RecruitForm = () => {
                   member.value
               )
             : Math.ceil(selectedPlan.price / member.value)}
-          원
+          원 + 해외 결제 수수료
         </li>
       </ul>
       <Button type="submit" width="15rem" height="3rem" color="red">
