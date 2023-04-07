@@ -13,4 +13,5 @@ export const MainInfo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 100px;
 `

@@ -183,6 +183,7 @@ button {
   background-size: cover;
 }
 
+
 .image {
   position: absolute;
   width: 300px;
@@ -216,18 +217,14 @@ span {
   transform: rotateY(40deg) translateZ(430px);
   background-size: auto;
 }
-.image:nth-child(2):hover {
-  /* position: relative; */
-  transform: scale(2) rotateY(-180deg) translateZ(0px);
-}
 
 .image:nth-child(3) {
   background-image: url('/public/img/netflixslide.jpeg');
-  transform: rotateY(80deg) translateZ(430px);
+  transform: rotateY( 80deg) translateZ(430px);
   background-size: cover;
 }
-.image:nth-child(3):hover {
-  transform: scale(2) rotateY(0deg) translateZ(430px);
+.image:nth-child(3):hover{
+  transform: scale(1) rotateY(80deg) translateZ(430px);
 }
 
 .image:nth-child(4) {
@@ -263,7 +260,7 @@ span {
   background-size: cover;
 }
 
-.image:nth-child(7):hover {
+.image:nth-child(7):hover{
   transform: scale(2) rotateY(-240deg) translateZ(-430px);
 }
 
@@ -282,7 +279,7 @@ span {
   background-size: cover;
 }
 
-.image:nth-child(9):hover {
+.image:nth-child(9):hover{
   transform: scale(2) rotateY(-320deg) translateZ(-430px);
 }
 
@@ -293,4 +290,11 @@ span {
   to {
     transform: rotateY(-360deg);
   }
+}
+
+.youtubebtn {
+  width: 150px;
+  height: 50px;
+  position: absolute;
+
 }
