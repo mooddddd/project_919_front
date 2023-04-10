@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { request } from '../../../utils'
 import { getCookie } from '../../../utils'
 
-const publicPath = process.env.PUBLIC_URL
+// const publicPath = process.env.PUBLIC_URL
 
 export const MyList = ({ listData }) => {
   const [myList, setMyList] = useState('리스트 테스트')

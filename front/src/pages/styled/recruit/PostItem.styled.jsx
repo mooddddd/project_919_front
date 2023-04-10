@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 export const PostItem = styled.div`
-  width: 100%;
-  height: 30rem;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  font-size: 1rem;
+  position: relative;
+  max-width: 100%;
+  gap: 1rem;
+  margin: 1rem;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
 `

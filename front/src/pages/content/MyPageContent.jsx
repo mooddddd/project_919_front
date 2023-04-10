@@ -1,4 +1,4 @@
-import { MyPageClickContent } from './mypage/MyPageClickContent'
+// import { MyPageClickContent } from './mypage/MyPageClickContent'
 import { useState } from 'react'
 import {
   MyWrapper,
