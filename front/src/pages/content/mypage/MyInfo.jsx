@@ -92,7 +92,7 @@ const Info = ({ infoData, setModifyInfo }) => {
           setModifyInfo(true)
         }}
       >
-        수정하기
+        저장하기
       </Button>
     </>
   )

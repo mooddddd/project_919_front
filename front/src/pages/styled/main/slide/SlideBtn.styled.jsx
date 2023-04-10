@@ -2,14 +2,12 @@ import styled from "styled-components"
 
 export const SlideBtn = styled.div`
     width: 1000px;
-    height: 50px;
-    /* background-color: #fff; */
+    justify-content: center;
     display: flex;
-    align-content: flex-start;
-    align-items: flex-start;
-    margin-bottom: 1000px;
+    align-content: flex-end;
+    align-items: flex-end;
     flex-direction: column;
     position: absolute;
-    padding-top: 20px;
-    margin-top: 100px;
+    padding-left: 750px;
+    padding-bottom: 120px;
 `
