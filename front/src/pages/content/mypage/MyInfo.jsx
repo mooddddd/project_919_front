@@ -15,13 +15,14 @@ export const MyInfo = () => {
   const navigator = useNavigate()
   const [myInfo, setMyInfo] = useState(['내정보 테스트'])
   const [modifyInfo, setModifyInfo] = useState(false)
+  const isLogin = useSelector((state) => state.user.isLogin)
 
   const token = getCookie('token')
 
   useEffect(() => {
     ;(async () => {
       try {
-        if (document.cookie === '') {
+        if (!isLogin) {
           navigator('/')
           return
         } else {
