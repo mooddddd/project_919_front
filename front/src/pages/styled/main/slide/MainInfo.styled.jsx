@@ -9,8 +9,7 @@ export const MainInfo = styled.div`
     position: absolute;
     font-weight: 800;
     font-size: 2.8rem;
-    font-style: italic;
-    font-family: ;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
