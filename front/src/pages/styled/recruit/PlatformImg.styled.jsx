@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const PlatformImgStyled = styled.img`
-  margin: 0 auto;
-  /* width: 156px; */
-  width: ${({ width }) => width};
-  /* height: ${({ height }) => height}; */
-  object-fit: scale-down;
+  margin-top: 0.3rem;
+  max-width: 100%;
+  max-height: 20%;
 `

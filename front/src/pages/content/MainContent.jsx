@@ -80,7 +80,7 @@ export const MainContent = () => {
             <WatchaLogoWrap>
               <img
                 className="mainWatcha mainWatchaLogo"
-                src={`${publicPath}/img/Watcha.png`}
+                src={`${publicPath}/img/platformLogo/Watcha.png`}
                 alt="mainWatchaLogo"
               />
             </WatchaLogoWrap>
@@ -93,7 +93,7 @@ export const MainContent = () => {
             <NetflixLogoWrap>
               <img
                 className="mainNetflix mainNetflixLogo"
-                src={`${publicPath}/img/netflix.png`}
+                src={`${publicPath}/img/platformLogo/netflix.png`}
                 alt="mainNetflixLogo"
               />
             </NetflixLogoWrap>
@@ -106,7 +106,7 @@ export const MainContent = () => {
             <YoutubeLogoWrap>
               <img
                 className="mainYoutube mainYoutubeLogo"
-                src={`${publicPath}/img/youtube.png`}
+                src={`${publicPath}/img/platformLogo/youtube.png`}
                 alt="mainYoutubeLogo"
               />
             </YoutubeLogoWrap>
