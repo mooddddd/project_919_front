@@ -2,10 +2,10 @@ import styled from "styled-components"
 import { SlideWrap, MainConTopWrapper, MainConTopWrap, SlideBtn, MainInfo, ButttonWrap, MainButton } from "../styled"
 
 export const MainContentTop = () => {
-    function goToScroll(name) {
-        var location = document.querySelector("." + name).offsetTop;
-        window.scrollTo({top: location, behavior: 'smooth'});
-    }
+    // function goToScroll(name) {
+    //     var location = document.querySelector("." + name).offsetTop;
+    //     window.scrollTo({top: location, behavior: 'smooth'});
+    // }
     return(
         <>
             <SlideWrap>
