@@ -24,7 +24,6 @@ export const MainContent = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [checkedSNSLogin, setCheckedSNSLogin] = useState(false)
-
   const checkSNSLogin = useCallback(async () => {
     //URL Token 획득 로직
     const searchParams = new URLSearchParams(location.search)
@@ -71,6 +70,8 @@ export const MainContent = () => {
       setCheckedSNSLogin(true)
     }
   }, [checkSNSLogin, checkedSNSLogin])
+
+  
   return (
     <>
       <Wrapper>

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const JoinBody = styled.div`
-  display: flex;
-  justify-content: center;
+  padding-top: 20px;
+  /* display: flex; */
+  /* justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 
   & > form > .alert {
     color: red;
