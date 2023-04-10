@@ -12,7 +12,6 @@ import {
   ViewButtonStyled,
   LikeBtnStyled,
   PostContent,
-  StyledLoading,
 } from '../../styled'
 import { Category } from '../../content/recruitContents'
 import { useEffect, useState } from 'react'
@@ -28,7 +27,6 @@ const getRecruits = async (start, limit) => {
 export const RecruitList = () => {
   const [recruit, setRecruit] = useState([])
   const [start, setStart] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
   const limit = 6
 
   useEffect(() => {
@@ -80,7 +78,6 @@ export const RecruitList = () => {
               </PostItem>
             ))}
           </PostWrapper>
-          {isLoading && <StyledLoading />}
         </Allwrap>
       </BoardLayout>
     </>
