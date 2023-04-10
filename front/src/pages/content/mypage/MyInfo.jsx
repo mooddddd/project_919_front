@@ -4,19 +4,70 @@ import { requestMulter, domain } from '../../../utils'
 import { useInput } from '../../../hooks/useInput'
 import { JoinProfile, JoinBody, InputBox, Message, Alert } from '../../styled'
 import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getUserInfo } from '../../../store/user/user.action.api'
+import { getCookie } from '../../../utils'
+import { useNavigate } from 'react-router-dom'
 
 const publicPath = process.env.PUBLIC_URL
+
+export const MyInfo = () => {
+  const navigator = useNavigate()
+  const [myInfo, setMyInfo] = useState(['내정보 테스트'])
+  const [modifyInfo, setModifyInfo] = useState(false)
+  const isLogin = useSelector((state) => state.user.isLogin)
+
+  const token = getCookie('token')
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        if (!isLogin) {
+          navigator('/')
+          return
+        } else {
+          const data = await getUserInfo(token)
+          console.log(data)
+          const { userId, userNick, phone, picture, signedUrl } = data
+          setMyInfo([userId, userNick, phone, picture, signedUrl])
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    })()
+  }, [])
+  const infoData = myInfo
+
+  return (
+    <>
+      <JoinBody>
+        {modifyInfo ? (
+          <Modify
+            infoData={infoData}
+            modifyInfo={modifyInfo}
+            setModifyInfo={setModifyInfo}
+            setMyInfo={setMyInfo}
+            token={token}
+          />
+        ) : (
+          <Info
+            infoData={infoData}
+            modifyInfo={modifyInfo}
+            setModifyInfo={setModifyInfo}
+          />
+        )}
+      </JoinBody>
+    </>
+  )
+}
 
 const Info = ({ infoData, setModifyInfo }) => {
   return (
     <>
       <JoinProfile>
-        {infoData[3] ? (
+        {infoData[4] ? (
           <>
-            <img
-              src={`${publicPath}}/${infoData[3]}`}
-              className="profileIcon"
-            />
+            <img src={`${infoData[4]}`} className="profileIcon" />
           </>
         ) : (
           <>
@@ -47,12 +98,12 @@ const Info = ({ infoData, setModifyInfo }) => {
   )
 }
 
-const Modify = ({ infoData, setModifyInfo, setMyInfo }) => {
+const Modify = ({ infoData, setModifyInfo, setMyInfo, token }) => {
   const userIndex = useSelector((state) => state.user.user.userIndex)
   const userNick = useInput(`${infoData[1]}`)
   const pw = useInput('')
 
-  const [img, setImg] = useState(`${publicPath}/${infoData[3]}`)
+  const [img, setImg] = useState(`${infoData[4]}`)
   const [confirmPw, setConfirmPw] = useState(null)
   const [alertMessage, setAlertMessage] = useState('')
   const [alertStatus, setAlertStatus] = useState('')
@@ -75,12 +126,14 @@ const Modify = ({ infoData, setModifyInfo, setMyInfo }) => {
 
     try {
       let body = new FormData(e.target)
-      const { data } = await requestMulter.put(`${domain}user/update`, body)
+      const { data } = await requestMulter.put(`${domain}user/update`, body, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       setAlertMessage('수정이 완료되었습니다.')
       setAlertStatus('success')
       console.log(data)
-      const { userId, userNick, phone, picture } = data
-      setMyInfo([userId, userNick, phone, picture])
+      const { userId, userNick, phone, picture, signedUrl } = data
+      setMyInfo([userId, userNick, phone, picture, signedUrl])
       setModifyInfo(false)
     } catch (e) {
       console.log(`error`)
@@ -171,31 +224,6 @@ const Modify = ({ infoData, setModifyInfo, setMyInfo }) => {
       >
         수정취소
       </Button>
-    </>
-  )
-}
-
-export const MyInfoView = ({ infoData, setMyInfo }) => {
-  const [modifyInfo, setModifyInfo] = useState(false)
-
-  return (
-    <>
-      <JoinBody>
-        {modifyInfo ? (
-          <Modify
-            infoData={infoData}
-            modifyInfo={modifyInfo}
-            setModifyInfo={setModifyInfo}
-            setMyInfo={setMyInfo}
-          />
-        ) : (
-          <Info
-            infoData={infoData}
-            modifyInfo={modifyInfo}
-            setModifyInfo={setModifyInfo}
-          />
-        )}
-      </JoinBody>
     </>
   )
 }

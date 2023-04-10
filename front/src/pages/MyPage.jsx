@@ -4,9 +4,6 @@ import { MyPageContent } from './index'
 // import { useSelector } from 'react-redux'
 
 export const MyPage = () => {
-  //   const navigator = useNavigate()
-  //   const isLogin = useSelector((state) => state.user.isLogin
-
   return (
     <>
       <Header />
