@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 import { request } from '../../utils'
-import { MyWrapper, MyBackground } from '../styled'
+import {
+  MyWrapper,
+  MyBackground,
+  CalWrapper,
+  CalDiv,
+  OttBtn,
+  PlanBtn,
+} from '../styled'
 
 export const CalculatorContent = () => {
   const [platform, setPlatform] = useState([])
@@ -28,9 +35,9 @@ export const CalculatorContent = () => {
 
   const platformList = platform.map((v) => {
     return (
-      <button key={v.ottPlatformIndex} onClick={selectPlatformHandler}>
+      <OttBtn key={v.ottPlatformIndex} onClick={selectPlatformHandler}>
         {v.platformName}
-      </button>
+      </OttBtn>
     )
   })
 
@@ -42,13 +49,13 @@ export const CalculatorContent = () => {
 
   const planList = plan.map((v) => {
     return (
-      <button
+      <PlanBtn
         key={v.ottPlanIndex}
         onClick={selectPlanHandler}
         value={v.ottPlanIndex}
       >
         {v.planName}
-      </button>
+      </PlanBtn>
     )
   })
 
@@ -62,26 +69,33 @@ export const CalculatorContent = () => {
     <>
       <MyWrapper>
         <MyBackground width="90%">
-          <div>{platformList}</div>
-          <div>{planList}</div>
-          <div>요금제 금액 : {price} 원</div>
-          <div>
-            예상 파티원 수 :
-            <input
-              min="1"
-              max="5"
-              type="number"
-              onChange={(e) => {
-                setMember(e.target.value)
-              }}
-              defaultValue="1"
-            />
-          </div>
-          <div>
-            <button onClick={calculator}>계산하기!</button>
-
-            <div>최종 금액 : 약 {calculPrice} 원</div>
-          </div>
+          <h1>요금제 계산기</h1>
+          <br />
+          <CalWrapper>
+            <CalDiv width="35%">
+              <CalDiv width="45%">{platformList}</CalDiv>
+              <CalDiv width="45%">{planList}</CalDiv>
+            </CalDiv>
+            <CalDiv width="55%" direction="column">
+              <CalDiv>요금제 금액 : {price} 원</CalDiv>
+              <CalDiv>
+                예상 파티원 수 : {'   '}
+                <input
+                  min="1"
+                  max="5"
+                  type="number"
+                  onChange={(e) => {
+                    setMember(e.target.value)
+                  }}
+                  defaultValue="1"
+                />
+              </CalDiv>
+              <CalDiv>
+                <button onClick={calculator}>계산하기!</button>
+              </CalDiv>
+              <CalDiv>최종 금액 : 약 {calculPrice} 원</CalDiv>
+            </CalDiv>
+          </CalWrapper>
         </MyBackground>
       </MyWrapper>
     </>
