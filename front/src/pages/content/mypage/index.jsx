@@ -1,3 +1,3 @@
-export * from './MyInfo'
+export * from './MyInfoView'
 export * from './MyList'
 export * from './MyPageClickContent'

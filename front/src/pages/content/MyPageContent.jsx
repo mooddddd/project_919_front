@@ -8,33 +8,45 @@ import {
   MyBodyWrapper,
 } from '../styled'
 
-import { MyInfo, MyList } from './mypage'
-import { useSelector } from 'react-redux'
+import { MyInfoView, MyList } from './mypage'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getUserInfo } from '../../store/user/user.action.api'
+import { getCookie } from '../../utils'
 
 export const MyPageContent = () => {
   const navigator = useNavigate()
   const [menu, setMenu] = useState(true)
-  const [myInfo, setMyInfo] = useState('내정보 테스트') // 엑시오스로 정보 가져온 거 여기에 정리해서 정보수정에 넘기기
-  const [myList, setMyList] = useState('리스트 테스트') // 파티는 어차피 많아봤자 몇 개 없을거니까 한꺼번에 가져와도 ㄱㅊ을 것 같음
-  const userIndex = useSelector((state) => state.user.user.userIndex)
-  if ((userIndex = null)) {
-    navigator('/')
+  const [myInfo, setMyInfo] = useState(['내정보 테스트'])
+
+  const token = getCookie('token')
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        if (document.cookie === '') {
+          navigator('/')
+          return
+        } else {
+          const data = await getUserInfo(token)
+          const { userId, userNick, phone, picture } = data
+          //   console.log(userId, userNick, phone, picture)
+          setMyInfo([userId, userNick, phone, picture])
+        }
+      } catch (e) {
+        throw new Error(e)
+      }
+    })()
+  }, [])
+
+  const getMyInfoHandler = (e) => {
+    setMenu(true)
+  }
+  const geyMyListHandler = (e) => {
+    setMenu(false)
   }
 
-  //   useEffect(() => {
-  //     ;(async () => {
-  //       try {
-  //         // const response = await request.get('mypage/info')
-  //       } catch (e) {
-  //         throw new Error(e)
-  //       }
-  //     })()
-  //   }, [])
-
   const infoData = myInfo // 엑시오스로 가져와서 상태변경
-  const listData = myList // 엑시오스로 가져와서 상태변경
   return (
     <>
       <MyWrapper>
@@ -44,26 +56,16 @@ export const MyPageContent = () => {
           </MyHeaderWrap>
 
           <MyBodyWrapper>
-            <ul>
-              <li
-                onClick={(e) => {
-                  setMenu(true)
-                }}
-              >
-                정보 수정
-              </li>
-              <li
-                onClick={(e) => {
-                  setMenu(false)
-                }}
-              >
-                파티 관리
-              </li>
-            </ul>
+            <div className="nav">
+              <ul>
+                <li onClick={getMyInfoHandler}>정보 수정</li>
+                <li onClick={geyMyListHandler}>파티 관리</li>
+              </ul>
+            </div>
             {menu ? (
-              <MyInfo infoData={infoData} />
+              <MyInfoView infoData={infoData} setMyInfo={setMyInfo} />
             ) : (
-              <MyList listData={listData} />
+              <MyList />
             )}
           </MyBodyWrapper>
         </MyBackground>

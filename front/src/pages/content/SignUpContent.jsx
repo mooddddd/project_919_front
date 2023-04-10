@@ -29,7 +29,7 @@ const naverAuth = `${domain}auth/naver/callback`
 
 export const SignUpContent = () => {
   const navigate = useNavigate()
-  const [img, setImg] = useState('')
+  const [img, setImg] = useState('/img/profile.png')
 
   const userId = useInput('')
   const nickName = useInput('')
