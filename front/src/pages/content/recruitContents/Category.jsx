@@ -1,43 +1,80 @@
-import { CategoryStyled } from '../../styled'
+import { CategoryStyled, PlatformBtn } from '../../styled'
 import { NavLink } from 'react-router-dom'
 import { Button } from '../../../common'
-import { useState } from 'react'
 
-export const Category = () => {
-  const [category, SetCategory] = useState(false)
-  const clickEvent = (e) => {
-    console.log(e.target)
+const PublicURL = process.env.PUBLIC_URL
+
+export const Category = ({ onCategoryClick }) => {
+  const handleClick = (category) => {
+    if (onCategoryClick) {
+      onCategoryClick(category)
+    }
   }
+
   return (
     <>
       <CategoryStyled>
         <ul>
           <li>
-            <NavLink to="#">전체</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/Allview.png`}
+              onClick={() => handleClick('all')}
+            />
           </li>
           <li>
-            <NavLink to="#">유튜브</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/ing.png`}
+              onClick={() => handleClick('recruiting')}
+            />
           </li>
           <li>
-            <NavLink to="#">넷플릭스</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/complete.png`}
+              onClick={() => handleClick('completed')}
+            />
           </li>
           <li>
-            <NavLink to="#">디즈니플러스</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/platformLogo/youtube.png`}
+              onClick={() => handleClick('youtube')}
+            />
           </li>
           <li>
-            <NavLink to="#">티빙</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/platformLogo/netflix.png`}
+              onClick={() => handleClick('netflix')}
+            />
           </li>
           <li>
-            <NavLink to="#">왓챠</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/platformLogo/disney.png`}
+              onClick={() => handleClick('disneyPlus')}
+            />
           </li>
           <li>
-            <NavLink to="#">웨이브</NavLink>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/platformLogo/tving.png`}
+              onClick={() => handleClick('netflix')}
+            />
+          </li>
+          <li>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/platformLogo/watcha.png`}
+              onClick={() => handleClick('watcha')}
+            />
+          </li>
+          <li>
+            <PlatformBtn
+              imageUrl={`${PublicURL}/img/platformLogo/wavve.png`}
+              onClick={() => handleClick('wavve')}
+            />
           </li>
         </ul>
-
-        <Button width="10rem" height="2rem" color="red">
-          <NavLink to="/community/recruit/write">파티장 되기</NavLink>
-        </Button>
+        <NavLink to="/community/recruit/write">
+          <Button width="10rem" height="2rem" color="red">
+            파티장 되기
+          </Button>
+        </NavLink>
       </CategoryStyled>
     </>
   )

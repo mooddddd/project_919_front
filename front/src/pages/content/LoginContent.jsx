@@ -51,17 +51,11 @@ export const LoginForm = () => {
       return
     }
     try {
-      console.log('1234')
       await dispatch(loginUser({ userId, userPw }, 'user/login'))
-      console.log('12345')
       setAlertMessage('로그인에 성공했습니다. 메인 페이지로 이동합니다')
-      console.log('12346')
       setAlertStatus('success')
-      console.log('12347')
       setTimeout(() => {
-        console.log('1238')
         navigate('/')
-        console.log('1239')
       }, 2000)
     } catch (error) {
       console.error('Login Error:', error)
