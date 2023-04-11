@@ -7,3 +7,4 @@ export * from './CertificationContent'
 export * from './recruitContents'
 export * from './MainContentTop'
 export * from './SearchContent'
+export * from "./mypage"

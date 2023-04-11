@@ -1,10 +1,11 @@
 import styled from "styled-components"
 
 export const MyInfoData = styled.div`
-    width: 500px;
-    height: 600px;
+    width: 100%;
+    height: 50px;
     display: flex;
-    justify-content: center;
+    margin-top: 20px;
+    justify-content: right;
     align-items: center;
-    /* background-color: #b1eeff; */
+    padding-right: 20px;
 `
