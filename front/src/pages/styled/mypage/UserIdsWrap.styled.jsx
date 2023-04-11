@@ -10,4 +10,5 @@ export const UserIdsWrap = styled.div`
     border-radius: 15px;
     margin-top: 50px;
     margin-bottom: 10px;
+    font-size: 1rem;
 `

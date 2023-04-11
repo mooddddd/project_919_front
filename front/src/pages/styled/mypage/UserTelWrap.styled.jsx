@@ -10,4 +10,5 @@ export const UserTelWrap = styled.div`
     border-radius: 15px;
     margin-top: 30px;
     margin-bottom: 30px;
+    font-size: 1rem;
 `

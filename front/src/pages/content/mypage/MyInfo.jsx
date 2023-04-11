@@ -82,13 +82,13 @@ const Info = ({ infoData, setModifyInfo }) => {
 
       <UsersWrap>
         <UserIdsWrap>
-          userId : {infoData[0]}
+        USER ID : {infoData[0]}
         </UserIdsWrap>
         <UserNickWrap>
-          userNick : {infoData[1]}
+        USER NICKNAME : {infoData[1]}
         </UserNickWrap>
         <UserTelWrap type='number'>
-          phone : {infoData[2]}
+        PHONE : {infoData[2]}
         </UserTelWrap>
       </UsersWrap>
 

@@ -9,4 +9,5 @@ export const UserNickWrap = styled.div`
     margin-top: 20px;
     align-items: center;
     border-radius: 15px;
+    font-size: 1rem;
 `
