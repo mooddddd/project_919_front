@@ -109,12 +109,10 @@ a {
 }
 
 .profileIcon {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto;
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
+  width: 130px;
+  height: 130px;
+  /* margin: 50px auto;
+  display: flex; */
 }
 
 button {
@@ -259,18 +257,17 @@ button {
 }
 
 .btn-hover {
-  cursor: pointer;
-  margin: 20px;
-  height: 55px;
-  text-align: center;
-  border: none;
-  background-size: 300% 100%;
-
-  border-radius: 50px;
-  moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
 }
 
 .btn-hover:hover {
@@ -329,17 +326,11 @@ button {
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.netflixbtn {
-  width: 200px;
+.mySavebtn {
+  width: 400px;
   height: 45px;
-  background-image: linear-gradient(
-    to right,
-    #25aae1,
-    #40e495,
-    #30dd8a,
-    #2bb673
-  );
-  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
   color: rgb(255, 255, 255);
   border-radius: 5px;
   font-weight: 300;
