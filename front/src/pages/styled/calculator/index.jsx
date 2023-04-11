@@ -1,5 +1,4 @@
 export * from './calWrapper.styled'
-export * from './calDiv.styled'
 export * from './contentTop.styled'
 export * from './contentBottom.styled'
 export * from './ottBtn.styled'
