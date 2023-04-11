@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { request } from '../../utils'
 import {
   CalWrapper,
-  CalDiv,
   ContentTop,
   ContentBottom,
   OttBtn,
@@ -62,7 +61,7 @@ export const CalculatorContent = () => {
     setCalculPrice(test)
   }
 
-  // 변경된 상태 map 사용
+  // 변경된 상태에 map 사용해서 list 생성
   const platformList = platform.map((v) => {
     return (
       <OttBtn
@@ -88,7 +87,7 @@ export const CalculatorContent = () => {
   })
   const currencyList = currency.map((v) => {
     return (
-      <div className="currency">
+      <div className="currency" key={v.id}>
         <div>
           🔹 1 {v['Country.countryCode']} = {v.currencyValue}원
         </div>
@@ -98,8 +97,6 @@ export const CalculatorContent = () => {
       </div>
     )
   })
-
-  console.log(currency)
 
   return (
     <>
@@ -164,7 +161,8 @@ export const CalculatorContent = () => {
                 〰️〰️〰️〰️ <br />
                 o
                 <br />o
-                <img src={`${publicPath}/img/test.png`} /> <br />
+                <img src={`${publicPath}/img/test.png`} alt="calculator" />
+                <br />
                 <Button color="red" width="100%" height="2rem">
                   <a href="/community/recruit/list">파티원 구하러 가기!</a>
                 </Button>
@@ -179,7 +177,6 @@ export const CalculatorContent = () => {
                 <br />
               </Right>
             </ContentBottom>
-            <div className="notice"></div>
           </div>
         </div>
       </CalWrapper>
