@@ -7,6 +7,7 @@ import {
   Login,
   Logout,
   Loading,
+  Search,
 } from '../pages'
 import { CommunityRouter } from './CommunityRouter'
 import { AuthProvider } from '../hooks/AuthProvider'
@@ -25,6 +26,7 @@ export const AppRouter = () => {
           <Route path="/logout" element={<Logout />} />
 
           <Route path="/community/*" element={<CommunityRouter />} />
+          <Route path="/search/*" element={<Search />} />
         </Routes>
       </AuthProvider>
     </>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const ButtonStyled = styled.button`
   display: block;
@@ -14,15 +14,15 @@ const ButtonStyled = styled.button`
     background: #ff8f8f;
     cursor: pointer;
   }
-`;
+`
 
 const backgroundColor = {
-  red: "#ff5858",
-  gray: "#6D6D6D",
-  moreGray: "#A1A1A1",
-  transparency: "#ffffff0",
-  darkBlue: "#172950af",
-};
+  red: '#ff5858',
+  gray: '#6D6D6D',
+  moreGray: '#A1A1A1',
+  transparency: '#ffffff0',
+  darkBlue: '#172950af',
+}
 
 export const Button = ({ children, width, height, type, onClick, color }) => {
   return (
@@ -35,5 +35,5 @@ export const Button = ({ children, width, height, type, onClick, color }) => {
     >
       {children}
     </ButtonStyled>
-  );
-};
+  )
+}

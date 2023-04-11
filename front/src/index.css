@@ -150,7 +150,6 @@ button {
   background-size: cover;
 }
 
-
 .image {
   position: absolute;
   width: 300px;
@@ -164,10 +163,10 @@ button {
   transition: all 0.4s ease-in-out;
 }
 
-span {
+/* span {
   margin: auto;
   font-size: 2rem;
-}
+} */
 
 .image:nth-child(1) {
   background-image: url('/public/img/watchaslide.png');
@@ -187,10 +186,10 @@ span {
 
 .image:nth-child(3) {
   background-image: url('/public/img/netflixslide.jpeg');
-  transform: rotateY( 80deg) translateZ(430px);
+  transform: rotateY(80deg) translateZ(430px);
   background-size: cover;
 }
-.image:nth-child(3):hover{
+.image:nth-child(3):hover {
   transform: scale(1) rotateY(80deg) translateZ(430px);
 }
 
@@ -227,7 +226,7 @@ span {
   background-size: cover;
 }
 
-.image:nth-child(7):hover{
+.image:nth-child(7):hover {
   transform: scale(2) rotateY(-240deg) translateZ(-430px);
 }
 
@@ -246,7 +245,7 @@ span {
   background-size: cover;
 }
 
-.image:nth-child(9):hover{
+.image:nth-child(9):hover {
   transform: scale(2) rotateY(-320deg) translateZ(-430px);
 }
 
@@ -260,36 +259,42 @@ span {
 }
 
 .btn-hover {
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
 
-    border-radius: 50px;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+  border-radius: 50px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .btn-hover:hover {
-    background-position: 100% 0;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .btn-hover:focus {
-    outline: none;
+  outline: none;
 }
 
 .btn-hover.youtubebtn {
   width: 200px;
   height: 45px;
-  background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+  background-image: linear-gradient(
+    to right,
+    #ed6ea0,
+    #ec8c69,
+    #f7186a,
+    #fbb03b
+  );
   box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
   color: #fff;
   border-radius: 5px;
@@ -298,69 +303,105 @@ span {
   font-weight: 300;
   font-size: 1.3rem;
   letter-spacing: 1px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .wavvebtn {
   width: 200px;
   height: 45px;
-  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  
-  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+  background-image: linear-gradient(
+    to right,
+    #eb3941,
+    #f15e64,
+    #e14e53,
+    #e2373f
+  );
+  box-shadow: 0 5px 15px rgba(242, 97, 103, 0.4);
   color: rgb(255, 255, 255);
-  border-radius: 5px; 
+  border-radius: 5px;
   text-align: center;
   font-weight: 300;
   font-size: 1.5rem;
   letter-spacing: 1px;
   border: none;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .netflixbtn {
   width: 200px;
   height: 45px;
-  background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  background-image: linear-gradient(
+    to right,
+    #25aae1,
+    #40e495,
+    #30dd8a,
+    #2bb673
+  );
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
   color: rgb(255, 255, 255);
-  border-radius: 5px; 
+  border-radius: 5px;
   font-weight: 300;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
   border: none;
 }
 .watchabtn {
   width: 200px;
   height: 45px;
-  background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+  background-image: linear-gradient(
+    to right,
+    #f5ce62,
+    #e43603,
+    #fa7199,
+    #e85a19
+  );
   box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
   color: rgb(255, 255, 255);
-  border-radius: 5px; 
+  border-radius: 5px;
   font-weight: 300;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
   border: none;
 }
 .tvingbtn {
   width: 200px;
   height: 45px;
-  background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+  background-image: linear-gradient(
+    to right,
+    #fc6076,
+    #ff9a44,
+    #ef9d43,
+    #e75516
+  );
   box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
   color: rgb(255, 255, 255);
-  border-radius: 5px; 
+  border-radius: 5px;
   font-weight: 300;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
   border: none;
 }
 .disneybtn {
   width: 200px;
   height: 45px;
-  background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+  background-image: linear-gradient(
+    to right,
+    #ed6ea0,
+    #ec8c69,
+    #f7186a,
+    #fbb03b
+  );
   box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
   color: #fff;
-  border-radius: 5px; 
+  border-radius: 5px;
   font-weight: 300;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
   border: none;
 }
