@@ -8,6 +8,7 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
+  SET_USER_INDEX,
 } from './user.action.type'
 import { domain, request } from '../../utils/axios'
 
@@ -88,3 +89,8 @@ export const logoutUser = () => async (dispatch) => {
     dispatch(logoutFailure(error))
   }
 }
+
+export const setUserIndex = (userIndex) => ({
+  type: SET_USER_INDEX,
+  payload: userIndex,
+})
