@@ -6,4 +6,4 @@ export * from './SignUp'
 export * from './Login'
 export * from '../common'
 export * from './content'
-export * from "./styled"
+export * from './styled'

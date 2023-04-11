@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const MyBackground = styled.div`
-  width: 550px;
-  height: 750px;
+  width: 650px;
+  height: 100%;
   margin: 0 auto;
+  /* margin-bottom: 100px; */
   border-radius: 6px;
   display: flex;
   justify-content: center;

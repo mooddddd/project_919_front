@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { getUserInfo } from '../../../store/user/user.action.api'
 import { getCookie } from '../../../utils'
 import { useNavigate } from 'react-router-dom'
-
+import { UsersWrap, UserIdsWrap, UserTelWrap, UserNickWrap, MySaveBtn } from "../../../pages/styled"
 const publicPath = process.env.PUBLIC_URL
 
 export const MyInfo = () => {
@@ -62,6 +62,7 @@ export const MyInfo = () => {
 }
 
 const Info = ({ infoData, setModifyInfo }) => {
+  
   return (
     <>
       <JoinProfile>
@@ -72,29 +73,36 @@ const Info = ({ infoData, setModifyInfo }) => {
         ) : (
           <>
             <img
-              src={`${publicPath}/img/profile.png`}
+              src={`${publicPath}/img/profiletwo.png`}
               className="profileIcon"
             />
           </>
         )}
       </JoinProfile>
-      userId : {infoData[0]}
-      <br />
-      userNick : {infoData[1]}
-      <br />
-      phone : {infoData[2]}
-      <br />
-      <Button
-        color="red"
-        width="5rem"
-        height="2rem"
-        onClick={(e) => {
-          setModifyInfo(true)
-        }}
-      >
-        저장하기
-      </Button>
+
+      <UsersWrap>
+        <UserIdsWrap>
+          userId : {infoData[0]}
+        </UserIdsWrap>
+        <UserNickWrap>
+          userNick : {infoData[1]}
+        </UserNickWrap>
+        <UserTelWrap type='number'>
+          phone : {infoData[2]}
+        </UserTelWrap>
+      </UsersWrap>
+
+      <MySaveBtn>
+        <button className='btn-hover mySavebtn' onClick={(e)=>{setModifyInfo(true)}}>
+          save
+        </button>
+      </MySaveBtn>
     </>
+    // <input type="checkbox" id="toggle" hidden> 
+
+    // <label for="toggle" class="toggleSwitch">
+    //   <span class="toggleButton"></span>
+    // </label>
   )
 }
 
