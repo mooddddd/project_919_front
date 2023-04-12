@@ -22,7 +22,7 @@ export const SearchContent = () => {
         throw new Error(e)
       }
     })()
-  }, [])
+  }, [keyword])
 
   const list = searchResult.map((v) => {
     return (
