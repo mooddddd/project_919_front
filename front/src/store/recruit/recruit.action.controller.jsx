@@ -1,59 +1,59 @@
-import { SET_LIKED_POSTS, SET_JOINED_POSTS } from './recruit.action.type.jsx'
-
 import {
-  apiClickLike,
-  apiJoinMember,
-  apiCheckMember,
-  apiGetUserLikedPosts,
-  apiGetUserJoinedPosts,
-} from './recruit.action.api.jsx'
+  FETCH_RECRUITS,
+  TOGGLE_LIKE,
+  TOGGLE_JOIN,
+  SET_JOINED_POSTS,
+  SET_LIKED_POSTS,
+} from './recruit.action.type'
+import {
+  getRecruitsApi,
+  clickLikeApi,
+  joinMemberApi,
+  checkMemberApi,
+  getLikedPostsApi,
+} from './recruit.action.api'
 
-export const fetchLikedPosts = (userIndex) => async (dispatch) => {
+export const fetchRecruits = (url) => async (dispatch) => {
   try {
-    const likedPostsData = await apiGetUserLikedPosts(userIndex)
-    dispatch({
-      type: SET_LIKED_POSTS,
-      payload: likedPostsData.reduce((acc, post) => {
-        acc[post.recruitIndex] = true
-        return acc
-      }, {}),
-    })
+    const data = await getRecruitsApi(url)
+    dispatch({ type: FETCH_RECRUITS, payload: data })
   } catch (e) {
-    console.error(
-      `Error FetchLikedPosts in recruit.action.controller.jsx: ${e}`
-    )
+    console.log(`This error occurring in fetchRecruits action: ${e}`)
   }
 }
 
-export const fetchJoinedPosts = (userIndex) => async (dispatch) => {
+export const toggleLike = (userIndex, recruitIndex) => async (dispatch) => {
   try {
-    const joinedPostsData = await apiGetUserJoinedPosts(userIndex)
-    dispatch({
-      type: SET_JOINED_POSTS,
-      payload: joinedPostsData.reduce((acc, post) => {
-        acc[post.recruitIndex] = true
-        return acc
-      }),
-    })
+    await clickLikeApi(userIndex, recruitIndex)
+    dispatch({ type: TOGGLE_LIKE, payload: recruitIndex })
   } catch (e) {
-    console.error(
-      `Error FetchJoinedPosts in recruit.action.controller.jsx: ${e}`
-    )
+    console.log(`This error occurring in toggleLike action: ${e}`)
   }
 }
 
-export const clickLike = (userIndex, recruitIndex) => async (dispatch) => {
+export const toggleJoin = (userIndex, recruitIndex) => async (dispatch) => {
   try {
-    await apiClickLike(userIndex, recruitIndex)
+    await joinMemberApi(userIndex, recruitIndex)
+    dispatch({ type: TOGGLE_JOIN, payload: recruitIndex })
   } catch (e) {
-    console.error(`Error ClickLike in recruit.action.controller.jsx: ${e}`)
+    console.log(`This error occurring in toggleJoin action: ${e}`)
   }
 }
 
-export const joinMember = (userIndex, recruitIndex) => async () => {
+export const setJoinedPosts = (userIndex) => async (dispatch) => {
   try {
-    await apiJoinMember(userIndex, recruitIndex)
+    const data = await checkMemberApi(userIndex)
+    dispatch({ type: SET_JOINED_POSTS, payload: data })
   } catch (e) {
-    console.error(`Error JoinMember in recruit.action.controller.jsx: ${e}`)
+    console.log(`This error occurring in setJoinedPosts action: ${e}`)
+  }
+}
+
+export const setLikedPosts = (userIndex) => async (dispatch) => {
+  try {
+    const data = await getLikedPostsApi(userIndex)
+    dispatch({ type: SET_LIKED_POSTS, payload: data })
+  } catch (e) {
+    console.log(`This error occurring in setLikedPosts action: ${e}`)
   }
 }
