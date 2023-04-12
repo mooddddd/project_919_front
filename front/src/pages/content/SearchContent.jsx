@@ -1,25 +1,41 @@
 import { request } from '../../utils'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export const SearchContent = () => {
-  const navigator = useNavigate()
+  const { keyword } = useSelector((state) => state.search)
+  const [searchResult, setSearchResult] = useState([])
+
+  if (window.location.pathname === '/search') {
+    alert('잘못된 접근입니다!')
+    window.history.back()
+  }
+
   useEffect(() => {
     ;(async () => {
       try {
-        // if ((window.location.pathname = '/serch')) {
-        //   alert('잘못된 접근입니다ㅂ!')
-        //   return navigator('/')
-        // } else { // 어떻게 쫓아내지,,,?
-        const result = await request.get(`${window.location.pathname}`)
-        console.log(result)
+        const { data } = await request.get(`search/${keyword}`)
+        console.log(data)
+        setSearchResult(data)
         // }
       } catch (e) {
         throw new Error(e)
       }
     })()
   }, [])
-  //   const sch = window.location.search
-  //   console.log(window.location.pathname)
-  return <> 검색 내용 </>
+
+  const list = searchResult.map((v) => {
+    return (
+      <div key={v.recruitIndex}>
+        <a>{v.title}</a>
+      </div>
+    )
+  })
+
+  return (
+    <>
+      <div>{keyword}에 관한 검색 결과</div>
+      <div>{searchResult.length === 0 ? '관련 게시물이 없습니다' : list}</div>
+    </>
+  )
 }
