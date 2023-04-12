@@ -257,17 +257,17 @@ button {
 }
 
 .btn-hover {
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-    border-radius: 50px;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .btn-hover:hover {
@@ -329,7 +329,13 @@ button {
 .mySavebtn {
   width: 400px;
   height: 45px;
-  background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+  background-image: linear-gradient(
+    to right,
+    #667eea,
+    #764ba2,
+    #6b8dd6,
+    #8e37d7
+  );
   box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
   color: rgb(255, 255, 255);
   border-radius: 5px;
@@ -395,4 +401,9 @@ button {
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
   border: none;
+}
+
+.firstDiv {
+  display: flex;
+  flex-direction: row;
 }

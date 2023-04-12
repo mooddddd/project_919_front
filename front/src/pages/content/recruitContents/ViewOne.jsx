@@ -8,18 +8,23 @@ import {
 import { Button } from '../../../common'
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { request } from '../../../utils'
+import { request, domain } from '../../../utils'
 import { useParams } from 'react-router-dom'
+
 export const ViewOne = () => {
   const [member, setMember] = useState(true)
-  const [data, setData] = useState('')
-  const params = useParams()
+  const [data, setData] = useState({})
+  const { recruitIndex } = useParams()
 
   useEffect(() => {
     ;(async () => {
       try {
-        const response = await request.get(`recruit/view/${params.id}`)
-        setData(response.data)
+        const response = await request.get(
+          `${domain}recruit/getonerecruit/${recruitIndex}`
+        )
+        console.log(response.data)
+        const memberCount = response.data.Members.length
+        setData({ ...response.data, memberCount })
       } catch (e) {
         console.log(`error`)
       }
@@ -27,15 +32,13 @@ export const ViewOne = () => {
   }, [])
 
   const clickHandler = async (e) => {
-    // 유저아이디 백에 보내고 있는지 없는지 확인, 없으면 디비에 추가, 있으면 디비에서 삭제
     e.preventDefault()
     try {
       const token = document.cookie.split('=')[1]
-      const response = await request.post(`recruit/view/${params.id}`, {
+      const response = await request.post(`recruit/view/${recruitIndex}`, {
         token,
       })
       console.log(response)
-      // setMember(!member) // 그리고 상태 바꿔주기!
     } catch (e) {
       console.log(`error`)
       throw new Error(e)
@@ -47,29 +50,30 @@ export const ViewOne = () => {
       <ViewOneStyled>
         <div className="firstDiv">
           <PlatformImgStyled
-            src={data['ottPlan.ottPlatform.Image']}
-            width="12rem"
+            src={data.ottPlan?.platformImage}
+            width="50%"
+            display="block"
           />
-          <div className="planNmemver">
-            <div className="plan">
-              <TextBig>
-                {data['ottPlan.planName']} / {data['ottPlan.price']}{' '}
-                {data['ottPlan.Country.countryCode']}
-              </TextBig>
-            </div>
-            <div className="member">
-              <TextNormal>현재 </TextNormal>
-              <TextBig color="red">{data['ottPlan.limit']}</TextBig>
-              <TextNormal> 명 중 </TextNormal>
-              <TextBig color="red">{data.memberCount}</TextBig>
-              <TextNormal> 명이 모였어요!</TextNormal>
-            </div>
+        </div>
+        <div className="planNmember">
+          <div className="plan">
+            <TextBig>
+              {data.ottPlan?.planName} / {data.ottPlan?.price}{' '}
+              {data.ottPlan?.Country?.countryCode}
+            </TextBig>
+          </div>
+          <div className="member">
+            <TextNormal>현재 </TextNormal>
+            <TextBig color="red">{data.ottPlan?.limit}</TextBig>
+            <TextNormal> 명 중 </TextNormal>
+            <TextBig color="red">{data.memberCount}</TextBig>
+            <TextNormal> 명이 모였어요!</TextNormal>
           </div>
         </div>
         <div>
           <TextBig>{data.title}</TextBig>
           <br />
-          <TextSmall color="gray">파티장 : {data['User.userNick']}</TextSmall>
+          <TextSmall color="gray">파티장 : {data.User?.userNick} </TextSmall>
         </div>
         <div className="lastDiv">
           <div className="left">
@@ -93,13 +97,7 @@ export const ViewOne = () => {
             <br />
             <TextBig>월 약 </TextBig>
             <TextBig color="red" bold="bold">
-              {data['ottPlan.Country.Currencies.currencyValue'] != null
-                ? Math.ceil(
-                    (data['ottPlan.price'] *
-                      data['ottPlan.Country.Currencies.currencyValue']) /
-                      data['ottPlan.limit']
-                  )
-                : Math.ceil(data['ottPlan.price'] / data['ottPlan.limit'])}
+              {data.perPrice}
             </TextBig>
             <TextBig> 원</TextBig> <br />
             <TextSmall color="lightGray">
