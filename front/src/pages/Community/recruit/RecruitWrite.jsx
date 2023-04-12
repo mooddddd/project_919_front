@@ -1,34 +1,46 @@
-import { BoardLayout } from "../../../common";
-import { RecruitWrap } from "../../styled";
-import { RecruitTop, RecruitForm } from "../../content/recruitContents";
+import { useState, useEffect } from 'react'
+import { BoardLayout } from '../../../common'
+import { RecruitWrap } from '../../styled'
+import { RecruitTop, RecruitForm } from '../../content/recruitContents'
+import { useParams, useLocation } from 'react-router-dom'
+import { request, domain } from '../../../utils/axios'
+
+const fetchRecruitData = async (recruitIndex) => {
+  try {
+    const response = await request.get(
+      `${domain}recruit/getonerecruit/${recruitIndex}`
+    )
+    return response.data
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 export const RecruitWrite = () => {
-  // [
-  //   "-플랫폼 선택-",
-  //   "유튜브",
-  //   "넷플릭스",
-  //   "디즈니플러스",
-  //   "웨이브",
-  //   "티빙",
-  //   "왓챠",
-  // ];
+  const { recruitIndex } = useParams()
+  const location = useLocation()
+  const [isModify, setIsModify] = useState(false)
+  const [recruitData, setRecruitData] = useState(null)
+
+  useEffect(() => {
+    if (location.pathname.includes('modify')) {
+      setIsModify(true)
+      fetchRecruitData(recruitIndex).then((data) => {
+        setRecruitData(data)
+      })
+    } else {
+      setIsModify(false)
+    }
+  }, [location.pathname, recruitIndex])
 
   return (
     <>
       <BoardLayout>
         <RecruitWrap>
           <RecruitTop />
-          <RecruitForm />
+          <RecruitForm isModify={isModify} recruitData={recruitData} />
         </RecruitWrap>
       </BoardLayout>
     </>
-  );
-};
-
-// { 플랫폼_선택 },
-// { 유튜브 },
-// { 넷플릭스 },
-// { 디즈니플러스 },
-// { 웨이브 },
-// { 티빙 },
-// { 왓챠 },
+  )
+}
