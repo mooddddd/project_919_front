@@ -8,6 +8,7 @@ export const RecruitRouter = () => {
         <Route path="write" element={<RecruitWrite />} />
         <Route path="view/:recruitIndex" element={<RecruitView />} />
         <Route path="list" element={<RecruitList />} />
+        <Route path="modify/:recruitIndex" element={<RecruitWrite />} />
       </Routes>
     </>
   )

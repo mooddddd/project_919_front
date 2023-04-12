@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-export const RecruitForm = () => {
+export const RecruitForm = ({ isModify, recruitData }) => {
   const height = '1.5rem'
   const navigate = useNavigate()
   const userIndex = useSelector((state) => state.user.user.userIndex)
@@ -41,6 +41,18 @@ export const RecruitForm = () => {
       }
     })()
   }, [])
+
+  useEffect(() => {
+    if (isModify && recruitData) {
+      plan.setValue(recruitData.ottPlan.planName)
+      title.setValue(recruitData.title)
+      member.setValue(recruitData.member)
+      startDate.setValue(recruitData.startDate)
+      endDate.setValue(recruitData.endDate)
+      openChatLink.setValue(recruitData.openChatLink)
+      content.setValue(recruitData.content)
+    }
+  }, [isModify, recruitData])
 
   // 플랫폼 카테고리(맵 사용)
   const ottList = platformList.map((item, index) => (
@@ -118,10 +130,21 @@ export const RecruitForm = () => {
       perPrice: perPrice,
     }
     console.log(body)
-    const result = await request.post(`${domain}recruit/createrecruit`, body)
-    console.log('Server Response:', result) // 서버 응답을 콘솔에 출력합니다.
-    const recruitIndex = result.data.recruitIndex
-    navigate(`/community/recruit/view/${recruitIndex}`)
+
+    const recruitIndex = isModify ? recruitData.recruitIndex : null
+
+    if (isModify) {
+      const result = await request.put(
+        `${domain}recruit/updaterecruit/${recruitIndex}`,
+        body
+      )
+      console.log('Server Response:', result)
+    } else {
+      const result = await request.post(`${domain}recruit/createrecruit`, body)
+      console.log('Server Response:', result)
+      const recruitIndex = result.data.recruitIndex
+      navigate(`/community/recruit/view/${recruitIndex}`)
+    }
   }
 
   return (

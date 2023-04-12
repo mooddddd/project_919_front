@@ -4,17 +4,33 @@ import {
   TextBig,
   TextNormal,
   TextSmall,
+  BtnArea,
 } from '../../styled'
 import { Button } from '../../../common'
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { request, domain } from '../../../utils'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const ViewOne = () => {
   const [member, setMember] = useState(true)
   const [data, setData] = useState({})
   const { recruitIndex } = useParams()
+  const { user } = useSelector((state) => state.user)
+  const userIndex = user.userIndex
+
+  const joinMember = async () => {
+    try {
+      const response = await request.post(`${domain}recruit/joinmember`, {
+        userIndex,
+        recruitIndex,
+      })
+      setMember(false)
+    } catch (e) {
+      console.log(`error`)
+    }
+  }
 
   useEffect(() => {
     ;(async () => {
@@ -22,7 +38,6 @@ export const ViewOne = () => {
         const response = await request.get(
           `${domain}recruit/getonerecruit/${recruitIndex}`
         )
-        console.log(response.data)
         const memberCount = response.data.Members.length
         setData({ ...response.data, memberCount })
       } catch (e) {
@@ -30,20 +45,6 @@ export const ViewOne = () => {
       }
     })()
   }, [])
-
-  const clickHandler = async (e) => {
-    e.preventDefault()
-    try {
-      const token = document.cookie.split('=')[1]
-      const response = await request.post(`recruit/view/${recruitIndex}`, {
-        token,
-      })
-      console.log(response)
-    } catch (e) {
-      console.log(`error`)
-      throw new Error(e)
-    }
-  }
 
   return (
     <>
@@ -110,25 +111,27 @@ export const ViewOne = () => {
                 width="7rem"
                 height="2rem"
                 color="red"
-                onClick={clickHandler}
+                onClick={joinMember}
               >
                 참여하기
               </Button>
             ) : (
-              <Button
-                width="7rem"
-                height="2rem"
-                color="gray"
-                onClick={clickHandler}
-              >
+              <Button width="7rem" height="2rem" color="gray">
                 참여완료
               </Button>
             )}
           </div>
         </div>
-        <Button width="10rem" height="2rem" color="red">
-          <NavLink to="/community/recruit/list">목록으로</NavLink>
-        </Button>
+        <BtnArea>
+          <Button width="10rem" height="2rem" color="red">
+            <NavLink to="/community/recruit/modify/${recruitIndex}">
+              수정하기
+            </NavLink>
+          </Button>
+          <Button width="10rem" height="2rem" color="red">
+            <NavLink to="/community/recruit/list">목록으로</NavLink>
+          </Button>
+        </BtnArea>
       </ViewOneStyled>
     </>
   )
