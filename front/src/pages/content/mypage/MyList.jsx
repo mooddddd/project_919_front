@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { request } from '../../../utils'
 import { getCookie } from '../../../utils'
 import { NavLink } from 'react-router-dom'
+import { PartyWrapper, PartyMyWrite, MyPickWrite, PartyJoin, MyListWrap, MyParticipateWrap, MyPickWrap } from "../../styled"
 
 export const MyList = () => {
   const [myList, setMyList] = useState(['리스트 테스트'])
@@ -41,18 +42,26 @@ export const MyList = () => {
 
   return (
     <>
-      <div>
-        <span>내가 쓴 글 :</span>
-        {listFunc(myPost)}
-      </div>
-      <div>
-        <span>내가 참여한 글 :</span>
-        <div>{listFunc(myList)}</div>
-      </div>
-      <div>
-        <span>관심있는 글 :</span>
-        <div>{listFunc(myLike)}</div>
-      </div>
+      <PartyWrapper>
+        <MyListWrap>
+          내가 작성한 글
+            <PartyMyWrite>
+              {listFunc(myPost)}
+            </PartyMyWrite>
+        </MyListWrap>
+        <MyParticipateWrap>
+          나의 참가 글
+          <PartyJoin> 
+            {listFunc(myList)}
+          </PartyJoin>
+        </MyParticipateWrap>
+        <MyPickWrap>
+            My Pick 
+          <MyPickWrite>
+            {listFunc(myLike)}
+          </MyPickWrite>
+        </MyPickWrap>
+      </PartyWrapper>
     </>
   )
 }
