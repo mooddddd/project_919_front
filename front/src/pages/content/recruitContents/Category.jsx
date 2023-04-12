@@ -54,7 +54,7 @@ export const Category = ({ onCategoryClick }) => {
           <li>
             <PlatformBtn
               imageUrl={`${PublicURL}/img/platformLogo/tving.png`}
-              onClick={() => handleClick('netflix')}
+              onClick={() => handleClick('tving')}
             />
           </li>
           <li>
