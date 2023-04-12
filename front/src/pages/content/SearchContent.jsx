@@ -1,6 +1,7 @@
 import { request } from '../../utils'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { BoardLayout } from '../../common'
 
 export const SearchContent = () => {
   const { keyword } = useSelector((state) => state.search)
@@ -22,20 +23,25 @@ export const SearchContent = () => {
         throw new Error(e)
       }
     })()
-  }, [])
+  }, [keyword])
 
   const list = searchResult.map((v) => {
     return (
       <div key={v.recruitIndex}>
+        <img src={v['ottPlan.platformImage']} />
         <a>{v.title}</a>
+        <span></span>
+        <span>{v['User.userNick']}</span>
       </div>
     )
   })
 
   return (
     <>
-      <div>{keyword}에 관한 검색 결과</div>
-      <div>{searchResult.length === 0 ? '관련 게시물이 없습니다' : list}</div>
+      <BoardLayout>
+        <div>"{keyword}"에 관한 검색 결과</div>
+        <div>{searchResult.length === 0 ? '관련 게시물이 없습니다' : list}</div>
+      </BoardLayout>
     </>
   )
 }
