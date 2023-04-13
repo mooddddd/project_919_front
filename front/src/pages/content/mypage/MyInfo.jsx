@@ -8,7 +8,21 @@ import { useEffect } from 'react'
 import { getUserInfo } from '../../../store/user/user.action.api'
 import { getCookie } from '../../../utils'
 import { useNavigate } from 'react-router-dom'
-import { UsersWrap, UserIdsWrap, UserTelWrap, UserNickWrap, MySaveBtn, InfoWrapper, InfoUserId, UseridWrapper, UserpwWrapper, InfoBtnWrap, BtnOne, BtnTwo, MyPhoneWrap} from "../../../pages/styled"
+import {
+  UsersWrap,
+  UserIdsWrap,
+  UserTelWrap,
+  UserNickWrap,
+  MySaveBtn,
+  InfoWrapper,
+  InfoUserId,
+  UseridWrapper,
+  UserpwWrapper,
+  InfoBtnWrap,
+  BtnOne,
+  BtnTwo,
+  MyPhoneWrap,
+} from '../../../pages/styled'
 const publicPath = process.env.PUBLIC_URL
 
 export const MyInfo = () => {
@@ -62,7 +76,6 @@ export const MyInfo = () => {
 }
 
 const Info = ({ infoData, setModifyInfo }) => {
-  
   return (
     <>
       <JoinProfile>
@@ -81,21 +94,18 @@ const Info = ({ infoData, setModifyInfo }) => {
       </JoinProfile>
 
       <UsersWrap>
-        <UserIdsWrap>
-        USER ID : {infoData[0]}
-        </UserIdsWrap>
-        <UserNickWrap>
-        USER NICKNAME : {infoData[1]}
-        </UserNickWrap>
-        <UserTelWrap type='number'>
-        PHONE : {infoData[2]}
-        </UserTelWrap>
+        <UserIdsWrap>USER ID : {infoData[0]}</UserIdsWrap>
+        <UserNickWrap>USER NICKNAME : {infoData[1]}</UserNickWrap>
+        <UserTelWrap type="number">PHONE : {infoData[2]}</UserTelWrap>
       </UsersWrap>
 
-      <MySaveBtn>
-        <button className='btn-hover mySavebtn' onClick={(e)=>{setModifyInfo(true)}}>
-          save
-        </button>
+      <MySaveBtn
+        className="btn-hover mySavebtn"
+        onClick={(e) => {
+          setModifyInfo(true)
+        }}
+      >
+        수정하기
       </MySaveBtn>
     </>
   )
@@ -168,10 +178,20 @@ const Modify = ({ infoData, setModifyInfo, setMyInfo, token }) => {
         </Alert>
       )}
       <InfoWrapper onSubmit={modifyHandler} encType="multipart/form-data">
-        <input type="hidden" name="userIndex" value={userIndex} /> 
+        <input type="hidden" name="userIndex" value={userIndex} />
         <JoinProfile>
-        <img src={img ? img : `${publicPath}/${infoData[3]}`} className="profileIcon" alt="profileIcon" />
-        <input type="file" name="picture" accept="image/jpg, image/png, image/jpeg" onChange={changeImgHandler} multiple />
+          <img
+            src={img ? img : `${publicPath}/${infoData[3]}`}
+            className="profileIcon"
+            alt="profileIcon"
+          />
+          <input
+            type="file"
+            name="picture"
+            accept="image/jpg, image/png, image/jpeg"
+            onChange={changeImgHandler}
+            multiple
+          />
         </JoinProfile>
         <UseridWrapper>
           UserID
@@ -180,41 +200,43 @@ const Modify = ({ infoData, setModifyInfo, setMyInfo, token }) => {
         <UserpwWrapper>
           UserPW
           <InputBox
-          name="newPassword"
-          id="newPassword"
-          type="password"
-          placeholder="🔒 비밀번호를 입력해주세요"
-          required
-          {...pw} />
+            name="newPassword"
+            id="newPassword"
+            type="password"
+            placeholder="🔒 비밀번호를 입력해주세요"
+            required
+            {...pw}
+          />
           <InputBox
-          type="password"
-          placeholder="🔒 비밀번호를 다시 한번 입력해주세요"
-          required
-          onChange={onConfirmPwHandler}
+            type="password"
+            placeholder="🔒 비밀번호를 다시 한번 입력해주세요"
+            required
+            onChange={onConfirmPwHandler}
           />
           {pw.value &&
             confirmPw &&
             (pw.value === confirmPw ? (
-            <Message className="confirm">비밀번호가 일치합니다</Message>
+              <Message className="confirm">비밀번호가 일치합니다</Message>
             ) : (
-            <Message className="alert">비밀번호 확인이 필요합니다</Message>
+              <Message className="alert">비밀번호 확인이 필요합니다</Message>
             ))}
           userNick
-          <InputBox name="userNick" className='usernicks' {...userNick} />
+          <InputBox name="userNick" className="usernicks" {...userNick} />
           <br />
-          phone 
-          <MyPhoneWrap>
-            {infoData[2]}
-          </MyPhoneWrap>
-          <InfoBtnWrap>
-              <BtnOne className='btn-hover youtubebtn'>
-                수정완료
-              </BtnOne>
-              <BtnTwo className='btn-hover mySavebtn' onClick={(e) => {setModifyInfo(false)}}>
-                수정취소 
-            </BtnTwo>
-          </InfoBtnWrap>
+          phone
+          <MyPhoneWrap>{infoData[2]}</MyPhoneWrap>
         </UserpwWrapper>
+        <InfoBtnWrap>
+          <BtnOne className="btn-hover youtubebtn">수정완료</BtnOne>
+          <BtnTwo
+            className="btn-hover mySavebtn"
+            onClick={(e) => {
+              setModifyInfo(false)
+            }}
+          >
+            수정취소
+          </BtnTwo>
+        </InfoBtnWrap>
       </InfoWrapper>
     </>
   )

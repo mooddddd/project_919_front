@@ -1,6 +1,9 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const InfoBtnWrap = styled.div`
-    display: flex;
-    justify-content: space-between;
+  margin: 2rem auto;
+  width: 50%;
+  display: flex;
+  padding-bottom: 3rem;
+  justify-content: space-between;
 `
