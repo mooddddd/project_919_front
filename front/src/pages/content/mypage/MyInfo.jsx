@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { getUserInfo } from '../../../store/user/user.action.api'
 import { getCookie } from '../../../utils'
 import { useNavigate } from 'react-router-dom'
-import { UsersWrap, UserIdsWrap, UserTelWrap, UserNickWrap, MySaveBtn } from "../../../pages/styled"
+import { UsersWrap, UserIdsWrap, UserTelWrap, UserNickWrap, MySaveBtn, InfoWrapper, InfoUserId, UseridWrapper, UserpwWrapper, InfoBtnWrap, BtnOne, BtnTwo, MyPhoneWrap} from "../../../pages/styled"
 const publicPath = process.env.PUBLIC_URL
 
 export const MyInfo = () => {
@@ -98,11 +98,6 @@ const Info = ({ infoData, setModifyInfo }) => {
         </button>
       </MySaveBtn>
     </>
-    // <input type="checkbox" id="toggle" hidden> 
-
-    // <label for="toggle" class="toggleSwitch">
-    //   <span class="toggleButton"></span>
-    // </label>
   )
 }
 
@@ -172,66 +167,55 @@ const Modify = ({ infoData, setModifyInfo, setMyInfo, token }) => {
           {alertMessage}
         </Alert>
       )}
-
-      <form onSubmit={modifyHandler} encType="multipart/form-data">
-        <input type="hidden" name="userIndex" value={userIndex} />
+      <InfoWrapper onSubmit={modifyHandler} encType="multipart/form-data">
+        <input type="hidden" name="userIndex" value={userIndex} /> 
         <JoinProfile>
-          <img
-            src={img ? img : `${publicPath}/${infoData[3]}`}
-            className="profileIcon"
-            alt="profileIcon"
-          />
-          <input
-            type="file"
-            name="picture"
-            accept="image/jpg, image/png, image/jpeg"
-            onChange={changeImgHandler}
-            multiple
-          />
+        <img src={img ? img : `${publicPath}/${infoData[3]}`} className="profileIcon" alt="profileIcon" />
+        <input type="file" name="picture" accept="image/jpg, image/png, image/jpeg" onChange={changeImgHandler} multiple />
         </JoinProfile>
-        userId : {infoData[0]}
-        <br />
-        userPw :
-        <InputBox
+        <UseridWrapper>
+          UserID
+          <InfoUserId>{infoData[0]}</InfoUserId>
+        </UseridWrapper>
+        <UserpwWrapper>
+          UserPW
+          <InputBox
           name="newPassword"
           id="newPassword"
           type="password"
           placeholder="🔒 비밀번호를 입력해주세요"
           required
-          {...pw}
-        />
-        <InputBox
+          {...pw} />
+          <InputBox
           type="password"
           placeholder="🔒 비밀번호를 다시 한번 입력해주세요"
           required
           onChange={onConfirmPwHandler}
-        />
-        {pw.value &&
-          confirmPw &&
-          (pw.value === confirmPw ? (
+          />
+          {pw.value &&
+            confirmPw &&
+            (pw.value === confirmPw ? (
             <Message className="confirm">비밀번호가 일치합니다</Message>
-          ) : (
+            ) : (
             <Message className="alert">비밀번호 확인이 필요합니다</Message>
-          ))}
-        userNick : <InputBox name="userNick" {...userNick} />
-        <br />
-        phone : {infoData[2]}
-        <br />
-        {/* <img src={img ? img : `${publicPath}/img/profile.png`} /> */}
-        <Button color="red" width="5rem" height="2rem">
-          수정완료!
-        </Button>
-      </form>
-      <Button
-        color="red"
-        width="5rem"
-        height="2rem"
-        onClick={(e) => {
-          setModifyInfo(false)
-        }}
-      >
-        수정취소
-      </Button>
+            ))}
+          userNick
+          <InputBox name="userNick" className='usernicks' {...userNick} />
+          <br />
+          phone 
+          <MyPhoneWrap>
+            {infoData[2]}
+          </MyPhoneWrap>
+          <InfoBtnWrap>
+              <BtnOne className='btn-hover youtubebtn'>
+                수정완료
+              </BtnOne>
+              <BtnTwo className='btn-hover mySavebtn' onClick={(e) => {setModifyInfo(false)}}>
+                수정취소 
+            </BtnTwo>
+          </InfoBtnWrap>
+        </UserpwWrapper>
+      </InfoWrapper>
     </>
   )
 }

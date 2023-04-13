@@ -14,3 +14,4 @@ export * from './logout.styled'
 export * from "./MainConWrap.styled"
 export * from "./Parallax.styled"
 export * from "./slide"
+export * from "./InfoWrapper.styled"
