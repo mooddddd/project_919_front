@@ -1,11 +1,22 @@
 import { SlideWrap, MainConTopWrapper, MainConTopWrap,MainInfo, ButttonWrap, MainButton } from "../styled"
-
-// const $bottomBtn = document.querySelector(".moveBtm");
-// $bottomBtn.onclick = () => {
-// window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-// };
+import React, { useRef, useCallback, useEffect } from "react";
+import { useSelector } from 'react-redux';
 
 export const MainContentTop = () => {
+    // const RefExample = () => {
+    // const scrollRef = useRef();
+    // const { editDone } = useSelector(state => state.board);
+
+    // const scrollToBottom = useCallback(() => {
+    // if (editDone) {
+    //     scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    // }
+    // }, [editDone]);
+
+    // useEffect(() => {
+    // RefExample();
+    // }, [RefExample])
+    // }
     return(
         <>
             <SlideWrap>
