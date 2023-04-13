@@ -2,7 +2,13 @@ import { request } from '../../utils'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { BoardLayout } from '../../common'
-import { Wrapper, ImgSize, TableStyled, TrStyled } from '../styled/search'
+import {
+  Wrapper,
+  ImgSize,
+  TableStyled,
+  TrStyled,
+  TitelTrStyled,
+} from '../styled/search'
 
 const publicPath = process.env.PUBLIC_URL
 
@@ -31,7 +37,7 @@ export const SearchContent = () => {
   const list = searchResult.map((v) => {
     const data = v['createdAt'].split(' ')
     return (
-      <TrStyled key={v.recruitIndex}>
+      <TrStyled key={v.recruitIndex} className="post">
         <td className="platform">
           <ImgSize src={`${publicPath}${v['ottPlan.platformImage']}`} />
         </td>
@@ -62,12 +68,12 @@ export const SearchContent = () => {
               <div>관련 게시물이 없습니다.</div>
             ) : (
               <TableStyled>
-                <TrStyled>
+                <TitelTrStyled>
                   <th className="platform">플랫폼</th>
                   <th className="title">제목</th>
                   <th className="writer">작성자</th>
                   <th className="date">작성일</th>
-                </TrStyled>
+                </TitelTrStyled>
                 {list}
               </TableStyled>
             )}
