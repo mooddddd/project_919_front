@@ -2,6 +2,15 @@ import { request } from '../../utils'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { BoardLayout } from '../../common'
+import {
+  Wrapper,
+  ImgSize,
+  TableStyled,
+  TrStyled,
+  TitelTrStyled,
+} from '../styled/search'
+
+const publicPath = process.env.PUBLIC_URL
 
 export const SearchContent = () => {
   const { keyword } = useSelector((state) => state.search)
@@ -26,21 +35,50 @@ export const SearchContent = () => {
   }, [keyword])
 
   const list = searchResult.map((v) => {
+    const data = v['createdAt'].split(' ')
     return (
-      <div key={v.recruitIndex}>
-        <img src={v['ottPlan.platformImage']} />
-        <a>{v.title}</a>
-        <span></span>
-        <span>{v['User.userNick']}</span>
-      </div>
+      <TrStyled key={v.recruitIndex} className="post">
+        <td className="platform">
+          <ImgSize src={`${publicPath}${v['ottPlan.platformImage']}`} />
+        </td>
+        <td className="title">
+          <a href={`/community/recruit/view/${v.recruitIndex}`}>{v.title}</a>
+        </td>
+        <td className="nickname">
+          <p>{v['User.userNick']}</p>
+        </td>
+        <td className="date">
+          <p>{data[0]}</p>
+        </td>
+      </TrStyled>
     )
   })
 
   return (
     <>
       <BoardLayout>
-        <div>"{keyword}"에 관한 검색 결과</div>
-        <div>{searchResult.length === 0 ? '관련 게시물이 없습니다' : list}</div>
+        <Wrapper>
+          <div className="searchTop">
+            <img src={`${publicPath}/img/searchIcon.png`} /> "{' '}
+            <span>{keyword}</span> "에 관한 검색 결과입니다.{' '}
+            <img src={`${publicPath}/img/searchIcon.png`} />
+          </div>
+          <div className="searchBottom">
+            {searchResult.length === 0 ? (
+              <div>관련 게시물이 없습니다.</div>
+            ) : (
+              <TableStyled>
+                <TitelTrStyled>
+                  <th className="platform">플랫폼</th>
+                  <th className="title">제목</th>
+                  <th className="writer">작성자</th>
+                  <th className="date">작성일</th>
+                </TitelTrStyled>
+                {list}
+              </TableStyled>
+            )}
+          </div>
+        </Wrapper>
       </BoardLayout>
     </>
   )
