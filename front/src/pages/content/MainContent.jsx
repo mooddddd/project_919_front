@@ -71,7 +71,6 @@ export const MainContent = () => {
     }
   }, [checkSNSLogin, checkedSNSLogin])
 
-  
   return (
     <>
       <Wrapper>
@@ -81,7 +80,7 @@ export const MainContent = () => {
             <WatchaLogoWrap>
               <img
                 className="mainWatcha mainWatchaLogo"
-                src={`${publicPath}/img/platformLogo/Watcha.png`}
+                src={`${publicPath}/img/platformLogo/watcha.png`}
                 alt="mainWatchaLogo"
               />
             </WatchaLogoWrap>
