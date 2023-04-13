@@ -2,8 +2,9 @@ import styled from 'styled-components'
 const publicPath = process.env.PUBLIC_URL
 
 export const MyWrapper = styled.div`
-  width: 1920px;
-  height: 100vh;
+  /* width: 1920px; */
+  width: 100%;
+  /* height: 100vh; */
   background-image: url(${publicPath}/img/clouds.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,8 +12,8 @@ export const MyWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     opacity: 0.2;
   }
 `
