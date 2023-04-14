@@ -2,7 +2,15 @@ import { useState, useEffect } from 'react'
 import { request } from '../../../utils'
 import { getCookie } from '../../../utils'
 import { NavLink } from 'react-router-dom'
-import { PartyWrapper, PartyMyWrite, MyPickWrite, PartyJoin, MyListWrap, MyParticipateWrap, MyPickWrap } from "../../styled"
+import {
+  PartyWrapper,
+  PartyMyWrite,
+  MyPickWrite,
+  PartyJoin,
+  MyListWrap,
+  MyParticipateWrap,
+  MyPickWrap,
+} from '../../styled'
 
 export const MyList = () => {
   const [myList, setMyList] = useState(['리스트 테스트'])
@@ -44,23 +52,15 @@ export const MyList = () => {
     <>
       <PartyWrapper>
         <MyListWrap>
-          내가 작성한 글
-            <PartyMyWrite>
-              {listFunc(myPost)}
-            </PartyMyWrite>
+          내가 작성한 글<PartyMyWrite>{listFunc(myPost)}</PartyMyWrite>
         </MyListWrap>
-        <MyParticipateWrap>
-          나의 참가 글
-          <PartyJoin> 
-            {listFunc(myList)}
-          </PartyJoin>
-        </MyParticipateWrap>
-        <MyPickWrap>
-            My Pick 
-          <MyPickWrite>
-            {listFunc(myLike)}
-          </MyPickWrite>
-        </MyPickWrap>
+        <MyListWrap>
+          나의 참가 글<PartyMyWrite>{listFunc(myList)}</PartyMyWrite>
+        </MyListWrap>
+        <MyListWrap>
+          My Pick
+          <PartyMyWrite>{listFunc(myLike)}</PartyMyWrite>
+        </MyListWrap>
       </PartyWrapper>
     </>
   )
