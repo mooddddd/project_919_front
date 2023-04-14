@@ -16,10 +16,16 @@ export const Header = () => {
   const isLogin = useSelector((state) => state.user.isLogin)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const cookieName = 'token'
+
+  const deleteCokie = (name) => {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;'
+  }
 
   const handleLogout = async (e) => {
     e.preventDefault()
     await dispatch(logoutUser())
+    deleteCokie(cookieName)
     navigate('/')
   }
   return (
