@@ -136,7 +136,7 @@ export const SignUpContent = () => {
                     className="profileIcon"
                     alt="profileIcon"
                   />
-                  프로필 사진 변경
+                  <p>프로필 사진 변경</p>
                   <input
                     type="file"
                     name="picture"
@@ -203,7 +203,7 @@ export const SignUpContent = () => {
                 </Button>
               </form>
 
-              <Line> OR </Line>
+              <Line>OR</Line>
               <NavLink to={kakaoAuth}>
                 <KakaoLogin type="button">
                   <img
